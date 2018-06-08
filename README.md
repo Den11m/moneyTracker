@@ -1,6 +1,7 @@
-## структура нашего state
+##структура нашего state
 
-```state = {
+```
+state = {
     costs: [
         {
             cost: PropsType.number,
@@ -22,7 +23,8 @@
     ],
     isLogin: PropsType.bool,
     period: PropsType.number,
-};```
+};
+```
 
 
 
