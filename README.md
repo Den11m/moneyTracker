@@ -1,6 +1,6 @@
-##структура нашего state
+## структура нашего state
 
-**state = {
+```state = {
     costs: [
         {
             cost: PropsType.number,
@@ -22,9 +22,9 @@
     ],
     isLogin: PropsType.bool,
     period: PropsType.number,
-};**
+};```
 
-**********************************************
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
