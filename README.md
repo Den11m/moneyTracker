@@ -1,3 +1,31 @@
+структура нашего state
+
+state = {
+    costs: [
+        {
+            cost: PropsType.number,
+            date: PropsType.number,
+            category: PropsType.string,
+            comments: PropsType.string,
+        },
+    ],
+    budget: [
+        {
+            plan: PropsType.number,
+            fact: PropsType.number,
+            date: {
+                start: PropsType.number,
+                end: PropsType.number,
+            }
+        },
+
+    ],
+    isLogin: PropsType.bool,
+    period: PropsType.number,
+};
+
+**********************************************
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
