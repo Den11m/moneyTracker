@@ -34,7 +34,7 @@ class Statistics extends Component {
             {
                 cost: 120,
                 date: new Date(2018, 5, 10),
-                category: 'Питомец',
+                category: 'Питомецы',
                 comments: '',
             },
             {
@@ -46,7 +46,7 @@ class Statistics extends Component {
             {
                 cost: 2000,
                 date: new Date(2018, 6, 11),
-                category: 'Питомец',
+                category: 'Питомецы',
                 comments: '',
             },
         ],
@@ -62,15 +62,21 @@ class Statistics extends Component {
 
         ],
         isLogin: true,
-        period: new Date(2018, 5, 1),
+        period: new Date(),
     };
 
     data = () => {
+        // const category = ['Здоровье','Еда','Гигиена','Жилье','Одежда','Спорт','Отдых','Связь','Транспорт','Питомцы','Подарки','др'];
+        const newArrCosts = [];
         const sumArrCostFromPeriod = [
-            ...this.state.costs
+            this.state.costs
                 .filter(obj => obj.date.getMonth() === this.state.period.getMonth())
-               
-        ];
+                // .filter(obj => obj.category === 'Жилье')
+                // .map(obj => obj.cost)
+                // .reduce((acc, el) => el + acc, 0)
+
+
+    ];
         console.log(sumArrCostFromPeriod);
 
 
