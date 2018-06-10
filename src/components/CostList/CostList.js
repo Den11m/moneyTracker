@@ -6,15 +6,19 @@ import './index.css';
 
 
 const CostList = (props) => {
-    console.log('must look at props',props.itemList);
+    console.log('must look at props', props.itemList);
     return (
         <div className="cost-list">
-            <button> </button>
-         <ul className="table-container">
-             <ul className="table-container">
-             {props.itemList.map((el)=> <li className="table-item" key={el.id}>{el.item}</li>)}
-             </ul>
-         </ul>
+            <button></button>
+            <ul className="table-container">
+                <ul className="table-container">
+                    {props.itemList.map((el) => <li className="table-item" key={el.id}>
+                        <p>{el.item}</p>
+                        <p>{el.price}</p>
+                        <p>{el.id}</p>
+                    </li>)}
+                </ul>
+            </ul>
         </div>
     )
 };
@@ -28,7 +32,7 @@ function MSTP(state) {
 
 //export default connect(MSTP,MDTP)(Random);
 
-export default connect (MSTP)(CostList);
+export default connect(MSTP)(CostList);
 
 
 

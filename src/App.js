@@ -8,10 +8,10 @@ class App extends Component {
             <Fragment>
                 <h1>Test</h1>
                 <CostList/>
-
             </Fragment>
         );
     }
 }
+
 export default App;
 
