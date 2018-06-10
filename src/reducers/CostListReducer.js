@@ -1,21 +1,30 @@
+
 export function listItems(state = {spends:[
     {
-     item: 'bread',
-     price: "10",
+     item: 'Хліб',
+     price: 10,
+     comment: 'Свіжий',
+     date: "05.06,2018",
      id: 1
     },
     {
-        item: 'milk',
-        price: "5",
+        item: 'Молоко',
+        price: 5,
+        comment: 'Подорожчало',
+        date: '05.06,2018',
         id: 2
     },
     {
-        item: 'meat',
-        price: "40",
+        item: 'М\'ясо',
+        price: 40,
+        comment: 'Забагато купив',
+        date: '06.06,2018',
         id: 3
     },{
-        item: 'fruits',
-        price: "30",
+        item: 'Яблука',
+        price: 30,
+        comment: 'Вчорашні',
+        date: '07.06,2018',
         id: 4
     },
 
@@ -26,6 +35,8 @@ export function listItems(state = {spends:[
       default:
           return state
   }
+
+
 
 }
 
