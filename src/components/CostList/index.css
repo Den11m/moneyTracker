@@ -1,0 +1,21 @@
+
+
+.cost-list {
+    background-color: blue;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    
+}
+
+.table-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: gold;
+}
+
+.table-item {
+    background-color: #fff;
+    border: solid 3px brown;
+}
