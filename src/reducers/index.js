@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import test from './testReducers';
+import budget from './testReducers';
 
 
 const reducers = combineReducers({
-    test,
+    budget,
 });
 
 
