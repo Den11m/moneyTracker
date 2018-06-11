@@ -10,7 +10,7 @@
     top: 50%;
     left: 50%;
     width: 408px;
-    height: 458px;
+    /*height: 458px;*/
     background-color: #ffffff;
     box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -34,16 +34,12 @@
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
     padding: 8px;
     font-size: 12px;
-    margin: 31px auto 0;
+    margin: auto;
 }
 
 .registration__valid {
     text-align: left;
-    margin-bottom: 31px;
-}
-
-.registration__valid:last-child {
-    margin-bottom: 0;
+    margin-bottom: 30px;
 }
 
 .registration__control {

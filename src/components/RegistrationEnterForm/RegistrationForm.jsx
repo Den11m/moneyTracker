@@ -6,16 +6,15 @@ class RegistrationForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            login: '',
             email: '',
             password: '',
-            formErrors: {email: '', password: ''},
+            formErrors: {email: '', password: '', existUser: ''},
+            loginValid: false,
             emailValid: false,
             passwordValid: false,
-            formValid: false,
         }
     }
-
     hahdleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -26,55 +25,74 @@ class RegistrationForm extends Component {
     };
 
     validateField(fieldName, value) {
-        // let {fieldValidationErrors, emailValid, passwordValid} = this.state;
+        // let {fieldValidationErrors, loginValid, emailValid, passwordValid} = this.state;
         let fieldValidationErrors = this.state.formErrors;
+        let loginValid = this.state.loginValid;
         let emailValid = this.state.emailValid;
         let passwordValid = this.state.passwordValid;
         switch (fieldName) {
+            case 'login':
+                loginValid = value.match(/^[a-zA-Z]{4,}$/);
+                fieldValidationErrors.login = loginValid ? '' : ':enter from 4 symbol for login';
+                break;
             case 'email':
-                // emailValid = value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);//минимум от 4х символов в логин  проверка на  /@/ проверка на наличие точки /.+@.+\..+/i
-                emailValid = value.match(/^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/);//минимум от 4х символов в логин  проверка на  /@/ проверка на наличие точки /.+@.+\..+/i
-                fieldValidationErrors.email = emailValid ? '' : 'is to short , from 4 symbol for login';
+                emailValid = value.match(/^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,}$/);
+                fieldValidationErrors.email = emailValid ? '' : ':enter from 4 symbol for email_login';
                 break;
             case 'password':
-                passwordValid = value.match(/^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);//Паттерн: /^[a-z0-9_-]{4,16}$/
-                fieldValidationErrors.password = passwordValid ? '' : 'is not valid, from 4 to 16 symbols for password';
+                passwordValid = value.match(/^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);
+                fieldValidationErrors.password = passwordValid ? '' : ':enter from 4 to 16 symbols for password';
                 break;
             default:
                 break;
         }
         this.setState({
             formErrors: fieldValidationErrors,
+            loginValid: loginValid,
             emailValid: emailValid,
             passwordValid: passwordValid
-        }, this.validateForm);
+        });
     }
 
-    validateForm() {
-        this.setState({formValid: this.state.emailValid && this.state.passwordValid});
-    }
-
-    // errorClass(error) {
-    //     return(error.length === 0 ? '' : 'has-error');
-    // }
+    localStorageSetData = (e) => {
+        e.preventDefault();
+        if (this.state.loginValid && this.state.emailValid && this.state.passwordValid) {
+            const newUser = {
+                login: this.state.login,
+                email: this.state.email,
+                password: this.state.password,
+            };
+            const getDataUsers = localStorage.getItem("users") ? JSON.parse(localStorage.getItem('users')) : [];
+            if (getDataUsers.some(obj => obj.email === newUser.email)) {
+                this.setState({
+                    formErrors: {
+                        ...this.state.formErrors,
+                        existUser: ':user already exists.'
+                    }
+                });
+                return;
+            }
+            getDataUsers.push(newUser);
+            localStorage.setItem('users', JSON.stringify(getDataUsers));
+        }
+    };
 
     render() {
         return (
-            <form action="" className='registration'>
+            <form action="" className='registration' onSubmit={this.localStorageSetData}>
                 <h3 className='registration__text'>Регистрация</h3>
-                <div className='enter-form__panel'>
-                    <RegistrationFormErrors formErrors={this.state.formErrors}/>
-                </div>
+
+                <RegistrationFormErrors formErrors={this.state.formErrors}/>
+
                 <div className='registration__valid'>
                     <label className='registration__name'
                            htmlFor="name">
-                        Name
+                        Login
                     </label>
                     <input type="text" required
                            className='registration__control'
-                           name='name'
-                        // pattern='^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$'
-                           placeholder="name"
+                           name='login'
+                           placeholder="login"
                            value={this.state.name}
                            onChange={this.hahdleUserInput}
                     />
@@ -88,12 +106,10 @@ class RegistrationForm extends Component {
                     <input type="email" required
                            className='registration__control'
                            name='email'
-                        // pattern='^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$'
                            placeholder="mail@mail"
                            value={this.state.email}
                            onChange={this.hahdleUserInput}
                     />
-
                 </div>
                 <div className='registration__valid'>
                     <label className='registration__name'
@@ -103,7 +119,6 @@ class RegistrationForm extends Component {
                     <input type="password" required
                            className='registration__control'
                            name='password'
-                        // pattern='^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'
                            placeholder="....."
                            value={this.state.password}
                            onChange={this.hahdleUserInput}
@@ -111,7 +126,6 @@ class RegistrationForm extends Component {
                 </div>
                 <input type='submit'
                        className='registration__btn'
-                    // disabled={!this.state.formValid}
                        defaultValue="СОХРАНИТЬ"
                 />
             </form>
