@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component, Fragment} from 'react';
 import './Modale.css';
 
 class Modale extends Component {
+
     state = {
-        visibleModale: false,
+        visibleModale: true
     };
+
     toggleVisibleModale = () => {
         this.setState((prevState) => ({
             visibleModale: !prevState.visibleModale
@@ -13,23 +14,27 @@ class Modale extends Component {
     };
 
     render() {
+        const visibleModale = this.state.visibleModale;
         return (
-            <div className={`modale ${ this.state.visibleModale ? 'active' : ''}`}>
-                <img src="/public/modale.png"
-                     alt="#"
-                     className='modale__btn-close'
-                     onClick={() => this.toggleVisibleModale()}
-                />
-                {this.props.children}
-                <button className='modale__btn-save'
-                        onClick={() => this.toggleVisibleModale()}
-                >СОХРАНИТЬ
-                </button>
-            </div>
+            <Fragment>
+                {visibleModale && (<div className='modale-overlay'>
+                    <div className='modale'>
+                        <img src="/modale.svg"
+                             alt="close"
+                             className='modale__btn-close'
+                             onClick={this.toggleVisibleModale}/>
+                        {this.props.children}
+                        <button className='modale__btn-save'
+                                onClick={this.toggleVisibleModale}
+                        >СОХРАНИТЬ
+                        </button>
+                    </div>
+                </div>)}
+            </Fragment>
+
+
         );
     }
 }
-
-Modale.propTypes = {};
 
 export default Modale;
