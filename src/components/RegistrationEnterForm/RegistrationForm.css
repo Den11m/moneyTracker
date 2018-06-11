@@ -7,8 +7,8 @@
 .registration {
 
     position: relative;
-    width: 362px;
-    height: 408px;
+    width: 408px;
+    height: 458px;
     /*background-color: #ac66ff;*/
     /*убрать маржин топ после слияния*/
     margin: 10px auto;
@@ -57,7 +57,7 @@
 .registration__control:invalid { border-color: red; }
 
 .registration__name {
-    padding-left: 10px;
+    padding-left: 31px;
     font-size: 16px;
     color: #ff5722;
     font-weight: 700;

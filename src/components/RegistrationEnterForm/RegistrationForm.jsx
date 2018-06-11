@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import RegistrationFormErrors from './RegistrationFormErrors';
-import './RegistrationForm.cssForm.css';
+import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: '',
             email: '',
             password: '',
             formErrors: {email: '', password: ''},
@@ -16,13 +17,13 @@ class RegistrationForm extends Component {
     }
 
     hahdleUserInput = (e) => {
-            const name = e.target.name;
-            const value = e.target.value;
-            this.setState({[name]: value},
-                () => {
-                    this.validateField(name, value)
-                });
-        };
+        const name = e.target.name;
+        const value = e.target.value;
+        this.setState({[name]: value},
+            () => {
+                this.validateField(name, value)
+            });
+    };
 
     // hahdleUserInput = (e) => {
     //         const name = e.target.name;
@@ -30,7 +31,7 @@ class RegistrationForm extends Component {
     //         this.setState({[name]: value});
     //     };
 
-        validateField(fieldName, value) {
+    validateField(fieldName, value) {
         // let {fieldValidationErrors, emailValid, passwordValid} = this.state;
         let fieldValidationErrors = this.state.formErrors;
         let emailValid = this.state.emailValid;
@@ -66,9 +67,24 @@ class RegistrationForm extends Component {
     render() {
         return (
             <form action="" className='registration'>
-                <h3 className='registration__text'>Вход</h3>
+                <h3 className='registration__text'>Регистрация</h3>
                 <div className='enter-form__panel'>
                     <RegistrationFormErrors formErrors={this.state.formErrors}/>
+                </div>
+                <div className='registration__valid'>
+                    <label className='registration__name'
+                           htmlFor="name">
+                        Name
+                    </label>
+                    <input type="text" required
+                           className='registration__control'
+                           name='name'
+                        // pattern='^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$'
+                           placeholder="name"
+                           value={this.state.name}
+                           onChange={this.hahdleUserInput}
+                    />
+
                 </div>
                 <div className='registration__valid'>
                     <label className='registration__name'
@@ -78,10 +94,10 @@ class RegistrationForm extends Component {
                     <input type="email" required
                            className='registration__control'
                            name='email'
-                           // pattern='^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$'
+                        // pattern='^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$'
                            placeholder="mail@mail"
                            value={this.state.email}
-                          onChange={this.hahdleUserInput}
+                           onChange={this.hahdleUserInput}
                     />
 
                 </div>
@@ -93,16 +109,16 @@ class RegistrationForm extends Component {
                     <input type="password" required
                            className='registration__control'
                            name='password'
-                           // pattern='^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'
+                        // pattern='^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'
                            placeholder="....."
                            value={this.state.password}
                            onChange={this.hahdleUserInput}
                     />
                 </div>
                 <input type='submit'
-                        className='registration__btn'
-                        // disabled={!this.state.formValid}
-                        defaultValue="ВОЙТИ"
+                       className='registration__btn'
+                    // disabled={!this.state.formValid}
+                       defaultValue="СОХРАНИТЬ"
                 />
             </form>
         );
