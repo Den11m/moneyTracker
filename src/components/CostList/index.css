@@ -1,26 +1,45 @@
 
+.main-wrapper {
+    display: flex;
+}
+
+.cost-wrapper {
+    background-color: #f1f2f2;
+    height: 100vh;
+    flex-basis: 100%;
+    padding: 5px;
+}
+
+.sideBar {
+
+    flex-basis: 20%;
+    background-color: red;
+
+}
 
 .cost-list {
     background-color: white;
+    margin: auto;
+    box-shadow: 0 2px 0 1px #b8b9b9;
 
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-    /*flex-direction: column;*/
-    /*align-content: flex-start;*/
-    /*position: relative;*/
-    /*width: 1000px;*/
-    /*height: 1000px;*/
-    
 }
 
 .result {
-    width: 120px;
-    color: orangered;
+    color: #ff5722;
     font-weight: bold;
-    margin: 50px 0 0 auto;
+    margin-top: 50px;
+    padding: 20px 20px 50px 0;
 }
+
+.spends-result {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    text-align: right;
+}
+
 .spends-span {
     padding: 5px;
+    font-size: 10px;
 }
 
 .start {
@@ -28,20 +47,65 @@
     counter-increment: start;
 }
 
+.cost-form {
+    padding: 20px 0 0 15px;
+    margin-bottom: 20px;
+}
+
+.cost-add {
+    outline: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    background-image: url("/plus.svg");
+    background-position: center;
+    background-size: contain;
+}
+
 table.Table {
-    width: 100%;
+    width: 95%;
+    margin: auto;
     text-align: center;
     border-collapse: collapse;
-
+    padding: auto 5px;
 }
+
 table.Table td, table.Table th {
     padding: 3px 2px;
 }
-table.Table tbody td {
-    font-size: 14px;
-    font-weight: lighter;
 
+table.Table tbody td {
+    font-size: 10px;
+    font-weight: lighter;
+    text-align: left;
+    color: rgba(117, 117, 117, 255);
+    font-family: 'Roboto', sans-serif;
 }
+
+table.Table tbody td:last-child {
+    text-align: right;
+}
+
 table.Table tr:nth-child(even) {
-    background: #D0E4F5;
+    background: #f3f4fb;
+}
+
+@media (min-width: 768px) {
+    .spends-span {
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    table.Table tbody td {
+        font-size: 16px;
+        font-weight: lighter;
+        text-align: left;
+        color: rgba(117, 117, 117, 255);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .spends-result {
+        font-size: 16px;
+    }
 }
