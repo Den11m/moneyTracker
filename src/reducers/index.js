@@ -9,5 +9,4 @@ const reducers = combineReducers({
     listItems,
 });
 
-
 export default reducers;

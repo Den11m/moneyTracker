@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    border: none;
+    outline-style: none;
+}
+.modale-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+}
+.modale {
+    position: absolute;
+    padding: 50px;
+    display: inline-block;
+    top: 50% ;
+    left: 50% ;
+    transform:translate(-50%,-50%);
+    background-color: #ffffff;
+    margin: auto;
+    box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.5);
+}
+
+.modale__btn-close {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.modale__btn-save {
+    display: block;
+    border-radius: 9px;
+    height: 33px;
+    width: 106px;
+    background-color: #ff5722;
+    color: #ffffff;
+    font-weight: 500;
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    font-size: 12px;
+    margin: auto;
+}
+
+.active {
+    display: none;
+    transition: 1s;
+}
