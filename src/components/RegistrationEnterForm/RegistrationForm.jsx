@@ -25,12 +25,6 @@ class RegistrationForm extends Component {
             });
     };
 
-    // hahdleUserInput = (e) => {
-    //         const name = e.target.name;
-    //         const value = e.target.value;
-    //         this.setState({[name]: value});
-    //     };
-
     validateField(fieldName, value) {
         // let {fieldValidationErrors, emailValid, passwordValid} = this.state;
         let fieldValidationErrors = this.state.formErrors;
