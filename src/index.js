@@ -12,6 +12,7 @@ const store = configureStore(persistedState);
 setInterval(()=>{
     store.subscribe(() => {
         saveState({
+            test: store.getState().test,
             costs: store.getState().costs,
             budget: store.getState().budget,
             isLogin: store.getState().isLogin,
