@@ -2,20 +2,23 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getItemList} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
+
 import './index.css';
-import AddNewCosts from '../../components/addNewCosts/addNewCosts';
+import Modale from '../../components/Modale/Modale';
+
 
 const CostList = (props) => {
-    console.log('must look at props', props.itemList);
+    console.log('must look at props', props);
 
 
     return (
         <div className="cost-wrapper">
             <div className="cost-list">
                 <div className="cost-form">
-                    <button className="cost-add" onClick={}> </button>
+                    <button className="cost-add"> </button>
                 </div>
-                 < AddNewCosts/>
+                 < Modale/>
+
                 <table className="Table">
                     <tbody>
                     {props.itemList.map((el, index) => <tr className="line" key={el.id}>
@@ -53,10 +56,10 @@ function MDTP(dispatch) {
     return {
         getList: function (data) {
             dispatch(getList(data))
-        }
+        },
+
     }
 }
-
 
 export default connect(MSTP)(CostList);
 
