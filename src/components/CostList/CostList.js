@@ -1,27 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getItemList} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
 
 import './index.css';
 import Modale from '../../components/Modale/Modale';
+import AddNewCosts from '../addNewCosts/addNewCosts';
 
 
-const CostList = (props) => {
-    console.log('must look at props', props);
+class CostList extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+            visibleModale: false
+        };
+        console.log(this.state.visibleModale)
+    }
 
+    // console.log('must look at props', props);
+    // let falseVisible = false
 
+  toggleVisibleModale = () => {
+        this.setState((prevState) => ({
+            visibleModale: !prevState.visibleModale
+        }))
+    };
+    render(){
+        
     return (
         <div className="cost-wrapper">
+        <AddNewCosts toggleVisibleModale={this.toggleVisibleModale} visibleModale={this.state.visibleModale}/>
             <div className="cost-list">
                 <div className="cost-form">
-                    <button className="cost-add"> </button>
+                    <button className="cost-add" onClick={this.toggleVisibleModale}> </button>
                 </div>
-                 < Modale/>
 
                 <table className="Table">
                     <tbody>
-                    {props.itemList.map((el, index) => <tr className="line" key={el.id}>
+                    {this.props.itemList.map((el, index) => <tr className="line" key={el.id}>
 
                         <td className="start">{index + 1}.</td>
                         <td>{el.category} ({el.comments})</td>
@@ -35,7 +51,7 @@ const CostList = (props) => {
                 <div className="result">
                     <p className="spends-result"> Всего
                         <span
-                            className="spends-span">{props.itemList.reduce((prev, curr) => prev + curr.cost, 0)}</span>
+                            className="spends-span">{this.props.itemList.reduce((prev, curr) => prev + curr.cost, 0)}</span>
                         грн
                     </p>
                 </div>
@@ -43,7 +59,7 @@ const CostList = (props) => {
             </div>
         </div>
 
-    )
+    )}
 };
 
 function MSTP(state) {
@@ -57,11 +73,11 @@ function MDTP(dispatch) {
         getList: function (data) {
             dispatch(getList(data))
         },
-
     }
 }
 
-export default connect(MSTP)(CostList);
+export default connect(MSTP,MDTP)(CostList);
+// export default CostList;
 
 
 

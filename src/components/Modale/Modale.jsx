@@ -1,43 +1,37 @@
 import React, {Component, Fragment} from 'react';
-import './Modale.css';
 import AddNewCosts from '../addNewCosts/addNewCosts';
+import './Modale.css';
 
 
-class Modale extends Component {
+const Modale = (props) => {
 
-    state = {
-        visibleModale: true//in reducer
-    };
+    // toggleVisibleModale = () => {
+    //     this.setState((prevState) => ({
+    //         visibleModale: !prevState.visibleModale
+    //     }))
+    // };
 
-    toggleVisibleModale = () => {// in action
-        this.setState((prevState) => ({
-            visibleModale: !prevState.visibleModale
-        }))
-    };
-
-    render() {
-        const visibleModale = this.state.visibleModale;
+    // render() {
+        // const visibleModale = this.state.visibleModale;
         return (
             <Fragment>
-                {visibleModale && (<div className='modale-overlay'>
+                {props.visibleModale && (<div className='modale-overlay'>
                     <div className='modale'>
-                      {/*<AddNewCosts/>*/}
                         <img src="/modale.svg"
                              alt="close"
                              className='modale__btn-close'
-                             onClick={this.toggleVisibleModale}/>
-                        {this.props.children}
-                        <button className='modale__btn-save'
+                             onClick={props.toggleVisibleModale}/>
+                        {props.children}
+                        {/* <button className='modale__btn-save'
                                 onClick={this.toggleVisibleModale}
                         >СОХРАНИТЬ
-                        </button>
+                        </button> */}
                     </div>
                 </div>)}
             </Fragment>
 
-
         );
-    }
+    // }
 }
 
 export default Modale;
