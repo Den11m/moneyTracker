@@ -4,8 +4,8 @@ import './index.css';
 class Sidebar extends Component {
 
     state = {
-        periodVisablilty: true,
-        costVisability: true,
+        periodVisablilty: false,
+        costVisability: false,
         categories: [
             '# Здоровье',
             '# Еда',
@@ -44,17 +44,17 @@ class Sidebar extends Component {
         return (
             <div className='wrapper-sidebar'>
                 <ul>
-                    <li onClick={this.subPeriod} className='menu-item'>Расходы</li>
-                        <ul className='sub-menu' style={{display: this.state.periodVisablilty ? 'none' : 'block'}}>
+                    <li onClick={this.subPeriod} className={`menu-item ${this.state.periodVisablilty ? 'menu-item-active' : ''}`}>Расходы</li>
+                        <ul className={`sub-menu ${this.state.periodVisablilty ? 'active' : ''}`}>
                             {this.state.categories.map((obj) => {
                                 return (
-                                    <li className='sub-item'>{obj} <p className='qwe'>&#036;</p></li>
+                                    <li className='sub-item'>{obj} <p className='sum-of-cost'>&#036;</p></li>
 
                                 )
                             })}
                         </ul>
-                    <li onClick={this.subCost} className='menu-item'>Период</li>
-                        <ul className='sub-menu' style={{display: this.state.costVisability ? 'none' : 'block'}}>
+                    <li onClick={this.subCost} className={`menu-item ${this.state.costVisability ? 'menu-item-active' : ''}`}>Период</li>
+                        <ul className={`sub-menu ${this.state.costVisability ? 'active' : ''}`}>
                             <li className='sub-item'>День</li>
                             <li className='sub-item'>Неделя</li>
                             <li className='sub-item'>Месяц</li>
