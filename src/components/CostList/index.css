@@ -1,0 +1,99 @@
+
+.cost-wrapper {
+    background-color: #f1f2f2;
+    height: 100vh;
+    flex-basis: 100%;
+    padding: 15px;
+}
+
+.cost-list {
+    background-color: white;
+    margin: auto;
+    box-shadow: 0 2px 0 1px #b8b9b9;
+}
+
+.result {
+    color: #ff5722;
+    font-weight: bold;
+    margin-top: 50px;
+    padding: 20px 20px 50px 0;
+}
+
+.spends-result {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    text-align: right;
+}
+
+.spends-span {
+    padding: 5px;
+    font-size: 10px;
+}
+
+.start {
+    counter-reset: start;
+    counter-increment: start;
+}
+
+.cost-form {
+    padding: 20px 0 0 15px;
+    margin-bottom: 20px;
+}
+
+.cost-add {
+    outline: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    background-image: url("/plus.svg");
+    background-position: center;
+    background-size: contain;
+}
+
+table.Table {
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    border-collapse: collapse;
+    padding: auto 5px;
+}
+
+table.Table td, table.Table th {
+    padding: 3px 2px;
+}
+
+table.Table tbody td {
+    font-size: 10px;
+    font-weight: lighter;
+    text-align: left;
+    color: rgba(117, 117, 117, 255);
+    font-family: 'Roboto', sans-serif;
+}
+
+table.Table tbody td:last-child {
+    text-align: right;
+}
+
+table.Table tr:nth-child(even) {
+    background: #f3f4fb;
+}
+
+@media (min-width: 768px) {
+    .spends-span {
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    table.Table tbody td {
+        font-size: 16px;
+        font-weight: lighter;
+        text-align: left;
+        color: rgba(117, 117, 117, 255);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .spends-result {
+        font-size: 16px;
+    }
+}

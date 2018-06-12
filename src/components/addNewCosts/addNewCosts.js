@@ -4,7 +4,8 @@ import DatePicker from 'react-date-picker';
 import addCosts from '../../actions/addNewCostsAction';
 import {connect} from 'react-redux';
 import moment from 'moment';
-import Modale  from '../Modale/Modale'
+import Modale  from '../Modale/Modale';
+import CostList from '../CostList/CostList';
 import './style.css';
 
 const AddNewCosts = (props) => {
@@ -16,9 +17,11 @@ let sumInput = '',
     let test;
 
 
-
+    // debugger;
     return (
-    <Modale>
+       
+    <Modale toggleVisibleModale={props.toggleVisibleModale} visibleModale={props.visibleModale}>
+    
         <div className='category-container'>
 
             <input type='number' placeholder='сумма' className='category--sum' ref={(inputTag) => sumInput = inputTag}/>
