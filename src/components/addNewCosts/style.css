@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.category-container{
+    width: 40%;
+    padding: 30px
+}
+.category--sum, .category--choose, .category--comment{
+    border: 1px solid #fff;
+    border-bottom: 1px solid rgb(75, 70, 70);
+    padding: 10px;
+    text-transform: capitalize;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+input {
+    display: block;
+}
+.icons-category {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+.icon-category {
+    flex-basis: 22%;
+    justify-content: center;
+}
+.health, .food, .hygiene, .home, .clothes, .sport, .relax, .communication, .transport, .nursling, .present, .other{
+    position: relative;
+    /* background-color: rgb(21, 163, 144); */
+    display: inline-block;
+    padding: 29px;
+    border-radius: 5px;
+ 
+}
+.radio {
+    display: none;
+}
+.health:before, .food:before, .hygiene:before, .home:before, .clothes:before, .sport:before, .relax:before, .communication:before, .transport:before, .nursling:before, .present:before, .other:before {
+    display: block;
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    top: 10px;
+    left: 10px;
+}
+.health:before {
+    background-image: url('/health.svg');
+    background-repeat: no-repeat;
+}
+.food:before {
+    background-image: url('/food.svg');
+    background-repeat: no-repeat;
+}
+.hygiene:before {
+    background-image: url('/hygiene.svg');
+    background-repeat: no-repeat;
+}
+.home:before {
+    background-image: url('/home.svg');
+    background-repeat: no-repeat;
+}
+.clothes:before{
+    background-image: url('/clothes.svg');
+    background-repeat: no-repeat;
+}
+.sport:before {
+    background-image: url('/sport.svg');
+    background-repeat: no-repeat;
+}
+.relax:before {
+    background-image: url('/relax.svg');
+    background-repeat: no-repeat;
+}
+.communication:before {
+    background-image: url('/communication.svg');
+    background-repeat: no-repeat;
+}
+.transport:before {
+    background-image: url('/transport.svg');
+    background-repeat: no-repeat;
+}
+.nursling:before {
+    background-image: url('/nursling.svg');
+    background-repeat: no-repeat;
+}
+.present:before{
+    background-image: url('/present.svg');
+    background-repeat: no-repeat;
+}
+.other:before{
+    background-image: url('/other.svg');
+    background-repeat: no-repeat;
+}
+.radio:checked+.health, .radio:checked+.food, .radio:checked+.hygiene, .radio:checked+.home, .radio:checked+.clothes, .radio:checked+.sport, .radio:checked+.relax, .radio:checked+.communication, .radio:checked+.transport, .radio:checked+.nursling, .radio:checked+.present, .radio:checked+.other{
+    background-color: rgb(200, 226, 243);
+}
+.category--text{
+    font-size: 16px;
+    text-transform: capitalize;
+    /* text-align: center; */
+}
+.category__date{
+    margin: 30px 0;
+
+}
+.category__calendar {
+    width: 100vw;
+}
+
+.category--save {
+    display: block;
+    border-radius: 9px;
+    height: 33px;
+    width: 106px;
+    /* position: absolute; */
+    transform: translate(50%);
+    /* bottom: 48px;
+    right: 50%; */
+    background-color: #ff5722;
+    color: #ffffff;
+    font-weight: 500;
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    font-size: 12px;
+}
