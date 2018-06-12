@@ -1,27 +1,15 @@
 
-.main-wrapper {
-    display: flex;
-}
-
 .cost-wrapper {
     background-color: #f1f2f2;
     height: 100vh;
     flex-basis: 100%;
-    padding: 5px;
-}
-
-.sideBar {
-
-    flex-basis: 20%;
-    background-color: red;
-
+    padding: 15px;
 }
 
 .cost-list {
     background-color: white;
     margin: auto;
     box-shadow: 0 2px 0 1px #b8b9b9;
-
 }
 
 .result {

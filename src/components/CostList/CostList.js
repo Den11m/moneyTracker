@@ -7,41 +7,36 @@ import './index.css';
 const CostList = (props) => {
     console.log('must look at props', props.itemList);
     return (
-        <div className="main-wrapper">
-            <div className="sideBar"> </div>
-
-            <div className="cost-wrapper">
-
-                <div className="cost-list">
-
-                    <div className="cost-form">
-                        <button className="cost-add"> </button>
-                    </div>
-
-                    <table className="Table">
-                        <tbody>
-                        {props.itemList.map((el, index) => <tr className="line" key={el.id}>
-
-                            <td className="start">{index + 1}.</td>
-                            <td>{el.category} ({el.comments})</td>
-                            <td>{el.date}</td>
-                            <td>{el.cost} грн</td>
-                        </tr>)}
-
-                        </tbody>
-                    </table>
-
-                    <div className="result">
-                        <p className="spends-result"> Всего
-                            <span
-                                className="spends-span">{props.itemList.reduce((prev, curr) => prev + curr.cost, 0)}</span>
-                            грн
-                        </p>
-                    </div>
-
+        <div className="cost-wrapper">
+            <div className="cost-list">
+                <div className="cost-form">
+                    <button className="cost-add"> </button>
                 </div>
+
+                <table className="Table">
+                    <tbody>
+                    {props.itemList.map((el, index) => <tr className="line" key={el.id}>
+
+                        <td className="start">{index + 1}.</td>
+                        <td>{el.category} ({el.comments})</td>
+                        <td>{el.date}</td>
+                        <td>{el.cost} грн</td>
+                    </tr>)}
+
+                    </tbody>
+                </table>
+
+                <div className="result">
+                    <p className="spends-result"> Всего
+                        <span
+                            className="spends-span">{props.itemList.reduce((prev, curr) => prev + curr.cost, 0)}</span>
+                        грн
+                    </p>
+                </div>
+
             </div>
         </div>
+
     )
 };
 
@@ -58,6 +53,7 @@ function MDTP(dispatch) {
         }
     }
 }
+
 
 export default connect(MSTP)(CostList);
 
