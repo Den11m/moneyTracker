@@ -9,11 +9,14 @@
 }
 .category--sum, .category--choose, .category--comment{
     border: 1px solid #fff;
-    border-bottom: 1px solid rgb(75, 70, 70);
+    border-bottom: 2px solid #d4d4d4;
     padding: 10px;
     text-transform: capitalize;
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 20px;
+    min-width: 100%;
+    color: #474545;
+    font-weight: 500;
 }
 input {
     display: block;
@@ -26,6 +29,7 @@ input {
 .icon-category {
     flex-basis: 22%;
     justify-content: center;
+    text-align: center;
 }
 .health, .food, .hygiene, .home, .clothes, .sport, .relax, .communication, .transport, .nursling, .present, .other{
     position: relative;
@@ -100,19 +104,16 @@ input {
     background-repeat: no-repeat;
 }
 .radio:checked+.health, .radio:checked+.food, .radio:checked+.hygiene, .radio:checked+.home, .radio:checked+.clothes, .radio:checked+.sport, .radio:checked+.relax, .radio:checked+.communication, .radio:checked+.transport, .radio:checked+.nursling, .radio:checked+.present, .radio:checked+.other{
-    background-color: rgb(200, 226, 243);
+    background-color: #c5cae9;
 }
 .category--text{
-    font-size: 16px;
+    font-size: 12px;
     text-transform: capitalize;
-    /* text-align: center; */
+    color: #919191;
 }
 .category__date{
     margin: 30px 0;
 
-}
-.category__calendar {
-    width: 100vw;
 }
 
 .category--save {
@@ -130,4 +131,27 @@ input {
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
     padding: 8px;
     font-size: 12px;
+}
+
+.react-date-picker {
+    width: 100%;
+    display: flex;
+
+}
+.react-date-picker__button  {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #d4d4d4;
+}
+.react-date-picker__button__input {
+    padding: 5px 10px;
+}
+
+.react-date-picker__button__input__input {
+    font-size: 16px;
+    color: #474545;
+
+}
+.react-date-picker__button__icon{
+    padding: 5px 10px;
 }
