@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import AddNewCosts from '../addNewCosts/addNewCosts';
+// import AddNewCosts from '../addNewCosts/addNewCosts';
 import './Modale.css';
 
 
@@ -15,12 +15,12 @@ const Modale = (props) => {
         // const visibleModale = this.state.visibleModale;
         return (
             <Fragment>
-                {props.visibleModale && (<div className='modale-overlay'>
+                {props.click && (<div className='modale-overlay'>
                     <div className='modale'>
                         <img src="/modale.svg"
                              alt="close"
                              className='modale__btn-close'
-                             onClick={props.toggleVisibleModale}/>
+                             onClick={props.toggleShowWindow}/>
                         {props.children}
                         {/* <button className='modale__btn-save'
                                 onClick={this.toggleVisibleModale}

@@ -5,7 +5,9 @@ import addCosts from '../../actions/addNewCostsAction';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import Modale  from '../Modale/Modale';
-import CostList from '../CostList/CostList';
+import {click} from '../../selectors/CostListSelector';
+import toggleShowWindow from '../../actions/clickAction';
+// import CostList from '../CostList/CostList';
 import './style.css';
 
 const AddNewCosts = (props) => {
@@ -14,18 +16,18 @@ let sumInput = '',
     commentInput = '';
     let date = new Date();
     console.log(date);
-    let test;
+    let test= null;
 
-
+    console.log(props)
     // debugger;
     return (
        
-    <Modale toggleVisibleModale={props.toggleVisibleModale} visibleModale={props.visibleModale}>
+    <Modale toggleShowWindow={props.toggleShowWindow} click={props.click}>
     
         <div className='category-container'>
 
             <input type='number' placeholder='сумма' className='category--sum' ref={(inputTag) => sumInput = inputTag}/>
-            <div className='icons-category'ref={(input)=> test = input}>
+            <div className='icons-category'ref={(div)=> test = div}>
                 <div className='icon-category'>
                 <input type="radio" className='radio' id="health" name="contact" value="здоровье"/>
                 <label htmlFor='health'  className='health' data-category='здоровье'>
@@ -88,13 +90,13 @@ let sumInput = '',
                 </div>
                 <div className='icon-category'>
                 <input type="radio" className='radio' id="present" name="contact" value="подарки"/>
-                <label htmlFor='present'  className='present' data-category='подарки'>
+                <label for='present'  className='present' data-category='подарки'>
                 </label>
                 <p className='category--text'>подарки</p>
                 </div>
                 <div className='icon-category'>
                 <input type="radio" className='radio' id="other" name="contact" value="другое"/>
-                <label htmlFor='other'  className='other' data-category='другое'>
+                <label for='other'  className='other' data-category='другое'>
                 </label>
                 <p className='category--text'>другое</p>
                 </div>
@@ -104,22 +106,32 @@ let sumInput = '',
             </div>
             <input type='text' placeholder='комментарий'  className='category--comment' ref={(inputTag) => commentInput = inputTag} />
             <button className='category--save' onClick={() =>{
-            props.addCosts({ cost: +sumInput.value,
+            props.addCosts(
+                { cost: +sumInput.value,
             date: moment(date).valueOf(),
-            category: Array.from(test.children).find(el => el.children[0].checked === true).children[0].value,
-            comments: commentInput.value,})
-            // console.log('click',Array.from(test.children).find(el => el.children[0].checked === true).children[0].value)
+            // category: Array.from(test.children).find(el => el.children[0].checked === true).children[0].value,
+            comments: commentInput.value,
+        })
+            console.log('click',test)
             }}>coxpанить</button>
         </div> 
     </Modale>
     )
 
 }
+function MSTP(state){
+    return {
+        click: click(state)
+    }
+}
 function MDTP(dispatch){
     return {
         addCosts: function(data){
             dispatch(addCosts(data))
+        },
+        toggleShowWindow: function () {
+            dispatch(toggleShowWindow())
         }
     }
 }
-export default connect(null, MDTP)(AddNewCosts)
+export default connect(MSTP, MDTP)(AddNewCosts)
