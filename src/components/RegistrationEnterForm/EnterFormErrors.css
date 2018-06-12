@@ -1,0 +1,9 @@
+.enter__errors{
+    margin: auto;
+    text-align: center;
+
+}
+.enter__errors-text{
+    color: #e40c12;
+    font-size: 13px;
+}

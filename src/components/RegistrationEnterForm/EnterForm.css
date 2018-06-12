@@ -5,16 +5,16 @@
 }
 
 .enter-form {
-
-    position: relative;
-    width: 362px;
-    height: 408px;
-    /*background-color: #ac66ff;*/
-    /*убрать маржин топ после слияния*/
-    margin: 10px auto;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 408px;
+    /*height: 458px;*/
+    background-color: #ffffff;
     box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.5);
     text-align: center;
-    padding-top: 35px;
+    padding: 35px 30px 50px;
 }
 
 .enter-form__text {
@@ -28,21 +28,18 @@
     border-radius: 9px;
     height: 33px;
     width: 106px;
-    position: absolute;
-    transform: translate(50%);
-    bottom: 48px;
-    right: 50%;
     background-color: #ff5722;
     color: #ffffff;
     font-weight: 500;
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
     padding: 8px;
     font-size: 12px;
-    margin-top: 30px;
+    margin: auto;
 }
 
 .enter-form__valid {
     text-align: left;
+    margin-bottom: 30px;
 }
 
 .enter-form__control {
@@ -53,12 +50,11 @@
     border: 1px solid #ff5722;
     padding: 10px;
 }
-.enter-form__control:valid { border-color: #ff5722; }
-.enter-form__control:invalid { border-color: red; }
 
 .enter-form__name {
-    padding-left: 10px;
+    display: block;
     font-size: 16px;
     color: #ff5722;
     font-weight: 700;
+    margin-bottom: 16px;
 }
