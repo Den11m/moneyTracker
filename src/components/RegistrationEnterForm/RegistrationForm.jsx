@@ -9,7 +9,7 @@ class RegistrationForm extends Component {
             login: '',
             email: '',
             password: '',
-            formErrors: {email: '', password: '', existUser: ''},
+            formErrors: {mail: '', password: '', existUser: ''},
             loginValid: false,
             emailValid: false,
             passwordValid: false,
@@ -33,15 +33,15 @@ class RegistrationForm extends Component {
         switch (fieldName) {
             case 'login':
                 loginValid = value.match(/^[a-zA-Z]{4,}$/);
-                fieldValidationErrors.login = loginValid ? '' : ':enter from 4 symbol for login';
+                fieldValidationErrors.Login = loginValid ? '' : ' : Enter from 4 symbol for login';
                 break;
             case 'email':
                 emailValid = value.match(/^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,}$/);
-                fieldValidationErrors.email = emailValid ? '' : ':enter from 4 symbol for email_login';
+                fieldValidationErrors.Email = emailValid ? '' : ' : Enter from 4 symbol for email_login';
                 break;
             case 'password':
                 passwordValid = value.match(/^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);
-                fieldValidationErrors.password = passwordValid ? '' : ':enter from 4 to 16 symbols for password';
+                fieldValidationErrors.Password = passwordValid ? '' : ' : Enter from 4 to 16 symbols for password';
                 break;
             default:
                 break;
@@ -67,7 +67,7 @@ class RegistrationForm extends Component {
                 this.setState({
                     formErrors: {
                         ...this.state.formErrors,
-                        existUser: ':user already exists.'
+                        ExistUser: ': User already exists.'
                     }
                 });
                 return;
