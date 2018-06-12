@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .category-container{
-    width: 40%;
+    /* width: 40%; */
     padding: 30px
 }
 .category--sum, .category--choose, .category--comment{
@@ -116,23 +116,36 @@ input {
 
 }
 
+/* .category--save {
+    display: block;
+    border-radius: 9px;
+    height: 33px;
+    width: 106px; */
+    /* position: absolute; */
+    /* transform: translate(50%); */
+    /* bottom: 48px;
+    right: 50%; */
+    /* background-color: #ff5722;
+    color: #ffffff;
+    font-weight: 500;
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    font-size: 12px;
+} */
 .category--save {
     display: block;
     border-radius: 9px;
     height: 33px;
     width: 106px;
-    /* position: absolute; */
-    transform: translate(50%);
-    /* bottom: 48px;
-    right: 50%; */
     background-color: #ff5722;
     color: #ffffff;
     font-weight: 500;
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
     padding: 8px;
     font-size: 12px;
+    margin: auto;
+    text-transform: uppercase;
 }
-
 .react-date-picker {
     width: 100%;
     display: flex;

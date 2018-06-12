@@ -4,6 +4,7 @@ import DatePicker from 'react-date-picker';
 import addCosts from '../../actions/addNewCostsAction';
 import {connect} from 'react-redux';
 import moment from 'moment';
+import Modale  from '../Modale/Modale'
 import './style.css';
 
 const AddNewCosts = (props) => {
@@ -17,7 +18,9 @@ let sumInput = '',
 
 
     return (
+    <Modale>
         <div className='category-container'>
+
             <input type='number' placeholder='сумма' className='category--sum' ref={(inputTag) => sumInput = inputTag}/>
             <div className='icons-category'ref={(input)=> test = input}>
                 <div className='icon-category'>
@@ -105,7 +108,9 @@ let sumInput = '',
             // console.log('click',Array.from(test.children).find(el => el.children[0].checked === true).children[0].value)
             }}>coxpанить</button>
         </div> 
+    </Modale>
     )
+
 }
 function MDTP(dispatch){
     return {
