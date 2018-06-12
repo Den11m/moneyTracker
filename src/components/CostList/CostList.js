@@ -3,16 +3,19 @@ import {connect} from 'react-redux';
 import {getItemList} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
 import './index.css';
+import AddNewCosts from '../../components/addNewCosts/addNewCosts';
 
 const CostList = (props) => {
     console.log('must look at props', props.itemList);
+
+
     return (
         <div className="cost-wrapper">
             <div className="cost-list">
                 <div className="cost-form">
-                    <button className="cost-add"> </button>
+                    <button className="cost-add" onClick={}> </button>
                 </div>
-
+                 < AddNewCosts/>
                 <table className="Table">
                     <tbody>
                     {props.itemList.map((el, index) => <tr className="line" key={el.id}>

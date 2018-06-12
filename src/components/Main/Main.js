@@ -4,6 +4,8 @@ import './Main.css';
 import CostList from '../../components/CostList/CostList';
 
 
+
+
 const Main = (props) => {
     console.log(' look at props fool', props);
     return (

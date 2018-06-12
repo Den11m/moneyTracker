@@ -14,7 +14,7 @@ let sumInput = '',
     let date = new Date();
     console.log(date);
     let test;
-    console.log(test)
+    console.log(test);
 
 
 
