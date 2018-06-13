@@ -87,7 +87,6 @@ class Statistics extends Component {
         }
     }
 
-
     // state = {
     //     costs: [
     //         {
@@ -267,7 +266,13 @@ class Statistics extends Component {
         }
     };
 
+
+
     options =() => ({
+        // legend: {
+        //     position: 'right',
+        // },
+
         scales: {
             yAxes: [{
                 display: true,
@@ -299,18 +304,18 @@ class Statistics extends Component {
             <div className='statistic'>
                 <div className='statistic__body'>
                     <h2 className='statistic__title'>Статистика</h2>
-                    <select
+                    <select className='statistic__select'
                         name='typeChart'
                         value={this.props.typeChart}
                         onChange={this.handleInputChange}>
-                        <option value="Doughnut">doughnut</option>
-                        <option value="Bar">bar</option>
-                        <option value="Line">line</option>
+                        <option value="Doughnut">Кольцевая диаграмма</option>
+                        <option value="Bar">Гистограмма</option>
+                        <option value="Line">График</option>
                     </select>
 
                     {(this.props.typeChart === 'Bar' ||
                         this.props.typeChart === 'Line') &&
-                        <select
+                        <select className='statistic__select'
                         name='filterCategory'
                         value={this.props.filterCategory}
                         onChange={this.handleInputChange}>
@@ -320,7 +325,8 @@ class Statistics extends Component {
                     </select>}
 
                     {this.props.typeChart === 'Doughnut' &&
-                    <Doughnut data={this.data(this.props.typeChart)}/>}
+                    <Doughnut data={this.data(this.props.typeChart)}
+                              options = {{legend:{position:'right'}}}/>}
 
                     {this.props.typeChart === 'Bar' &&
                     <Bar data={this.data(this.props.typeChart, this.props.filterCategory)}
