@@ -4,12 +4,13 @@ import {getItemList} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
 import moment from 'moment';
 
+
 import './index.css';
 import Modale from '../../components/Modale/Modale';
 import AddNewCosts from '../addNewCosts/addNewCosts';
 
 
-class CostList extends Component {4
+class CostList extends Component {
 
     constructor (props) {
         super(props);
@@ -36,7 +37,6 @@ class CostList extends Component {4
                 <div className="cost-form">
                     <button className="cost-add" onClick={this.toggleVisibleModale}> </button>
                 </div>
-
                 <table className="Table">
                     <tbody>
                     {this.props.itemList.map((el, index) => <tr className="line" key={el.id}>

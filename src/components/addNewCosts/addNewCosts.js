@@ -7,6 +7,7 @@ import moment from 'moment';
 import Modale  from '../Modale/Modale';
 //import CostList from '../CostList/CostList';
 import './style.css';
+import {v4} from 'uuid';
 
 const AddNewCosts = (props) => {
   
@@ -105,12 +106,9 @@ let sumInput = '',
             <input type='text' placeholder='комментарий'  className='category--comment' ref={(inputTag) => commentInput = inputTag} />
             <button className='category--save' onClick={() =>{
                 sumInput.value > 0 &&  Array.from(test.children).some(el => el.children[0].checked === true)   ?
-
-
-
-
             props.addCosts({ cost: +sumInput.value,
             date: moment(date).valueOf(),
+                id: v4(),
             category: Array.from(test.children).find(el => el.children[0].checked === true).children[0].value,
             comments: commentInput.value,})
             // console.log('click',Array.from(test.children).find(el => el.children[0].checked === true).children[0].value)
@@ -119,7 +117,7 @@ let sumInput = '',
     </Modale>
     )
 
-}
+};
 function MDTP(dispatch){
     return {
         addCosts: function(data){
