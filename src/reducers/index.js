@@ -1,14 +1,13 @@
 import {combineReducers} from 'redux';
 import test from './testReducers';
 import typeChart from './typeChartReducers';
-import filterCategory from './filterCategoryReducers';
+import categoryFromChart from './filterCategoryReducers';
 
 
 const reducers = combineReducers({
     test,
     typeChart,
-    filterCategory,
+    categoryFromChart,
 });
-
 
 export default reducers;
