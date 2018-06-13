@@ -1,27 +1,27 @@
 const spent = (state = '', action) => {
     switch (action.type) {
         case 'Health':
-            return 'Health';
+            return 'Здоровье';
         case 'Food':
-            return 'Food';
+            return 'Еда';
         case 'Hygiena':
-            return 'Hygiena';
+            return 'Гигиена';
         case 'Home':
-            return 'Home';
+            return 'Жилье';
         case 'Clothes':
-            return 'Clothes';
+            return 'Одежда';
         case 'Sport':
-            return 'Sport';
+            return 'Спорт';
         case 'Resort':
-            return 'Resort';
+            return 'Отдых';
         case 'Mobile':
-            return 'Mobile';
+            return 'Связь';
         case 'Transport':
-            return 'Transport';
+            return 'Транспорт';
         case 'Animals':
-            return 'Animals';
+            return 'Питомцы';
         case 'Gifts':
-            return 'Gifts';
+            return 'Подарки';
         default:
             return ''
     }
