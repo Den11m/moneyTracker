@@ -2,8 +2,7 @@ import React from 'react';
 //import {connect} from 'react-redux';
 import './Main.css';
 import CostList from '../../components/CostList/CostList';
-
-
+import Budget from '../Budget/Budget';
 
 
 
@@ -33,7 +32,7 @@ const Main = (props) => {
                 </div>
 
                 <CostList/>
-
+                <Budget/>
             </div>
 
         </div>

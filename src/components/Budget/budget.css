@@ -1,0 +1,34 @@
+.budget-title {
+    font-size: 21px;
+    color: #303f9f;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.budget-form{
+    width: 330px;
+    margin-bottom:35px;
+}
+
+.input-budget {
+    font-size:1rem;
+    border-bottom: 2px solid #cdcdcd;
+    color: #000;
+    display: block;
+    margin-bottom: 35px;
+    width: 100%;
+
+}
+
+.input-budget::placeholder{
+    color: #bbbbbb;
+}
+
+.budget-select {
+    font-size:1rem;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #cdcdcd;
+    color: #bbbbbb;
+    margin-bottom: 35px;
+}
