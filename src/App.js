@@ -9,10 +9,7 @@ import AddNewCosts from './components/addNewCosts/addNewCosts';
 //import CostList from './components/CostList/CostList';
 import Main from './components/Main/Main';
 import visibleRegistration from './reducers/visibleRegistationReducer';
-
-
-
-
+import Budget from './components/Budget/Budget';
 
 class App extends Component {
     render() {
@@ -22,16 +19,11 @@ class App extends Component {
                 <RegistrationForm />
                 <EnterForm />
                 < AddNewCosts />
-                {/* <Modale/> */}
                 <Main />
+                <Budget/>
             </Fragment>
         );
     }
 }
 
-const MSTP = (state) => ({
-    visibleRegistration: state.visibleRegistration
-})
-
-export default connect(MSTP)(App);
-
+export default App;

@@ -1,7 +1,5 @@
-import React, {Component, Fragment} from 'react';
-// import AddNewCosts from '../addNewCosts/addNewCosts';
+import React, {Fragment} from 'react';
 import './Modale.css';
-
 
 const Modale = (props) => {
 
@@ -28,11 +26,10 @@ const Modale = (props) => {
                         </button> */}
                     </div>
                 </div>)}
-                
-            </Fragment>
 
+            </Fragment>
         );
     // }
-}
+};
 
 export default Modale;
