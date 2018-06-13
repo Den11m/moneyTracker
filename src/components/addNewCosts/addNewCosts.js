@@ -5,7 +5,7 @@ import addCosts from '../../actions/addNewCostsAction';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import Modale  from '../Modale/Modale';
-import CostList from '../CostList/CostList';
+//import CostList from '../CostList/CostList';
 import './style.css';
 
 const AddNewCosts = (props) => {
@@ -104,12 +104,17 @@ let sumInput = '',
             </div>
             <input type='text' placeholder='комментарий'  className='category--comment' ref={(inputTag) => commentInput = inputTag} />
             <button className='category--save' onClick={() =>{
+                sumInput.value > 0 &&  Array.from(test.children).some(el => el.children[0].checked === true)   ?
+
+
+
+
             props.addCosts({ cost: +sumInput.value,
             date: moment(date).valueOf(),
             category: Array.from(test.children).find(el => el.children[0].checked === true).children[0].value,
             comments: commentInput.value,})
             // console.log('click',Array.from(test.children).find(el => el.children[0].checked === true).children[0].value)
-            }}>coxpанить</button>
+            : alert("Fill your category and price input please! ")}}>coxpанить</button>
         </div> 
     </Modale>
     )
