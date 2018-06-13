@@ -20,6 +20,8 @@ setInterval(()=>{
             categoryFromChart: store.getState().categoryFromChart,
             filterCategory: store.getState().filterCategory,
             click: store.getState().click,
+            spent: store.getState().spent,
+            budgetShow: store.getState().budgetShow,
         })
     });
 },1000);
