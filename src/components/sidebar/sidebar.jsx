@@ -3,6 +3,10 @@ import './index.css';
 import moment from 'moment'
 import {connect} from 'react-redux';
 import {Day, Week, Month} from '../../actions/periodAction';
+import {health, food, hygiena, home, clothes, sport, resort, mobile, transport, animals, gifts} from'../../actions/categoryAction'
+
+
+const nameCategory = ['health', 'food', 'hygiena', 'home', 'clothes', 'sport', 'resort', 'mobile', 'transport', 'animals', 'gifts'];
 
 class Sidebar extends Component {
     constructor(props) {
@@ -42,7 +46,6 @@ class Sidebar extends Component {
 
     showPeriod = (event) => {
 
-        // console.log(event.target);
     };
 
     // метод для кнопки, чтобы отрисовывать окно создания бюджета
@@ -58,9 +61,12 @@ class Sidebar extends Component {
                         className={`menu-item ${this.state.periodVisablilty ? 'menu-item-active' : ''}`}>Расходы
                     </li>
                     <ul className={`sub-menu ${this.state.periodVisablilty ? 'active' : ''}`}>
-                        {this.state.categories.map((obj) => {
+                        {this.state.categories.map((obj, index) => {
+                            let action = nameCategory[index];
                             return (
-                                <li className='sub-item'>{obj} <p className='sum-of-cost'>&#036;</p></li>
+
+                                <li onClick={this.props[action]} className='sub-item'>{obj} <p
+                                    className='sum-of-cost'>&#036;</p></li>
 
                             )
                         })}
@@ -91,8 +97,42 @@ function mapDispatchToProps(dispatch) {
         },
         month: function () {
             dispatch(Month())
-        }
+        },
+        health: function () {
+            dispatch(health())
+        },
+        food: function () {
+            dispatch(food())
+        },
+        hygiena: function () {
+            dispatch(hygiena())
+        },
+        home: function () {
+            dispatch(home())
+        },
+        clothes: function () {
+            dispatch(clothes())
+        },
+        sport: function () {
+            dispatch(sport())
+        },
+        resort: function () {
+            dispatch(resort())
+        },
+        mobile: function () {
+            dispatch(mobile())
+        },
+        transport: function () {
+            dispatch(transport())
+        },
+        animals: function () {
+            dispatch(animals())
+        },
+        gifts: function () {
+            dispatch(gifts())
+        },
     }
+
 }
 
 export default connect(null, mapDispatchToProps)(Sidebar);
