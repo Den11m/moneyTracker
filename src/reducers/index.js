@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import budget from './testReducers';
+import budget from './budgetReducers';
 
 
 const reducers = combineReducers({

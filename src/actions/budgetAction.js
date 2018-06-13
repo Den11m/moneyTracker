@@ -1,14 +1,7 @@
-export function addBudget(sum) {
+export function addBudget(budgetInfo) {
     return {
         type: 'ADD_BUDGET',
-        data: sum,
+        data: budgetInfo,
     }
 }
-
-// export function addData(data) {
-//     return {
-//         type: 'ADD_DATA',
-//         data,
-//     }
-// }
 

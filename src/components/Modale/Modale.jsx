@@ -2,10 +2,15 @@ import React, {Component, Fragment} from 'react';
 import './Modale.css';
 
 class Modale extends Component {
-
-    state = {
+constructor(props) {
+    super(props);
+    this.state = {
         visibleModale: true
-    };
+    }
+}
+// }    state = {
+//         visibleModale: true
+//     };
 
     toggleVisibleModale = () => {
         this.setState((prevState) => ({
@@ -25,7 +30,10 @@ class Modale extends Component {
                              onClick={this.toggleVisibleModale}/>
                         {this.props.children}
                         <button className='modale__btn-save'
-                                onClick={this.toggleVisibleModale}
+                                onClick={(e)=>{
+                                    this.toggleVisibleModale();
+                                    this.props.save(e)
+                                }}
                         >СОХРАНИТЬ
                         </button>
                     </div>
