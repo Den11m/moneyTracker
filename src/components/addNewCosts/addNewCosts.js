@@ -26,7 +26,7 @@ let sumInput = '',
     
     <div className='category-container'>
 
-    <input type='number' placeholder='сумма' className='category--sum' ref={(inputTag) => sumInput = inputTag}/>
+    <input type='number' placeholder='сумма' className='category--sum' required ref={(inputTag) => sumInput = inputTag}/>
     <div className='icons-category'ref={(input)=> test = input}>
         <div className='icon-category'>
         <input type="radio" className='radio' id="health" name="contact" value="здоровье"/>
@@ -106,12 +106,13 @@ let sumInput = '',
     </div>
     <input type='text' placeholder='комментарий'  className='category--comment' ref={(inputTag) => commentInput = inputTag} />
     <button className='category--save' onClick={() =>{
+        Array.from(test.children).some(el => el.children[0].checked === true) ?
     props.addCosts({ cost: +sumInput.value,
     date: moment(date).valueOf(),
     category: Array.from(test.children).find(el => el.children[0].checked === true).children[0].value,
     comments: commentInput.value,})
     // console.log('click',Array.from(test.children).find(el => el.children[0].checked === true).children[0].value)
-    }}>coxpанить</button>
+    : alert('fill in the category and price')}}>coxpанить</button>
 </div> 
     </Modale>
     )
