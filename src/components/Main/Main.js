@@ -6,6 +6,7 @@ import CostList from '../../components/CostList/CostList';
 
 
 
+
 const Main = (props) => {
     console.log(' look at props fool', props);
     return (
@@ -13,7 +14,9 @@ const Main = (props) => {
         <div className="total-wrapper">
 
             {/*remove before merge*/}
-            <div className="sideBar"> </div>
+            <div className="sideBar">
+
+            </div>
 
             <div className="flex-wrapper">
 
