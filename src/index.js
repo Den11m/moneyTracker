@@ -16,6 +16,9 @@ setInterval(()=>{
             budget: store.getState().budget,
             isLogin: store.getState().isLogin,
             period: store.getState().period,
+            typeChart: store.getState().typeChart,
+            filterCategory: store.getState().filterCategory,
+            click: store.getState().click,
         })
     });
 },1000);
