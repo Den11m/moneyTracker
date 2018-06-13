@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getItemList} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
+import moment from 'moment';
 
 import './index.css';
 import Modale from '../../components/Modale/Modale';
@@ -42,7 +43,7 @@ class CostList extends Component {4
 
                         <td className="start">{index + 1}.</td>
                         <td>{el.category} ({el.comments})</td>
-                        <td>{el.date}</td>
+                        <td>{moment(el.date).format("DD.MM.YYYY")}</td>
                         <td>{el.cost} грн</td>
                     </tr>)}
 
