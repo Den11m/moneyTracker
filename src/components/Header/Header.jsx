@@ -3,6 +3,8 @@ import './Header.css';
 import { loginHeader, logOut } from '../../actions/headerActions';
 import { connect } from 'react-redux';
 import BudgetRender from '../BudgetRender/BudgetRender';
+import toggleShowLogin from '../../actions/toggleLoginAction';
+import toggleShowRegistration from '../../actions/toggleRegistrationAction';
 
 
 const Header = (props) => {
@@ -12,8 +14,8 @@ const Header = (props) => {
             <nav className="header-nav">
                 {props.isLogin
                     ? <a href="#" className="header-button" onClick={props.logout}>Log Out</a>
-                    : <div><a href="#" className="header-button">Sign Up</a>
-                        <a href="#" className="header-button" onClick={props.login}>Login</a></div>
+                    : <div><a href="#" className="header-button" onClick={props.toggleShowRegistration}>Sign Up</a>
+                        <a href="#" className="header-button" onClick={props.toggleShowLogin}>Login</a></div>
 
                 }
 
@@ -28,6 +30,7 @@ const Header = (props) => {
 const MSTP = (state) => {
     return {
         isLogin: state.isLogin
+
     }
 }
 
@@ -39,6 +42,14 @@ const MDTP = (dispatch) => {
 
         logout: function () {
             dispatch(logOut())
+        },
+
+        toggleShowLogin: function(){
+            dispatch(toggleShowLogin())
+        },
+
+        toggleShowRegistration: function(){
+            dispatch(toggleShowRegistration())
         }
 
     }

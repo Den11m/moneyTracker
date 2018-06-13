@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import EnterFormErrors from './EnterFormErrors';
 import './EnterForm.css';
+import Modale from '../Modale/Modale';
+import toggleShowLogin from '../../actions/toggleLoginAction';
 
 class EnterForm extends Component {
     constructor(props) {
@@ -38,6 +41,7 @@ class EnterForm extends Component {
 
     render() {
         return (
+            <Modale click={this.props.visibleLogin} toggleShowWindow={this.props.toggleShowLogin}>
             <form action="" className='enter-form' onSubmit={this.validateField}>
                 <h3 className='enter-form__text'>Вход</h3>
                 <EnterFormErrors formErrors={this.state.formErrors}/>
@@ -69,8 +73,23 @@ class EnterForm extends Component {
                        defaultValue="ВОЙТИ"
                 />
             </form>
+            </Modale>
         );
     }
 }
 
-export default EnterForm;
+const MSTP = (state)=> ({
+    visibleLogin: state.visibleLogin,
+})
+
+const MDTP = (dispatch) => {
+    return {
+        toggleShowLogin: function(){
+            dispatch(toggleShowLogin())
+        }
+    }
+}
+
+
+
+export default connect(MSTP, MDTP) (EnterForm);

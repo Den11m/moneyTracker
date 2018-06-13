@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import RegistrationFormErrors from './RegistrationFormErrors';
+import { connect } from 'react-redux';
 import './RegistrationForm.css';
+import Modale from '../Modale/Modale';
+import toggleShowRegistration from '../../actions/toggleRegistrationAction';
 
 class RegistrationForm extends Component {
     constructor(props) {
@@ -9,7 +12,7 @@ class RegistrationForm extends Component {
             login: '',
             email: '',
             password: '',
-            formErrors: {Email: '', Password: '', ExistUser: ''},
+            formErrors: { Email: '', Password: '', ExistUser: '' },
             loginValid: false,
             emailValid: false,
             passwordValid: false,
@@ -18,7 +21,7 @@ class RegistrationForm extends Component {
     hahdleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        this.setState({[name]: value},
+        this.setState({ [name]: value },
             () => {
                 this.validateField(name, value)
             });
@@ -79,58 +82,72 @@ class RegistrationForm extends Component {
 
     render() {
         return (
-            <form action="" className='registration' onSubmit={this.localStorageSetData}>
-                <h3 className='registration__text'>Регистрация</h3>
+            <Modale click={this.props.visibleRegistration} toggleShowWindow={this.props.toggleShowRegistration}>
+                <form action="" className='registration' onSubmit={this.localStorageSetData}>
+                    <h3 className='registration__text'>Регистрация</h3>
 
-                <RegistrationFormErrors formErrors={this.state.formErrors}/>
+                    <RegistrationFormErrors formErrors={this.state.formErrors} />
 
-                <div className='registration__valid'>
-                    <label className='registration__name'
-                           htmlFor="name">
-                        Login
+                    <div className='registration__valid'>
+                        <label className='registration__name'
+                            htmlFor="name">
+                            Login
                     </label>
-                    <input type="text" required
-                           className='registration__control'
-                           name='login'
-                           placeholder="login"
-                           value={this.state.name}
-                           onChange={this.hahdleUserInput}
-                    />
+                        <input type="text" required
+                            className='registration__control'
+                            name='login'
+                            placeholder="login"
+                            value={this.state.name}
+                            onChange={this.hahdleUserInput}
+                        />
 
-                </div>
-                <div className='registration__valid'>
-                    <label className='registration__name'
-                           htmlFor="email">
-                        Email
+                    </div>
+                    <div className='registration__valid'>
+                        <label className='registration__name'
+                            htmlFor="email">
+                            Email
                     </label>
-                    <input type="email" required
-                           className='registration__control'
-                           name='email'
-                           placeholder="mail@mail"
-                           value={this.state.email}
-                           onChange={this.hahdleUserInput}
-                    />
-                </div>
-                <div className='registration__valid'>
-                    <label className='registration__name'
-                           htmlFor="password">
-                        Password
+                        <input type="email" required
+                            className='registration__control'
+                            name='email'
+                            placeholder="mail@mail"
+                            value={this.state.email}
+                            onChange={this.hahdleUserInput}
+                        />
+                    </div>
+                    <div className='registration__valid'>
+                        <label className='registration__name'
+                            htmlFor="password">
+                            Password
                     </label>
-                    <input type="password" required
-                           className='registration__control'
-                           name='password'
-                           placeholder="....."
-                           value={this.state.password}
-                           onChange={this.hahdleUserInput}
+                        <input type="password" required
+                            className='registration__control'
+                            name='password'
+                            placeholder="....."
+                            value={this.state.password}
+                            onChange={this.hahdleUserInput}
+                        />
+                    </div>
+                    <input type='submit'
+                        className='registration__btn'
+                        defaultValue="СОХРАНИТЬ"
                     />
-                </div>
-                <input type='submit'
-                       className='registration__btn'
-                       defaultValue="СОХРАНИТЬ"
-                />
-            </form>
+                </form>
+            </Modale>
         );
     }
 }
 
-export default RegistrationForm;
+const MSTP = (state) => ({
+    visibleRegistration: state.visibleRegistration,
+})
+
+const MDTP = (dispatch) => {
+    return {
+        toggleShowRegistration: function () {
+            dispatch(toggleShowRegistration())
+        }
+    }
+}
+
+export default connect(MSTP, MDTP)(RegistrationForm);
