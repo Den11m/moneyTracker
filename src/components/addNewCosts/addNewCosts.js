@@ -7,8 +7,9 @@ import moment from 'moment';
 import Modale  from '../Modale/Modale';
 import {click} from '../../selectors/CostListSelector';
 import toggleShowWindow from '../../actions/clickAction';
-// import CostList from '../CostList/CostList';
+//import CostList from '../CostList/CostList';
 import './style.css';
+import {v4} from 'uuid';
 
 const AddNewCosts = (props) => {
   
@@ -17,7 +18,7 @@ let sumInput = '',
     let date = new Date();
     console.log(date);
     let test= null;
-
+    let category =[];
     console.log(props)
     // debugger;
     return (

@@ -13,9 +13,6 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <h1>Test</h1>
-                < AddNewCosts />
-                {/* <Modale/> */}
                 <Main/>
             </Fragment>
         );

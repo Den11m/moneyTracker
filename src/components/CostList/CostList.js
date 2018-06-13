@@ -4,32 +4,13 @@ import {getItemList} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
 import {click} from  '../../selectors/CostListSelector';
 import toggleShowWindow from '../../actions/clickAction';
-
-import './index.css';
+import moment from 'moment';
 import Modale from '../../components/Modale/Modale';
 import AddNewCosts from '../addNewCosts/addNewCosts';
-
+import './index.css';
 
 const CostList = (props) => {
-    // constructor (props) {
-    //     super(props);
-    //     this.state = {
-    //         visibleModale: true,
-    //     };
-    // }
 
-
-    // console.log('must look at props', props);
-    // let falseVisible = false
-
-//   toggleVisibleModale = () => {
-//     //   console.log('test')
-//         this.setState((prevState) => ({
-//             visibleModale: !prevState.visibleModale
-//         }))
-//     };
-
-        // debugger
     return (
         <div className="cost-wrapper">
         <AddNewCosts/>
@@ -37,14 +18,13 @@ const CostList = (props) => {
                 <div className="cost-form">
                     <button className="cost-add" onClick={props.toggleShowWindow}> </button>
                 </div>
-
                 <table className="Table">
                     <tbody>
                     {props.itemList.map((el, index) => <tr className="line" key={el.id}>
 
                         <td className="start">{index + 1}.</td>
                         <td>{el.category} ({el.comments})</td>
-                        <td>{el.date}</td>
+                        <td>{moment(el.date).format("DD.MM.YYYY")}</td>
                         <td>{el.cost} грн</td>
                     </tr>)}
 
@@ -84,7 +64,7 @@ function MDTP(dispatch) {
 }
 
 export default connect(MSTP,MDTP)(CostList);
-// export default CostList;
+
 
 
 

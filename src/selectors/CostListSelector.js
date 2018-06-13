@@ -1,3 +1,5 @@
-export const getItemList = state => state.listItems.spends;
+export const getItemList = state => state.costs;
 export const click = state => state.click;
+
+
 

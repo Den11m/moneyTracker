@@ -6,10 +6,8 @@ import click from './clickReducer';
 
 const reducers = combineReducers({
     test,
-    listItems,
     costs,
     click
-});
-
+})
 
 export default reducers;
