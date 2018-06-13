@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import health from './icons/health.svg';
 import DatePicker from 'react-date-picker';
 import addCosts from '../../actions/addNewCostsAction';
@@ -11,24 +11,27 @@ import toggleShowWindow from '../../actions/clickAction';
 import './style.css';
 import {v4} from 'uuid';
 
-const AddNewCosts = (props) => {
-  
-let sumInput = '',
+class AddNewCosts extends Component{
+    test =  null;
+    sumInput = '';
     commentInput = '';
-    let date = new Date();
-    console.log(date);
-    let test= null;
-    let category =[];
-    console.log(props)
-    // debugger;
-    return (
-       
-    <Modale toggleShowWindow={props.toggleShowWindow} click={props.click}>
+    test = null;
+
+    state = {
+        date: new Date(),
+        category: [],
+    }
+
+    handleChange = date => this.setState({ date })
     
+    render() {
+    return (
+        <Modale toggleShowWindow={this.props.toggleShowWindow} click={this.props.click}>
+
     <div className='category-container'>
 
-    <input type='number' placeholder='сумма' className='category--sum' required ref={(inputTag) => sumInput = inputTag}/>
-    <div className='icons-category'ref={(input)=> test = input}>
+    <input type='number' placeholder='сумма' className='category--sum' required ref={(inputTag) => this.sumInput = inputTag}/>
+    <div className='icons-category'ref={(input)=> this.test = input}>
         <div className='icon-category'>
         <input type="radio" className='radio' id="health" name="contact" value="здоровье"/>
         <label htmlFor='health'  className='health' data-category='здоровье'>
@@ -103,27 +106,29 @@ let sumInput = '',
         </div>
     </div>
     <div className='category__date'>
-        <DatePicker value={date} className='category__calendar' onChange={()=> date = date} locale={'ru'}/>
+        <DatePicker value={this.state.date} className='category__calendar' onChange={this.handleChange} locale={'ru'}/>
     </div>
-    <input type='text' placeholder='комментарий'  className='category--comment' ref={(inputTag) => commentInput = inputTag} />
+    <input type='text' placeholder='комментарий'  className='category--comment' ref={(inputTag) => this.commentInput = inputTag} />
     <button className='category--save' onClick={() =>{
-        Array.from(test.children).some(el => el.children[0].checked === true) ?
-    props.addCosts({ cost: +sumInput.value,
-    date: moment(date).valueOf(),
-    category: Array.from(test.children).find(el => el.children[0].checked === true).children[0].value,
-    comments: commentInput.value,})
+        Array.from(this.test.children).some(el => el.children[0].checked === true) ?
+    this.props.addCosts({ cost: +this.sumInput.value,
+    date: moment(this.state.date).valueOf(),
+    category: Array.from(this.test.children).find(el => el.children[0].checked === true).children[0].value,
+    comments: this.commentInput.value,})
     // console.log('click',Array.from(test.children).find(el => el.children[0].checked === true).children[0].value)
     : alert('fill in the category and price')}}>coxpанить</button>
 </div> 
     </Modale>
     )
-
+    }
 }
+
 function MSTP(state){
     return {
         click: click(state)
     }
 }
+
 function MDTP(dispatch){
     return {
         addCosts: function(data){
@@ -134,4 +139,5 @@ function MDTP(dispatch){
         }
     }
 }
+
 export default connect(MSTP, MDTP)(AddNewCosts)

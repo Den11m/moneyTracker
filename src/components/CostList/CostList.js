@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCosts, click, period} from '../../selectors/CostListSelector';
+import {getCosts, click, period,spent} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
 import toggleShowWindow from '../../actions/clickAction';
 import moment from 'moment';
@@ -27,8 +27,7 @@ const CostList = (props) => {
                 </div>
                 <table className="Table">
                     <tbody>
-                    {getPeriod(props.costs, {start: moment('2018, 6, 12').valueOf(), end: moment('2018, 6, 14').valueOf()
-                    },'еда').map((el, index) => <tr className="line" key={el.id}>
+                    {getPeriod(props.costs, props.period,props.category).map((el, index) => <tr className="line" key={el.id}>
                         <td className="start">{index + 1}.</td>
                         <td>{el.category} ({el.comments})</td>
                         <td>{moment(el.date).format("DD.MM.YYYY")}</td>
@@ -41,8 +40,7 @@ const CostList = (props) => {
                 <div className="result">
                     <p className="spends-result"> Всего
                         <span
-                            className="spends-span">{getPeriod(props.costs, {start: moment('2018, 6, 12').valueOf(), end: moment('2018, 6, 14').valueOf()
-                        },'еда').reduce((prev, curr) => prev + curr.cost, 0)}</span>
+                            className="spends-span">{getPeriod(props.costs, props.period,props.category).reduce((prev, curr) => prev + curr.cost, 0)}</span>
                         грн
                     </p>
                 </div>
@@ -58,6 +56,7 @@ function MSTP(state) {
         costs: getCosts(state),
         click: click(state),
         period: period(state),
+        category: spent(state)
     }
 }
 

@@ -11,7 +11,6 @@ const Main = (props) => {
 
         <div className="total-wrapper">
 
-            {/*remove before merge*/}
             <div className="sideBar">
             <SideBar/>
             </div>
