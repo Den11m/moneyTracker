@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+.total-wrapper {
+    display: flex;
+    background-color: #f1f2f2;
+}
+
+.sideBar {
+    flex-basis: 20%;
+    background-color: olivedrab;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    /*padding: 3px;*/
+}
+
+.headerRemove {
+    background-color: #3f51b5;
+    /*flex-basis: 10%;*/
+}
+
+/*for header, remove before merge*/
+.headerButton-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.header-sum {
+    /*flex-basis: 40%;*/
+    font-family: 'Roboto', sans-serif;
+    color: #c5cae9;
+    font-size: 10px;
+    font-weight: 400;
+    text-align: right;
+    padding: 3% 0;
+}
+
+.header-bag {
+    /*flex-basis: 4%;*/
+    outline: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    background-image: url("/bag-icon.svg");
+    background-position: center;
+    background-size: contain;
+}
+
+@media (min-width: 1024px) {
+    .header-sum {
+        /*flex-basis: 16%;*/
+        font-family: 'Roboto', sans-serif;
+        color: #c5cae9;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: right;
+        padding: 3% 0;
+    }
+}
+

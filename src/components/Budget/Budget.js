@@ -4,6 +4,9 @@ import Modale from '../Modale/Modale';
 import { addBudget } from '../../actions/budgetAction';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import toggleShowWindow from '../../actions/clickAction';
+import {click} from '../../selectors/CostListSelector';
+import toggleShowBudget from '../../actions/budgetShowAction';
 import './budget.css';
 
 const Budget = (props) => {
@@ -27,12 +30,13 @@ const Budget = (props) => {
                     start: moment().startOf('month').valueOf(),
                     end: moment().endOf('month').valueOf(),
                 }
-
         }
     }
 
         return (
-            <Modale>
+            <Modale
+                // toggleShowWindow={props.toggleShowWindow} click={props.click}>
+                toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget} >
                 <h2 className='budget-title'>Создать бюджет</h2>
 
                 <form className='budget-form' action='#' onSubmit={(e)=> props.getSum(e, {plan: +budgetInput.value, fact:0, date:checkPeriod(dateInput.value)})}>
@@ -45,7 +49,9 @@ const Budget = (props) => {
                         <option value="day">День</option>
                     </select>
                     <button className='modale__btn-save'
-                            onClick={(e)=> props.getSum(e, {plan: +budgetInput.value, fact:0, date:checkPeriod(dateInput.value)})}
+                            onClick={(e)=>{
+                                props.getSum(e, {plan: +budgetInput.value, fact:0, date:checkPeriod(dateInput.value)});
+                                props.toggleShowBudget()}}
                     >СОХРАНИТЬ
                     </button>
                 </form>
@@ -59,7 +65,25 @@ function MDTP(dispatch) {
             e.preventDefault();
             dispatch(addBudget(budgetInfo))
         },
+
+        toggleShowBudget: function () {
+            dispatch(toggleShowBudget())
+        },
+
+        // toggleShowWindow: function () {
+        //     dispatch(toggleShowWindow())
+        // }
     }
 }
 
-export default connect(null, MDTP)(Budget);
+function MSTP(state){
+    return {
+        // click: click(state),
+        onClickBudget: state.budgetShow,
+    }
+
+}
+
+
+
+export default connect(MSTP, MDTP)(Budget);
