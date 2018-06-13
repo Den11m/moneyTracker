@@ -14,8 +14,8 @@ class App extends Component {
         return (
             <Fragment>
                 <h1>Test</h1>
-                < AddNewCosts />
-                {/* <Modale/> */}
+                {/*< AddNewCosts />*/}
+                 {/*<Modale/>*/}
                 <Main/>
             </Fragment>
         );

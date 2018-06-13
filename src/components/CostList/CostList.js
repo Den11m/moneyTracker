@@ -8,13 +8,14 @@ import Modale from '../../components/Modale/Modale';
 import AddNewCosts from '../addNewCosts/addNewCosts';
 
 
-class CostList extends Component {
+class CostList extends Component {4
+
     constructor (props) {
-        super(props)
+        super(props);
         this.state = {
             visibleModale: false
+
         };
-        console.log(this.state.visibleModale)
     }
 
     // console.log('must look at props', props);
