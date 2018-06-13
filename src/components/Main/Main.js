@@ -4,8 +4,6 @@ import './Main.css';
 import CostList from '../../components/CostList/CostList';
 import Budget from '../Budget/Budget';
 
-
-
 const Main = (props) => {
     console.log(' look at props fool', props);
     return (
