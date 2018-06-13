@@ -29,13 +29,13 @@ constructor(props) {
                              className='modale__btn-close'
                              onClick={this.toggleVisibleModale}/>
                         {this.props.children}
-                        <button className='modale__btn-save'
-                                onClick={(e)=>{
-                                    this.toggleVisibleModale();
-                                    this.props.save(e)
-                                }}
-                        >СОХРАНИТЬ
-                        </button>
+                        {/*<button className='modale__btn-save'*/}
+                                {/*onClick={(e)=>{*/}
+                                    {/*this.toggleVisibleModale();*/}
+                                    {/*this.props.save(e)*/}
+                                {/*}}*/}
+                        {/*>СОХРАНИТЬ*/}
+                        {/*</button>*/}
                     </div>
                 </div>)}
             </Fragment>
