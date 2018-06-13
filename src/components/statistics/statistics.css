@@ -16,7 +16,7 @@
 
 .statistic__title {
     text-align: center;
-    font-size: .625rem;
+    font-size: 1rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: #303f9f;
@@ -42,4 +42,10 @@
     .statistic__select {
         font-size: 1rem;
     }
+}
+
+.chart-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
 }

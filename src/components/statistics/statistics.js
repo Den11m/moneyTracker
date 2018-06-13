@@ -4,9 +4,8 @@ import {connect} from 'react-redux'
 import moment from 'moment';
 import {changeType} from '../../actions/typeChartActions';
 import {changeCategory} from '../../actions/filterCategoryActions';
-import chartData from './chartData';
+import {chartData, options} from './chartData';
 import './statistics.css';
-
 // import PropTypes from 'prop-types';
 
 class Statistics extends Component {
@@ -88,20 +87,6 @@ class Statistics extends Component {
         }
     }
 
-    options =() => ({
-        // legend: {
-        //     position: 'right',
-        // },
-        scales: {
-            yAxes: [{
-                display: true,
-                ticks: {
-                    beginAtZero: true   // minimum value will be 0.
-                }
-            }]
-        }
-    });
-
     handleInputChange = e => {
         const name = e.target.name;
         const value = e.target.value;
@@ -111,7 +96,7 @@ class Statistics extends Component {
 
     uniqCategory = () => {
         const uniqCategory = [];
-        for (let obj of this.state.costs){
+        for (let obj of this.state.costs.filter(obj => obj.date >= this.state.period.start && obj.date <= this.state.period.end)){
             !uniqCategory.includes(obj.category) && uniqCategory.push(obj.category)
         }
         return uniqCategory
@@ -137,22 +122,28 @@ class Statistics extends Component {
                         name='categoryFromChart'
                         value={this.props.categoryFromChart}
                         onChange={this.handleInputChange}>
-                        <option value="все">все</option>
+                        <option value="все">все категории</option>
                         {this.uniqCategory().map(el=> <option key={el}
                                                    value={el}>{el}</option>)}
                     </select>}
 
                     {this.props.typeChart === 'Doughnut' &&
+                        <div className='chart-container'>
                     <Doughnut data={chartData(this.state.costs, this.state.period, this.props.typeChart)}
-                              options={{legend: {position: 'right'}}}/>}
+                              options={options(this.props.typeChart)}/>
+                        </div>}
 
                     {this.props.typeChart === 'Bar' &&
+                    <div className='chart-container'>
                     <Bar data={chartData(this.state.costs, this.state.period, this.props.typeChart, this.props.categoryFromChart)}
-                         options={this.options()}/>}
+                         options={options(this.props.typeChart)}/>
+                    </div>}
 
                     {this.props.typeChart === 'Line' &&
+                    <div className='chart-container'>
                     <Line data={chartData(this.state.costs, this.state.period, this.props.typeChart, this.props.categoryFromChart)}
-                          options={this.options()}/>}
+                          options={options(this.props.typeChart)}/>
+                    </div>}
                 </div>
             </div>
         );

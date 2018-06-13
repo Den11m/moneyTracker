@@ -1,4 +1,4 @@
-const chartData = (costs, period, typeChart, categoryFromChart) => {
+export const chartData = (costs, period, typeChart, categoryFromChart) => {
     const category = ['Здоровье', 'Еда', 'Гигиена', 'Жилье', 'Одежда', 'Спорт', 'Отдых', 'Связь', 'Транспорт', 'Питомцы', 'Подарки', 'Другое'];
     const newArrCosts = [];
     const newArrDate = [];
@@ -74,11 +74,11 @@ const chartData = (costs, period, typeChart, categoryFromChart) => {
             datasets: [
                 {
                     label: `Расходы за выбранный период по ${categoryFromChart === 'все' ? 'всем категориям' : `категории ${categoryFromChart}`} `,
-                    backgroundColor: '#2d3d8e',
-                    // borderColor: 'rgba(255,99,132,1)',
+                    backgroundColor: '#5C6BC0',
+                    // borderColor: '#5C6BC0',
                     borderWidth: 1,
-                    hoverBackgroundColor: '#1e2c5c',
-                    // hoverBorderColor: 'rgba(255,99,132,1)',
+                    hoverBackgroundColor: '#3949AB',
+                    // hoverBorderColor: '#3949AB',
                     data: sortArrDate.map(obj => obj.cost)
                 }
             ]
@@ -91,8 +91,8 @@ const chartData = (costs, period, typeChart, categoryFromChart) => {
                     label: `Расходы за выбранный период по ${categoryFromChart === 'все' ? 'всем категориям' : `категории ${categoryFromChart}`} `,
                     fill: false,
                     lineTension: 0.1,
-                    backgroundColor: '#2d3d8e',
-                    borderColor: '#2d3d8e',
+                    backgroundColor: '#5C6BC0',
+                    borderColor: '#5C6BC0',
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
@@ -101,9 +101,9 @@ const chartData = (costs, period, typeChart, categoryFromChart) => {
                     pointBackgroundColor: 'orangered',
                     pointBorderWidth: 1,
                     pointHoverRadius: 3,
-                    // pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                    // pointHoverBorderColor: 'rgba(220,220,220,1)',
-                    pointHoverBorderWidth: 2,
+                    pointHoverBackgroundColor: '#5C6BC0',
+                    pointHoverBorderColor: '#3949AB',
+                    pointHoverBorderWidth: 1,
                     pointRadius: 1,
                     pointHitRadius: 10,
                     data: sortArrDate.map(obj => obj.cost)
@@ -113,4 +113,39 @@ const chartData = (costs, period, typeChart, categoryFromChart) => {
     }
 };
 
-export default chartData;
+// export default chartData;
+
+export const options = (typeChart) => {
+
+    if (typeChart === 'Doughnut') {
+        return {
+            legend: {
+                position: 'right',
+                labels: {
+                    fontColor: '#cecece',
+                    boxWidth: window.innerWidth >= 768 ? 16 : 8,
+                    fontSize: window.innerWidth >= 768 ? 16 : 8,
+                }
+            }
+        }
+    }
+    if (typeChart === 'Bar' || typeChart === 'Line') {
+        return {
+            scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        beginAtZero: true   // minimum value will be 0.
+                    }
+                }]
+            },
+            legend: {
+                labels: {
+                    fontColor: '#cecece',
+                    boxWidth: window.innerWidth >= 768 ? 16 : 8,
+                    fontSize: window.innerWidth >= 768 ? 16 : 8,
+                }
+            }
+        }
+    }
+};
