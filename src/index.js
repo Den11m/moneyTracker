@@ -17,6 +17,7 @@ setInterval(()=>{
             isLogin: store.getState().isLogin,
             period: store.getState().period,
             typeChart: store.getState().typeChart,
+            categoryFromChart: store.getState().categoryFromChart,
             filterCategory: store.getState().filterCategory,
             click: store.getState().click,
         })
