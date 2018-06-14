@@ -1,4 +1,3 @@
-import moment from "moment/moment";
 
 export const getCosts = state => state.costs;
 export const click = state => state.click;

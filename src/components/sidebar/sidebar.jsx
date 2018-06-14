@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import './index.css';
-import moment from 'moment'
 import {connect} from 'react-redux';
 import {Day, Week, Month} from '../../actions/periodAction';
-import {health, food, hygiena, home, clothes, sport, resort, mobile, transport, animals, gifts, all} from'../../actions/categoryAction'
+import {health, food, hygiena, home, clothes, sport, resort, mobile, transport, animals, gifts, other, all} from'../../actions/categoryAction'
+import v4 from 'uuid/v4';
 
-
-const nameCategory = ['health', 'food', 'hygiena', 'home', 'clothes', 'sport', 'resort', 'mobile', 'transport', 'animals', 'gifts', 'all'];
+const nameCategory = ['health', 'food', 'hygiena', 'home', 'clothes', 'sport', 'resort', 'mobile', 'transport', 'animals', 'gifts', 'other', 'all'];
 
 class Sidebar extends Component {
     constructor(props) {
@@ -26,6 +25,7 @@ class Sidebar extends Component {
                 '# Транспорт',
                 '# Питомцы',
                 '# Подарки',
+                '# Другое',
                 '# Все'
             ]
         };
@@ -66,7 +66,7 @@ class Sidebar extends Component {
                             let action = nameCategory[index];
                             return (
 
-                                <li onClick={this.props[action]} className='sub-item'>{obj} <p
+                                <li onClick={this.props[action]} key = {v4()} className='sub-item'>{obj} <p
                                     className='sum-of-cost'>&#036;</p></li>
 
                             )
@@ -131,6 +131,9 @@ function mapDispatchToProps(dispatch) {
         },
         gifts: function () {
             dispatch(gifts())
+        },
+        other: function () {
+            dispatch(other())
         },
         all: function () {
             dispatch(all())

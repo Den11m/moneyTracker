@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import health from './icons/health.svg';
 import DatePicker from 'react-date-picker';
 import addCosts from '../../actions/addNewCostsAction';
 import {connect} from 'react-redux';
@@ -7,7 +6,7 @@ import moment from 'moment';
 import Modale from '../Modale/Modale';
 import {click} from '../../selectors/CostListSelector';
 import toggleShowWindow from '../../actions/clickAction';
-import v4 from 'uuid';
+import v4 from 'uuid/v4';
 import './style.css';
 
 
@@ -79,11 +78,23 @@ class AddNewCosts extends Component {
         return (
             <Modale toggleShowWindow={this.props.toggleShowWindow} click={this.props.click}>
 
-                <div className='category-container'>
+                <form action='#' autoFocus onSubmit ={() => {
+                    let category = Array.from(this.categories.children);
+                    category.some(el => el.children[0].checked === true)
+                        ? this.props.addCosts(
+                        {
+                            cost: +this.sumInput.value,
+                            date: moment(this.state.date).valueOf(),
+                            category: category.find(el => el.children[0].checked === true).children[0].value,
+                            comments: this.commentInput.value,
+                        })
+                        : alert('fill in the category and price');
+                    this.props.toggleShowWindow()
+                }} className='category-container'>
                     <input type='number' placeholder='сумма' className='category--sum' required
                            ref={(inputTag) => this.sumInput = inputTag}/>
                     <div className='icons-category' ref={(input) => this.categories = input}>
-                        {category.map(el => <div className='icon-category'>
+                        {category.map(el => <div key={v4()} className='icon-category'>
                             <input type="radio" className='radio' id={el.id} name="contact" value={el.value}/>
                             <label htmlFor={el.id} className={el.id}> </label>
                             <p className='category--text'>{el.value}</p>
@@ -97,7 +108,7 @@ class AddNewCosts extends Component {
                            ref={(inputTag) => this.commentInput = inputTag}/>
                     <button className='category--save' onClick={() => {
                         let category = Array.from(this.categories.children);
-                        category.some(el => el.children[0].checked === true)
+                        category.some(el => el.children[0].checked === true) && this.state.date !== null
                             ? this.props.addCosts(
                             {
                                 cost: +this.sumInput.value,
@@ -105,11 +116,11 @@ class AddNewCosts extends Component {
                                 category: category.find(el => el.children[0].checked === true).children[0].value,
                                 comments: this.commentInput.value,
                             })
-                            : alert('fill in the category and price');
+                            : alert('fill in the category or date');
                         this.props.toggleShowWindow()
                     }}>coxpанить
                     </button>
-                </div>
+                </form>
             </Modale>
         )
     }
