@@ -115,7 +115,7 @@ class RegistrationForm extends Component {
                         <input type="email" required
                             className='registration__control'
                             name='email'
-                            placeholder="mail@mail"
+                            placeholder="mail@mail.mail"
                             value={this.state.email}
                             onChange={this.hahdleUserInput}
                         />
@@ -128,7 +128,7 @@ class RegistrationForm extends Component {
                         <input type="password" required
                             className='registration__control'
                             name='password'
-                            placeholder="....."
+                            placeholder="must be include: one of the big letter, small letter, number "
                             value={this.state.password}
                             onChange={this.hahdleUserInput}
                         />
