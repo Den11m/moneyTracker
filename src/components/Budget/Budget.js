@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Modale from '../Modale/Modale';
 import {addBudget} from '../../actions/budgetAction';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import toggleShowBudget from '../../actions/budgetShowAction';
 import './budget.css';
@@ -27,7 +26,13 @@ const Budget = (props) => {
                 return {
                     start: moment().startOf('month').valueOf(),
                     end: moment().endOf('month').valueOf(),
+                };
+            default :
+                return {
+                    start: moment().startOf('month').valueOf(),
+                    end: moment().endOf('month').valueOf(),
                 }
+
         }
     }
 

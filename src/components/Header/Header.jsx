@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './Header.css';
 import { logOut } from '../../actions/headerActions';
 import { connect } from 'react-redux';
@@ -12,9 +12,9 @@ const Header = (props) => {
         <BudgetRender/>
             <nav className="header-nav">
                 {props.isLogin
-                    ? <a href="#" className="header-button" onClick={props.logout}>Log Out</a>
-                    : <div><a href="#" className="header-button" onClick={props.toggleShowRegistration}>Sign Up</a>
-                        <a href="#" className="header-button" onClick={props.toggleShowLogin}>Login</a></div>
+                    ? <button className="header-button" onClick={props.logout}>Log Out</button>
+                    : <div><button  className="header-button" onClick={props.toggleShowRegistration}>Sign Up</button>
+                        <button  className="header-button" onClick={props.toggleShowLogin}>Login</button></div>
 
                 }
             </nav>

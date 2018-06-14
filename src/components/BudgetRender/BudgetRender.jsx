@@ -7,25 +7,25 @@ import toggleShowBudget from '../../actions/budgetShowAction';
 const BudgetRender = (props) => {
     return (
         <div onClick={props.toggleShowBudget} className="BudgetRender">
-            <img className="BudgetRender-img" src="/iconBudgetRender.png" alt="budget picture" />
-            
+            <img className="BudgetRender-img" src="/iconBudgetRender.png" alt="budget"/>
             <span
-                className="BudgetRender-span">{props.getBudgetPlan}</span>
-            <span
-                className="BudgetRender-span">{props.getBudgetFact}</span>
+                className="BudgetRender-span">{props.getBudgetFact} /
+                </span> <span
+                className="BudgetRender-span">{props.getBudgetPlan}
+                </span>
         </div>
     )
 };
 
 const MSTP = (state) => ({
     getBudgetPlan: getBudgetPlan(state),
-    getBudgetFact:getBudgetFact(state),
+    getBudgetFact: getBudgetFact(state),
 });
 
 const MDTP = (dispatch) => ({
-     toggleShowBudget: function(){
-         dispatch(toggleShowBudget())
-     }
+    toggleShowBudget: function () {
+        dispatch(toggleShowBudget())
+    }
 })
 
-export default connect(MSTP,MDTP)(BudgetRender);
+export default connect(MSTP, MDTP)(BudgetRender);

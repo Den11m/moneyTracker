@@ -4,7 +4,7 @@ import EnterFormErrors from './EnterFormErrors';
 import './EnterForm.css';
 import Modale from '../Modale/Modale';
 import toggleShowLogin from '../../actions/toggleLoginAction';
-import { loginHeader, logOut } from '../../actions/headerActions';
+import { loginHeader} from '../../actions/headerActions';
 
 class EnterForm extends Component {
     constructor(props) {

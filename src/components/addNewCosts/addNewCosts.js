@@ -78,7 +78,8 @@ class AddNewCosts extends Component {
         return (
             <Modale toggleShowWindow={this.props.toggleShowWindow} click={this.props.click}>
 
-                <form action='#' autoFocus onSubmit ={() => {
+                <form action='#' method="POST"  onSubmit ={(event) => {
+                    event.preventDefault();
                     let category = Array.from(this.categories.children);
                     category.some(el => el.children[0].checked === true)
                         ? this.props.addCosts(
@@ -108,7 +109,7 @@ class AddNewCosts extends Component {
                            ref={(inputTag) => this.commentInput = inputTag}/>
                     <button className='category--save' onClick={() => {
                         let category = Array.from(this.categories.children);
-                        category.some(el => el.children[0].checked === true) && this.state.date !== null
+                        category.some(el => el.children[0].checked === true) && this.state.date !== null && +this.sumInput.value > 0
                             ? this.props.addCosts(
                             {
                                 cost: +this.sumInput.value,

@@ -3,6 +3,7 @@ import moment from 'moment';
 const period = (state = {
     start: moment().startOf('day').valueOf(),
     end: moment().endOf('day').valueOf(),
+    period: 'День',
 }, action) => {
     switch (action.type) {
         case 'День':

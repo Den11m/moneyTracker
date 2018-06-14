@@ -1,17 +1,18 @@
-.BudgetRender{
-margin:auto;
-text-align: center;
-display: flex;
-color:white;
+.BudgetRender {
+
+    text-align: center;
+    display: flex;
+    color: #fff;
+    align-items: center;
+
 }
 
-.BudgetRender-span{
-    padding-left: 10px; 
+.BudgetRender-span {
     line-height: 20px;
     text-align: center;
 }
 
-BudgetRender-img{
-   
-    padding-bottom: 0;
+.BudgetRender-img {
+
+    margin-right: 15px;
 }

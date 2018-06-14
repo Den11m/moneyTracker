@@ -15,7 +15,7 @@
 
 .modale {
     position: absolute;
-    padding: 50px;
+    padding: 40px;
     display: inline-block;
     top: 50%;
     left: 50%;
@@ -23,7 +23,7 @@
     background-color: #ffffff;
     margin: auto;
     box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.5);
-    /*max-width: 425px;*/
+    max-width: 450px;
 }
 
 .modale__btn-close {
