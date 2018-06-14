@@ -9,6 +9,9 @@ import budget from './budgetReducers';
 import budgetShow from './budgetShowReduser';
 import period from './periodReducer';
 import spent from './reducerCategory';
+import typeChart from './typeChartReducers';
+import categoryFromChart from './filterCategoryReducers';
+
 
 const reducers = combineReducers({
     test,
@@ -21,8 +24,8 @@ const reducers = combineReducers({
     period,
     spent,
     budget,
-
+    typeChart,
+    categoryFromChart,
 });
-
 
 export default reducers;

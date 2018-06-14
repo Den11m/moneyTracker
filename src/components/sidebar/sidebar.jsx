@@ -3,7 +3,9 @@ import './index.css';
 import {connect} from 'react-redux';
 import {Day, Week, Month} from '../../actions/periodAction';
 import {health, food, hygiena, home, clothes, sport, resort, mobile, transport, animals, gifts, other, all} from'../../actions/categoryAction'
+import toggleShowBudget from '../../actions/budgetShowAction';
 import v4 from 'uuid/v4';
+
 
 const nameCategory = ['health', 'food', 'hygiena', 'home', 'clothes', 'sport', 'resort', 'mobile', 'transport', 'animals', 'gifts', 'other', 'all'];
 
@@ -82,7 +84,7 @@ class Sidebar extends Component {
                     </ul>
                     <li className='menu-item'>Статистика</li>
                 </ul>
-                <button className='create-btn' onClick={this.showCreateBudgete}>создать бюджет</button>
+                <button className='create-btn' onClick={this.props.toggleShowBudget}>создать бюджет</button>
             </div>
         )
     }
@@ -90,6 +92,9 @@ class Sidebar extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
+        toggleShowBudget: function () {
+            dispatch(toggleShowBudget())
+        },
         day: function () {
             dispatch(Day())
         },

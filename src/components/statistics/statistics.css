@@ -1,0 +1,51 @@
+/*.statistic {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*background-color: #f0f1f1;*/
+    /*padding: 4rem 2rem 8rem;*/
+/*}*/
+
+.statistic__body {
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem .5rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px 1px #b8b9b9;
+    text-align: right;
+}
+
+.statistic__title {
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #303f9f;
+    padding: 1rem 0 2rem;
+}
+
+.statistic__select {
+    border: 0;
+    border-bottom: 1px solid #cecece;
+    font-size: .625rem;
+    color: #cecece;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .statistic__body{
+        padding: 0 2rem 1rem;
+    }
+    .statistic__title {
+        font-size: 1.5rem;
+        padding: 2rem 0 4rem;
+    }
+    .statistic__select {
+        font-size: 1rem;
+    }
+}
+
+.chart-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}

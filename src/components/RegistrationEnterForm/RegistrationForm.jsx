@@ -45,7 +45,7 @@ class RegistrationForm extends Component {
                 break;
             case 'password':
                 passwordValid = value.match(/^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);
-                fieldValidationErrors.Password = passwordValid ? '' : ' : Enter from 4 to 16 symbols for password';
+                fieldValidationErrors.Password = passwordValid ? '' :': must include one of the big letter, small letter, number, and password length must be from 4 to 16 letters';
                 break;
             default:
                 break;
