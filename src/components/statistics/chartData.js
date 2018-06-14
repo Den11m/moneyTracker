@@ -8,7 +8,7 @@ export const chartData = (costs, period, typeChart, categoryFromChart) => {
     const sumArrCostFromPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
 
     for (let item of category) {
-        let totalSum = sumArrCostFromPeriod.filter((obj) => obj.category === item).reduce((acc, obj) => acc + obj.cost, 0);
+        let totalSum = sumArrCostFromPeriod.filter((obj) => obj.category === item.toLowerCase()).reduce((acc, obj) => acc + obj.cost, 0);
         if (totalSum > 0) {
             newArrCosts.push({
                 category: item,
@@ -17,10 +17,10 @@ export const chartData = (costs, period, typeChart, categoryFromChart) => {
         }
     }
 
-    for (let item of sumArrCostFromPeriod.map(obj => obj.date.format('DD.MM'))) {
+    for (let item of sumArrCostFromPeriod.map(obj => moment(obj.date).format('DD.MM'))) {
         let totalSum = sumArrCostFromPeriod
             .filter((obj) => categoryFromChart === 'все' ? obj : obj.category === categoryFromChart)
-            .filter((obj) => obj.date.format('DD.MM') === item)
+            .filter((obj) => moment(obj.date).format('DD.MM') === item)
             .reduce((acc, obj) => acc + obj.cost, 0);
         if (totalSum > 0 && !newArrDate.some((obj)=> obj.date === item )) {
             newArrDate.push({
