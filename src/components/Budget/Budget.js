@@ -32,7 +32,6 @@ const Budget = (props) => {
                     start: moment().startOf('month').valueOf(),
                     end: moment().endOf('month').valueOf(),
                 }
-
         }
     }
 
@@ -41,12 +40,13 @@ const Budget = (props) => {
             toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget}>
             <h2 className='budget-title'>Создать бюджет</h2>
 
-            <form className='budget-form' action='#' onSubmit={(e) => props.getSum(e, {
+            <form className='budget-form' action='#' onSubmit={(e) => {props.getSum(e, {
                 plan: +budgetInput.value,
                 fact: 0,
                 date: checkPeriod(dateInput.value),
                 spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
-            })}>
+            });
+                props.toggleShowBudget();}}>
 
                 <input className='input-budget statistic__select' type="number" placeholder='Сумма' ref={(input) => budgetInput = input}/>
 
@@ -56,14 +56,6 @@ const Budget = (props) => {
                     <option value="day">День</option>
                 </select>
                 <button className='modale__btn-save'
-                        onClick={(e) => {
-                            props.getSum(e, {
-                                plan: +budgetInput.value,
-                                fact: 0,
-                                date: checkPeriod(dateInput.value),
-                                spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
-                            });
-                            props.toggleShowBudget();}}
                 >СОХРАНИТЬ
                 </button>
             </form>
@@ -80,13 +72,14 @@ function MDTP(dispatch) {
 
         toggleShowBudget: function () {
             dispatch(toggleShowBudget())
-        },
+        }
     }
 }
 
 function MSTP(state) {
     return {
         onClickBudget: state.budgetShow,
+        budget: state.budget
     }
 }
 

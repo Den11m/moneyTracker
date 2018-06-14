@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-date-picker';
-import addCosts from '../../actions/addNewCostsAction';
+import {addCosts, getFact} from '../../actions/addNewCostsAction';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import Modale from '../Modale/Modale';
@@ -119,7 +119,8 @@ class AddNewCosts extends Component {
                                 comments: this.commentInput.value,
                             })
                             : alert('fill in the category or date');
-                        this.props.toggleShowWindow()
+                        this.props.toggleShowWindow();
+                        this.props.getFact(+this.sumInput.value);
                     }}>coxpанить
                     </button>
                 </form>
@@ -142,6 +143,9 @@ function MDTP(dispatch) {
         },
         toggleShowWindow: function () {
             dispatch(toggleShowWindow())
+        },
+        getFact: function (data) {
+         dispatch(getFact(data))
         }
     }
 }

@@ -7,11 +7,14 @@ export const getBudgetObj = state => {
             && el.date.end >= Date.now()
         );
     }
+    else {
+        return false;
+    }
 };
 
-export const getBudgetPlan = state => getBudgetObj(state).plan;
+export const getBudgetPlan = state =>  getBudgetObj(state) ? getBudgetObj(state).plan :0;
 
-export const getBudgetSpend = state => getBudgetObj(state).spendPerDay;
+export const getBudgetSpend = state =>  getBudgetObj(state) ? getBudgetObj(state).spendPerDay :0;
 
 
 
