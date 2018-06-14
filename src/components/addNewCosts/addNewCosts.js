@@ -88,6 +88,7 @@ class AddNewCosts extends Component {
                             date: moment(this.state.date).valueOf(),
                             category: category.find(el => el.children[0].checked === true).children[0].value,
                             comments: this.commentInput.value,
+
                         })
                         : alert('fill in the category and price');
                     this.props.toggleShowWindow()
