@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const chartData = (costs, period, typeChart, categoryFromChart) => {
     const category = ['Здоровье', 'Еда', 'Гигиена', 'Жилье', 'Одежда', 'Спорт', 'Отдых', 'Связь', 'Транспорт', 'Питомцы', 'Подарки', 'Другое'];
     const newArrCosts = [];

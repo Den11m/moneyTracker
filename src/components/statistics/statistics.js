@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Doughnut, Bar, Line} from 'react-chartjs-2';
 import {connect} from 'react-redux'
-import moment from 'moment';
 import {changeType} from '../../actions/typeChartActions';
 import {changeCategory} from '../../actions/filterCategoryActions';
 import {chartData, options} from './chartData';
