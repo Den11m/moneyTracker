@@ -22,7 +22,11 @@ class Sidebar extends Component {
 
     totalCostForPeriod = (category) => {
         const arrCostFromPeriod = this.props.costs.filter(obj => obj.date >= this.props.period.start && obj.date <= this.props.period.end);
+        if (category === 'Все') {
+            return arrCostFromPeriod.reduce((acc, obj) => acc + obj.cost, 0)
+        } else {
             return arrCostFromPeriod.filter((obj) => obj.category === category.toLowerCase()).reduce((acc, obj) => acc + obj.cost, 0)
+        }
     };
 
 
