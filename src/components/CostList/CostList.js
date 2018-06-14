@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React  from 'react';
 import {connect} from 'react-redux';
 import {getCosts, click, period,spent} from '../../selectors/CostListSelector';
 import getList from '../../actions/CostListAction';
@@ -8,39 +8,46 @@ import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
 import './index.css';
 
-
-const getPeriod = (costs, period, filterCategory = null) => {
-    let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
-    let result = filterCategory && filterPeriod.filter(obj => obj.category === filterCategory)
-    return filterCategory ? result : filterPeriod;
+let today = {
+    start: moment().startOf('day').valueOf(),
+    end: moment().endOf('day').valueOf(),
 };
 
-const CostList = (props) => {
-    console.log('props ar Cost-List component', props);
+// const sortArrDate = newArrDate.sort((a, b) => a.date - b.date);
 
+const getPeriod = (costs, period ,filterCategory = null) => {
+    let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
+    let result = filterCategory && filterPeriod.filter(obj => obj.category === filterCategory);
+    return filterCategory ? result.sort((a, b) => a.date - b.date) : filterPeriod.sort((a, b) => a.date - b.date);
+};
+
+
+
+const CostList = (props) => {
     return (
         <div className="cost-wrapper">
             <AddNewCosts/>
             <div className="cost-list">
                 <div className="cost-form">
                     <button className="cost-add" onClick={props.toggleShowWindow}> </button>
+                    <p className="cost-info"> Период {props.period.period} </p>
+                    <p className="cost-category">Категория {props.category === '' ? 'Все' : props.category}</p>
                 </div>
                 <table className="Table">
                     <tbody>
-                    {getPeriod(props.costs, props.period,props.category).map((el, index) => <tr className="line" key={el.id}>
+                    {props.costs.length ? getPeriod(props.costs, props.period,props.category).map((el, index) => <tr className="line" key={el.id}>
                         <td className="start">{index + 1}.</td>
-                        <td>{el.category} ({el.comments})</td>
+                        <td>{el.category} {el.comments === '' ? '' : `(${el.comments})`}</td>
                         <td>{moment(el.date).format("DD.MM.YYYY")}</td>
                         <td>{el.cost} грн</td>
-                    </tr>)}
+                    </tr>) : ''}
 
                     </tbody>
                 </table>
-
                 <div className="result">
                     <p className="spends-result"> Всего
                         <span
-                            className="spends-span">{getPeriod(props.costs, props.period,props.category).reduce((prev, curr) => prev + curr.cost, 0)}</span>
+                            className="spends-span">{props.costs.length && getPeriod(props.costs, props.period,props.category).reduce((prev, curr) => prev + curr.cost, 0)}</span>
                         грн
                     </p>
                 </div>

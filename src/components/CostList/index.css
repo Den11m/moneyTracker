@@ -16,7 +16,7 @@
     color: #ff5722;
     font-weight: bold;
     margin-top: 50px;
-    padding: 20px 20px 50px 0;
+    padding: 20px 15px 50px 0;
 }
 
 .spends-result {
@@ -36,8 +36,29 @@
 }
 
 .cost-form {
-    padding: 20px 0 0 15px;
-    margin-bottom: 20px;
+    padding: 20px 15px;
+    /*margin-bottom: 20px;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cost-info {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    text-align: right;
+    color: #ff5722;
+    font-weight: bold;
+    /*padding: 20px 20px 50px 0;*/
+}
+
+.cost-category {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    text-align: right;
+    color: #ff5722;
+    font-weight: bold;
+    /*padding: 20px 20px 50px 0;*/
 }
 
 .cost-add {
@@ -94,6 +115,14 @@ table.Table tr:nth-child(even) {
     }
 
     .spends-result {
+        font-size: 16px;
+    }
+
+    .cost-info {
+        font-size: 16px;
+    }
+
+    .cost-category {
         font-size: 16px;
     }
 }

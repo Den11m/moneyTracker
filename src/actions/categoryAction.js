@@ -52,5 +52,16 @@ export const gifts = () => {
     return {
         type: 'Gifts',
     }
+
+
 };
+
+export const all = () => {
+    return {
+        type: 'All',
+    }
+};
+
+
+
 

@@ -3,10 +3,10 @@ import './index.css';
 import moment from 'moment'
 import {connect} from 'react-redux';
 import {Day, Week, Month} from '../../actions/periodAction';
-import {health, food, hygiena, home, clothes, sport, resort, mobile, transport, animals, gifts} from'../../actions/categoryAction'
+import {health, food, hygiena, home, clothes, sport, resort, mobile, transport, animals, gifts, all} from'../../actions/categoryAction'
 
 
-const nameCategory = ['health', 'food', 'hygiena', 'home', 'clothes', 'sport', 'resort', 'mobile', 'transport', 'animals', 'gifts'];
+const nameCategory = ['health', 'food', 'hygiena', 'home', 'clothes', 'sport', 'resort', 'mobile', 'transport', 'animals', 'gifts', 'all'];
 
 class Sidebar extends Component {
     constructor(props) {
@@ -25,7 +25,8 @@ class Sidebar extends Component {
                 '# Связь',
                 '# Транспорт',
                 '# Питомцы',
-                '# Подарки'
+                '# Подарки',
+                '# Все'
             ]
         };
     }
@@ -131,6 +132,9 @@ function mapDispatchToProps(dispatch) {
         gifts: function () {
             dispatch(gifts())
         },
+        all: function () {
+            dispatch(all())
+        }
     }
 
 }

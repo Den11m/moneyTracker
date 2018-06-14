@@ -22,8 +22,10 @@ const spent = (state = '', action) => {
             return 'Питомцы';
         case 'Gifts':
             return 'Подарки';
+        case 'All':
+            return '';
         default:
-            return ''
+            return state
     }
 };
 

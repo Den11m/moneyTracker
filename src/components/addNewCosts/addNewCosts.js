@@ -63,7 +63,6 @@ let category = [
 ];
 
 class AddNewCosts extends Component {
-    // test =  null;
     sumInput = '';
     commentInput = '';
     categories = null;
