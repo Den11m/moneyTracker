@@ -15,23 +15,16 @@ class Sidebar extends Component {
         this.state = {
             periodVisablilty: false,
             costVisability: false,
-            categories: [
-                '# Здоровье',
-                '# Еда',
-                '# Гигиена',
-                '# Жилье',
-                '# Одежда',
-                '# Спорт',
-                '# Отдых',
-                '# Связь',
-                '# Транспорт',
-                '# Питомцы',
-                '# Подарки',
-                '# Другое',
-                '# Все'
-            ]
+            categories: ['Здоровье', 'Еда', 'Гигиена', 'Жилье', 'Одежда', 'Спорт', 'Отдых', 'Связь', 'Транспорт', 'Питомцы', 'Подарки', 'Другое', 'Все']
         };
+
     }
+
+    totalCostForPeriod = (category) => {
+        const arrCostFromPeriod = this.props.costs.filter(obj => obj.date >= this.props.period.start && obj.date <= this.props.period.end);
+            return arrCostFromPeriod.filter((obj) => obj.category === category.toLowerCase()).reduce((acc, obj) => acc + obj.cost, 0)
+    };
+
 
     // метод для меню Период
     subPeriod = () => {
@@ -68,8 +61,12 @@ class Sidebar extends Component {
                             let action = nameCategory[index];
                             return (
 
-                                <li onClick={this.props[action]} key = {v4()} className='sub-item'>{obj} <p
-                                    className='sum-of-cost'>&#036;</p></li>
+                                <li onClick={this.props[action]} key = {v4()} className='sub-item'>
+                                    {obj}
+                                    <p className='sum-of-cost'>
+                                        {this.totalCostForPeriod(obj)>0 && this.totalCostForPeriod(obj)}
+                                    </p>
+                                </li>
 
                             )
                         })}
@@ -89,6 +86,12 @@ class Sidebar extends Component {
         )
     }
 }
+
+
+const MSTP = (state) => ({
+    costs: state.costs,
+    period: state.period,
+});
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -147,4 +150,4 @@ function mapDispatchToProps(dispatch) {
 
 }
 
-export default connect(null, mapDispatchToProps)(Sidebar);
+export default connect(MSTP, mapDispatchToProps)(Sidebar);

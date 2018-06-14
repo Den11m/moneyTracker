@@ -1,9 +1,9 @@
 
 .cost-wrapper {
     background-color: #f1f2f2;
-    height: 100vh;
+    /*height: 100vh;*/
     flex-basis: 100%;
-    padding: 15px;
+    /*padding: 15px;*/
 }
 
 .cost-list {

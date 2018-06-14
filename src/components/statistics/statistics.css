@@ -6,12 +6,13 @@
 /*}*/
 
 .statistic__body {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     padding: 0 1rem .5rem;
     background-color: #ffffff;
     box-shadow: 0 2px 5px 1px #b8b9b9;
     text-align: right;
+    margin-top: 1.5rem;
 }
 
 .statistic__title {
@@ -31,6 +32,12 @@
     margin-bottom: 1rem;
 }
 
+.chart-container{
+    position: relative;
+    /*height: 100%;*/
+    /*width: 100%;*/
+}
+
 @media (min-width: 768px) {
     .statistic__body{
         padding: 0 2rem 1rem;
@@ -44,8 +51,3 @@
     }
 }
 
-.chart-container{
-    position: relative;
-    height: 100%;
-    width: 100%;
-}

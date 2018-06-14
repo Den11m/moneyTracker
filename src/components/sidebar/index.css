@@ -19,23 +19,27 @@
     justify-content: space-between;
     font-weight: bold;
     color: darkgrey;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
     padding-left: 20px;
     padding-right: 10px;
-    height: 30px;
+    height: 45px;
+    align-items: center;
 }
 .sub-item:hover {
     color: #375980;
 }
 
 .sum-of-cost {
-    background-color: #375980;
+    background-color: #3f51b5;
     color: white;
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     text-align: center;
-    padding-top: 4px;
+    /*padding: 1rem;*/
+    line-height: 35px;
+    font-size: 12px;
+    font-weight: 300;
 }
 
 .create-btn {

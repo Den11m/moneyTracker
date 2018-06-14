@@ -4,8 +4,6 @@ import Header from './components/Header/Header';
 import RegistrationForm from './components/RegistrationEnterForm/RegistrationForm'
 import EnterForm from './components/RegistrationEnterForm/EnterForm';
 import Main from './components/Main/Main';
-import Statistics from './components/statistics/statistics';
-
 
 class App extends Component {
     render() {
@@ -15,7 +13,6 @@ class App extends Component {
                 <RegistrationForm />
                 <EnterForm />
                 <Main />
-                <Statistics/>
             </Fragment>
         );
     }

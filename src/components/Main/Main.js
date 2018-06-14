@@ -3,6 +3,8 @@ import './Main.css';
 import CostList from '../../components/CostList/CostList';
 import Budget from '../Budget/Budget';
 import SideBar from '../../components/sidebar/sidebar';
+import Statistics from '../../components/statistics/statistics';
+
 
 const Main = (props) => {
     return (
@@ -12,8 +14,9 @@ const Main = (props) => {
                 <SideBar/>
             </div>
             <div className="flex-wrapper">
-            <CostList/>
-            <Budget/>
+                <CostList/>
+                <Statistics/>
+                <Budget/>
             </div>
         </div>
 
