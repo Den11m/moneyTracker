@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './RegistrationForm.css';
 import Modale from '../Modale/Modale';
 import toggleShowRegistration from '../../actions/toggleRegistrationAction';
+import { loginHeader } from '../../actions/headerActions';
 
 class RegistrationForm extends Component {
     constructor(props) {
@@ -77,6 +78,10 @@ class RegistrationForm extends Component {
             }
             getDataUsers.push(newUser);
             localStorage.setItem('users', JSON.stringify(getDataUsers));
+
+            this.props.toggleShowRegistration();
+            this.props.login();
+
         }
     };
 
@@ -146,7 +151,11 @@ const MDTP = (dispatch) => {
     return {
         toggleShowRegistration: function () {
             dispatch(toggleShowRegistration())
-        }
+        },
+
+        login: function () {
+            dispatch(loginHeader())
+        },
     }
 }
 

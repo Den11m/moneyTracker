@@ -4,6 +4,7 @@ import EnterFormErrors from './EnterFormErrors';
 import './EnterForm.css';
 import Modale from '../Modale/Modale';
 import toggleShowLogin from '../../actions/toggleLoginAction';
+import { loginHeader, logOut } from '../../actions/headerActions';
 
 class EnterForm extends Component {
     constructor(props) {
@@ -21,7 +22,9 @@ class EnterForm extends Component {
         const findUsers = getDataUsers.find(user => user.email === emailInput);
         if (findUsers) {
             if (findUsers.password === passwordInput) {
-                window.location.pathname = '/login'//здесь будет ре-директион
+                this.props.login();
+                this.props.toggleShowLogin();
+                window.location.pathname = '/home'//здесь будет ре-директион
             } else {
                 this.setState({
                     formErrors: {
@@ -80,13 +83,18 @@ class EnterForm extends Component {
 
 const MSTP = (state)=> ({
     visibleLogin: state.visibleLogin,
+
 })
 
 const MDTP = (dispatch) => {
     return {
         toggleShowLogin: function(){
             dispatch(toggleShowLogin())
-        }
+        },
+
+        login: function () {
+            dispatch(loginHeader())
+        },
     }
 }
 

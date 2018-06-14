@@ -20,4 +20,5 @@ const MSTP = (state) => ({
     getBudgetPlan: getBudgetPlan(state),
     getBudgetFact:getBudgetFact(state),
 });
+
 export default connect(MSTP)(BudgetRender);

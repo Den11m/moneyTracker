@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './Header.css';
-import { loginHeader, logOut } from '../../actions/headerActions';
+import { logOut } from '../../actions/headerActions';
 import { connect } from 'react-redux';
 import BudgetRender from '../BudgetRender/BudgetRender';
 import toggleShowLogin from '../../actions/toggleLoginAction';
@@ -31,9 +31,7 @@ const MSTP = (state) => {
 
 const MDTP = (dispatch) => {
     return {
-        login: function () {
-            dispatch(loginHeader())
-        },
+        
 
         logout: function () {
             dispatch(logOut())
