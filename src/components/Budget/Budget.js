@@ -4,6 +4,9 @@ import Modale from '../Modale/Modale';
 import {addBudget} from '../../actions/budgetAction';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import toggleShowWindow from '../../actions/clickAction';
+import {click} from '../../selectors/CostListSelector';
+import toggleShowBudget from '../../actions/budgetShowAction';
 import './budget.css';
 
 const Budget = (props) => {
@@ -27,38 +30,33 @@ const Budget = (props) => {
                     start: moment().startOf('month').valueOf(),
                     end: moment().endOf('month').valueOf(),
                 }
-
         }
     }
 
-    return (
-        <Modale>
-            <h2 className='budget-title'>Создать бюджет</h2>
+        return (
+            <Modale
+                // toggleShowWindow={props.toggleShowWindow} click={props.click}>
+                toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget} >
+                <h2 className='budget-title'>Создать бюджет</h2>
 
-            <form className='budget-form' action='#' onSubmit={(e) => props.getSum(e, {
-                plan: +budgetInput.value,
-                fact: 0,
-                date: checkPeriod(dateInput.value)
-            })}>
+                <form className='budget-form' action='#' onSubmit={(e)=> props.getSum(e, {plan: +budgetInput.value, fact:0, date:checkPeriod(dateInput.value)})}>
 
-                <input className='input-budget' type="number" placeholder='Сумма' ref={(input) => budgetInput = input}/>
+                    <input className='input-budget' type="number" placeholder='Сумма' ref={(input) => budgetInput=input} />
 
-                <select className='budget-select' ref={(input) => dateInput = input}>
-                    <option value="month">Месяц</option>
-                    <option value="week">Неделя</option>
-                    <option value="day">День</option>
-                </select>
-                <button className='modale__btn-save'
-                        onClick={(e) => props.getSum(e, {
-                            plan: +budgetInput.value,
-                            fact: 0,
-                            date: checkPeriod(dateInput.value)
-                        })}
-                >СОХРАНИТЬ
-                </button>
-            </form>
-        </Modale>
-    )
+                    <select className='budget-select' ref={(input)=> dateInput=input}>
+                        <option value="month">Месяц</option>
+                        <option value="week">Неделя</option>
+                        <option value="day">День</option>
+                    </select>
+                    <button className='modale__btn-save'
+                            onClick={(e)=>{
+                                props.getSum(e, {plan: +budgetInput.value, fact:0, date:checkPeriod(dateInput.value)});
+                                props.toggleShowBudget()}}
+                    >СОХРАНИТЬ
+                    </button>
+                </form>
+            </Modale>
+        )
 };
 
 function MDTP(dispatch) {
@@ -67,7 +65,25 @@ function MDTP(dispatch) {
             e.preventDefault();
             dispatch(addBudget(budgetInfo))
         },
+
+        toggleShowBudget: function () {
+            dispatch(toggleShowBudget())
+        },
+
+        // toggleShowWindow: function () {
+        //     dispatch(toggleShowWindow())
+        // }
     }
 }
 
-export default connect(null, MDTP)(Budget);
+function MSTP(state){
+    return {
+        // click: click(state),
+        onClickBudget: state.budgetShow,
+    }
+
+}
+
+
+
+export default connect(MSTP, MDTP)(Budget);

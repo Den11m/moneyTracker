@@ -7,6 +7,7 @@ import {listItems} from './CostListReducer';
 import click from './clickReducer';
 import visibleRegistration from './visibleRegistationReducer';
 import budget from './budgetReducers';
+import budgetShow from './budgetShowReduser';
 
 
 const reducers = combineReducers({
@@ -17,6 +18,7 @@ const reducers = combineReducers({
     click,
     visibleLogin,
     visibleRegistration,
+    budgetShow,
     budget,
 });
 

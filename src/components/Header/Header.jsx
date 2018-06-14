@@ -6,7 +6,6 @@ import BudgetRender from '../BudgetRender/BudgetRender';
 import toggleShowLogin from '../../actions/toggleLoginAction';
 import toggleShowRegistration from '../../actions/toggleRegistrationAction';
 
-
 const Header = (props) => {
     return (
         <div className="header">
@@ -18,11 +17,7 @@ const Header = (props) => {
                         <a href="#" className="header-button" onClick={props.toggleShowLogin}>Login</a></div>
 
                 }
-
-
             </nav>
-            
-            
         </div>
     )
 }

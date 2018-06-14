@@ -1,16 +1,9 @@
 import React, {Fragment} from 'react';
 import './Modale.css';
 
+
 const Modale = (props) => {
 
-    // toggleVisibleModale = () => {
-    //     this.setState((prevState) => ({
-    //         visibleModale: !prevState.visibleModale
-    //     }))
-    // };
-
-    // render() {
-        // const visibleModale = this.state.visibleModale;
         return (
             <Fragment>
                 {props.click && (<div className='modale-overlay'>

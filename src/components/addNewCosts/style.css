@@ -3,10 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-.category-container{
-    /* width: 40%; */
-    padding: 30px
-}
 .category--sum, .category--choose, .category--comment{
     border: 1px solid #fff;
     border-bottom: 2px solid #d4d4d4;
