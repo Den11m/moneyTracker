@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux';
 import test from './testReducers';
+import headerReducer from './headerReducer';
+import visibleLogin from './visibleLoginReducer';
 import costs from './addNewCostsReducer';
 import click from './clickReducer';
+import visibleRegistration from './visibleRegistationReducer';
 import budget from './budgetReducers';
 import budgetShow from './budgetShowReduser';
 import period from './periodReducer';
@@ -9,12 +12,16 @@ import spent from './reducerCategory';
 
 const reducers = combineReducers({
     test,
+    isLogin: headerReducer,
     costs,
     click,
-    budget,
+    visibleLogin,
+    visibleRegistration,
     budgetShow,
     period,
     spent,
+    budget,
+
 });
 
 

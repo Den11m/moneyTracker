@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    border: none;
+    outline-style: none;
+}
+
+.enter-form {
+    width: 346px;
+}
+
+.enter-form__text {
+    font-size: 21px;
+    color: #3f51b5;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.enter-form__btn {
+    display: block;
+    border-radius: 9px;
+    height: 33px;
+    width: 106px;
+    background-color: #ff5722;
+    color: #ffffff;
+    font-weight: 500;
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    font-size: 12px;
+    margin: auto;
+}
+
+.enter-form__valid {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.enter-form__control {
+    margin: auto;
+    display: block;
+    height: 34px;
+    width: 100%;
+    border: 1px solid #ff5722;
+    padding: 10px;
+}
+
+.enter-form__name {
+    display: block;
+    font-size: 16px;
+    color: #ff5722;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
