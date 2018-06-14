@@ -97,7 +97,8 @@ return (
                     })
                     // console.log('click',Array.from(test.children).find(el => el.children[0].checked === true).children[0].value)
                     : alert('fill in the category and price')
-            }}>coxpанить</button>
+            }}>coxpанить
+            </button>
         </div>
     </Modale>
 
