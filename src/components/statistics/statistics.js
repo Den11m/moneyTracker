@@ -18,7 +18,7 @@ class Statistics extends Component {
 
     uniqCategory = () => {
         const uniqCategory = [];
-        for (let obj of this.props.costs.filter(obj => obj.date >= this.props.period.start && obj.date <= this.props.period.end)){
+        for (let obj of this.props.costs.filter(obj => obj.date >= this.props.period.start && obj.date <= this.props.period.end)) {
             !uniqCategory.includes(obj.category) && uniqCategory.push(obj.category)
         }
         return uniqCategory
@@ -31,9 +31,9 @@ class Statistics extends Component {
                 <div className='statistic__body'>
                     <h2 className='statistic__title'>Статистика</h2>
                     <select className='statistic__select'
-                        name='typeChart'
-                        value={typeChart}
-                        onChange={this.handleInputChange}>
+                            name='typeChart'
+                            value={typeChart}
+                            onChange={this.handleInputChange}>
                         <option value="Doughnut">Кольцевая диаграмма</option>
                         <option value="Bar">Гистограмма</option>
                         <option value="Line">График</option>
@@ -41,31 +41,31 @@ class Statistics extends Component {
 
                     {(typeChart === 'Bar' ||
                         typeChart === 'Line') &&
-                        <select className='statistic__select'
-                        name='categoryFromChart'
-                        value={categoryFromChart}
-                        onChange={this.handleInputChange}>
+                    <select className='statistic__select'
+                            name='categoryFromChart'
+                            value={categoryFromChart}
+                            onChange={this.handleInputChange}>
                         <option value="все">все категории</option>
-                        {this.uniqCategory().map(el=> <option key={el}
-                                                   value={el}>{el}</option>)}
+                        {this.uniqCategory().map(el => <option key={el}
+                                                               value={el}>{el}</option>)}
                     </select>}
 
                     {typeChart === 'Doughnut' &&
-                        <div className='chart-container'>
-                    <Doughnut data={chartData(costs, period, typeChart)}
-                              options={options(typeChart)}/>
-                        </div>}
+                    <div className='chart-container'>
+                        <Doughnut data={chartData(costs, period, typeChart)}
+                                  options={options(typeChart)}/>
+                    </div>}
 
                     {typeChart === 'Bar' &&
                     <div className='chart-container'>
-                    <Bar data={chartData(costs, period, typeChart, categoryFromChart)}
-                         options={options(typeChart)}/>
+                        <Bar data={chartData(costs, period, typeChart, categoryFromChart)}
+                             options={options(typeChart)}/>
                     </div>}
 
                     {typeChart === 'Line' &&
                     <div className='chart-container'>
-                    <Line data={chartData(costs, period, typeChart, categoryFromChart)}
-                          options={options(typeChart)}/>
+                        <Line data={chartData(costs, period, typeChart, categoryFromChart)}
+                              options={options(typeChart)}/>
                     </div>}
                 </div>
             </div>
@@ -91,4 +91,4 @@ const MDTP = (dispatch) => ({
 
 });
 
-export default connect(MSTP,MDTP)(Statistics);
+export default connect(MSTP, MDTP)(Statistics);

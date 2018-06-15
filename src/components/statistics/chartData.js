@@ -22,7 +22,7 @@ export const chartData = (costs, period, typeChart, categoryFromChart) => {
             .filter((obj) => categoryFromChart === 'все' ? obj : obj.category === categoryFromChart)
             .filter((obj) => moment(obj.date).format('DD.MM') === item)
             .reduce((acc, obj) => acc + obj.cost, 0);
-        if (totalSum > 0 && !newArrDate.some((obj)=> obj.date === item )) {
+        if (totalSum > 0 && !newArrDate.some((obj) => obj.date === item)) {
             newArrDate.push({
                 date: item,
                 cost: totalSum,
@@ -33,7 +33,7 @@ export const chartData = (costs, period, typeChart, categoryFromChart) => {
     const sortArrCost = newArrCosts.sort((a, b) => b.cost - a.cost);
     const sortArrDate = newArrDate.sort((a, b) => a.date - b.date);
 
-    if(typeChart === 'Doughnut') {
+    if (typeChart === 'Doughnut') {
         return ({
             labels: sortArrCost.map(obj => obj.category),
             datasets: [
@@ -70,7 +70,7 @@ export const chartData = (costs, period, typeChart, categoryFromChart) => {
                     ]
                 }]
         })
-    } else if (typeChart === 'Bar'){
+    } else if (typeChart === 'Bar') {
         return ({
             labels: sortArrDate.map(obj => obj.date),
             datasets: [
@@ -85,8 +85,8 @@ export const chartData = (costs, period, typeChart, categoryFromChart) => {
                 }
             ]
         });
-    }else if (typeChart === 'Line'){
-        return({
+    } else if (typeChart === 'Line') {
+        return ({
             labels: sortArrDate.map(obj => obj.date),
             datasets: [
                 {
@@ -114,8 +114,6 @@ export const chartData = (costs, period, typeChart, categoryFromChart) => {
         })
     }
 };
-
-// export default chartData;
 
 export const options = (typeChart) => {
 

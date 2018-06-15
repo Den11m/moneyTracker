@@ -1,5 +1,5 @@
 export default function typeChart(state = 'Doughnut', action) {
-    switch (action.type){
+    switch (action.type) {
         case 'CHANGE-TYPE-CHART':
             return action.chart;
 

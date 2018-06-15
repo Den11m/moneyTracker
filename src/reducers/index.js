@@ -13,7 +13,6 @@ import typeChart from './typeChartReducers';
 import categoryFromChart from './filterCategoryReducers';
 
 
-
 const reducers = combineReducers({
     test,
     isLogin: headerReducer,

@@ -1,5 +1,5 @@
 export default function categoryFromChart(state = 'все', action) {
-    switch (action.type){
+    switch (action.type) {
         case 'CHANGE-CATEGORY':
             return action.category;
 

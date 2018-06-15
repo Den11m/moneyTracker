@@ -74,7 +74,7 @@ class AddNewCosts extends Component {
 
     handleChange = date => this.setState({date});
 
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
             date: new Date(),
         })
@@ -84,7 +84,7 @@ class AddNewCosts extends Component {
         return (
             <Modale toggleShowWindow={this.props.toggleShowWindow} click={this.props.click}>
 
-                <form  onSubmit ={(event) => {
+                <form onSubmit={(event) => {
                     event.preventDefault();
                     let category = Array.from(this.categories.children);
                     category.some(el => el.children[0].checked === true)
@@ -153,7 +153,7 @@ function MDTP(dispatch) {
             dispatch(toggleShowWindow())
         },
         getFact: function (data) {
-         dispatch(getFact(data))
+            dispatch(getFact(data))
         }
     }
 }

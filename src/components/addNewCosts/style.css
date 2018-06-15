@@ -29,7 +29,6 @@ input {
 }
 .health, .food, .hygiene, .home, .clothes, .sport, .relax, .communication, .transport, .nursling, .present, .other{
     position: relative;
-    /* background-color: rgb(21, 163, 144); */
     display: inline-block;
     padding: 29px;
     border-radius: 5px;
@@ -112,22 +111,6 @@ input {
 
 }
 
-/* .category--save {
-    display: block;
-    border-radius: 9px;
-    height: 33px;
-    width: 106px; */
-    /* position: absolute; */
-    /* transform: translate(50%); */
-    /* bottom: 48px;
-    right: 50%; */
-    /* background-color: #ff5722;
-    color: #ffffff;
-    font-weight: 500;
-    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
-    padding: 8px;
-    font-size: 12px;
-} */
 .category--save {
     display: block;
     border-radius: 9px;

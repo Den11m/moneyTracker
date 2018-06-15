@@ -22,20 +22,24 @@ const CostList = (props) => {
             <AddNewCosts/>
             <div className="cost-list">
                 <div className="cost-form">
-                    <button className="cost-add" onClick={() => props.getBudgetPlan > 0 ? props.toggleShowWindow() : alert('введите бюджет')}> </button>
+                    <button className="cost-add"
+                            onClick={() => props.getBudgetPlan > 0 ? props.toggleShowWindow() : alert('введите бюджет')}></button>
                     <p className="cost-info"> Период: {props.period.period.toLowerCase()} </p>
                     <p className="cost-category">Категория: {props.category === '' ? 'все' : props.category.toLowerCase()}</p>
                 </div>
                 <table className="Table">
-                    <tbody>{props.costs.length ? getPeriod(props.costs, props.period, props.category).map((el, index) => <tr className="line" id={el.date} key={v4()}>
-                        <td className="start">{index + 1}.</td>
-                        <td>{el.category} {el.comments === '' ? '' : `(${el.comments})`}</td>
-                        <td>{moment(el.date).format("DD.MM.YYYY h:mm:ss")}</td>
-                        <td>{el.cost} грн</td>
-                        <td> <img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={()=> { props.deleteCost(el.date)
-                        props.deleteFact(el.cost)}}/>  </td>
+                    <tbody>{props.costs.length ? getPeriod(props.costs, props.period, props.category).map((el, index) =>
+                        <tr className="line" id={el.date} key={v4()}>
+                            <td className="start">{index + 1}.</td>
+                            <td>{el.category} {el.comments === '' ? '' : `(${el.comments})`}</td>
+                            <td>{moment(el.date).format("DD.MM.YYYY h:mm:ss")}</td>
+                            <td>{el.cost} грн</td>
+                            <td><img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={() => {
+                                props.deleteCost(el.date)
+                                props.deleteFact(el.cost)
+                            }}/></td>
 
-                    </tr>) : null}
+                        </tr>) : null}
                     </tbody>
                 </table>
                 <div className="result">

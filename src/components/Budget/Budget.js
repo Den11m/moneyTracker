@@ -40,15 +40,18 @@ const Budget = (props) => {
             toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget}>
             <h2 className='budget-title'>Создать бюджет</h2>
 
-            <form className='budget-form'  onSubmit={(e) => {+budgetInput.value > 0 ? props.getSum(e, {
-                plan: +budgetInput.value,
-                fact: 0,
-                date: checkPeriod(dateInput.value),
-                spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
-            }) : alert('Бюджет должен быть положительным числом');
-                props.toggleShowBudget();}}>
+            <form className='budget-form' onSubmit={(e) => {
+                +budgetInput.value > 0 ? props.getSum(e, {
+                    plan: +budgetInput.value,
+                    fact: 0,
+                    date: checkPeriod(dateInput.value),
+                    spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
+                }) : alert('Бюджет должен быть положительным числом');
+                props.toggleShowBudget();
+            }}>
 
-                <input className='input-budget statistic__select' type="number" placeholder='Сумма' ref={(input) => budgetInput = input}/>
+                <input className='input-budget statistic__select' type="number" placeholder='Сумма'
+                       ref={(input) => budgetInput = input}/>
 
                 <select className='budget-select statistic__select' ref={(input) => dateInput = input}>
                     <option value="month">Месяц</option>

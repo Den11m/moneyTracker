@@ -24,7 +24,7 @@ class EnterForm extends Component {
             if (findUsers.password === passwordInput) {
                 this.props.login();
                 this.props.toggleShowLogin();
-                window.location.pathname = '/home'//здесь будет ре-директион
+                window.location.pathname = '/home'
             } else {
                 this.setState({
                     formErrors: {
@@ -84,7 +84,7 @@ class EnterForm extends Component {
 const MSTP = (state)=> ({
     visibleLogin: state.visibleLogin,
 
-})
+});
 
 const MDTP = (dispatch) => {
     return {
@@ -96,7 +96,7 @@ const MDTP = (dispatch) => {
             dispatch(loginHeader())
         },
     }
-}
+};
 
 
 

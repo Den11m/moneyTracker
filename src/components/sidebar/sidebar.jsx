@@ -2,10 +2,24 @@ import React, {Component} from 'react';
 import './index.css';
 import {connect} from 'react-redux';
 import {Day, Week, Month} from '../../actions/periodAction';
-import {health, food, hygiena, home, clothes, sport, resort, mobile, transport, animals, gifts, other, all} from'../../actions/categoryAction'
+import {
+    health,
+    food,
+    hygiena,
+    home,
+    clothes,
+    sport,
+    resort,
+    mobile,
+    transport,
+    animals,
+    gifts,
+    other,
+    all
+} from '../../actions/categoryAction'
 import toggleShowBudget from '../../actions/budgetShowAction';
 import v4 from 'uuid/v4';
-import  {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 const nameCategory = ['health', 'food', 'hygiena', 'home', 'clothes', 'sport', 'resort', 'mobile', 'transport', 'animals', 'gifts', 'other', 'all'];
@@ -31,14 +45,14 @@ class Sidebar extends Component {
     };
 
 
-    // метод для меню Период
+
     subPeriod = () => {
         this.setState((prevState) => ({
             periodVisablilty: !prevState.periodVisablilty
         }))
     };
 
-    // метод для меню Расходы
+
     subCost = () => {
         this.setState((prevState) => ({
             costVisability: !prevState.costVisability
@@ -49,11 +63,6 @@ class Sidebar extends Component {
 
     };
 
-    // метод для кнопки, чтобы отрисовывать окно создания бюджета
-    showCreateBudgete = () => {
-
-    };
-
     render() {
         return (
             <div className='wrapper-sidebar'>
@@ -61,7 +70,7 @@ class Sidebar extends Component {
                     <li onClick={this.subPeriod}
                         className={`menu-item ${this.state.periodVisablilty ? 'menu-item-active' : ''}`}>
                         <Link className="sidebar-link" to="/">
-                        Расходы
+                            Расходы
                         </Link>
                     </li>
                     <ul className={`sub-menu ${this.state.periodVisablilty ? 'active' : ''}`}>
@@ -69,7 +78,7 @@ class Sidebar extends Component {
                             let action = nameCategory[index];
                             return (
 
-                                <li onClick={this.props[action]} key = {v4()} className='sub-item'>
+                                <li onClick={this.props[action]} key={v4()} className='sub-item'>
                                     {obj}
                                     <p className='sum-of-cost'>
                                         {this.totalCostForPeriod(obj)}
@@ -80,7 +89,8 @@ class Sidebar extends Component {
                         })}
                     </ul>
                     <li onClick={this.subCost}
-                        className={`menu-item ${this.state.costVisability ? 'menu-item-active' : ''}`}> <a className="sidebar-link"> Период </a>
+                        className={`menu-item ${this.state.costVisability ? 'menu-item-active' : ''}`}><a
+                        className="sidebar-link"> Период </a>
                     </li>
                     <ul className={`sub-menu ${this.state.costVisability ? 'active' : ''}`}>
                         <li onClick={this.props.day} className='sub-item'>День</li>
@@ -88,7 +98,7 @@ class Sidebar extends Component {
                         <li onClick={this.props.month} className='sub-item'>Месяц</li>
                     </ul>
 
-                    <li className='menu-item' > <Link className="sidebar-link" to='/statistics'> Статистика</Link> </li>
+                    <li className='menu-item'><Link className="sidebar-link" to='/statistics'> Статистика</Link></li>
 
                 </ul>
                 <button className='create-btn' onClick={this.props.toggleShowBudget}>создать бюджет</button>

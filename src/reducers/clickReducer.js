@@ -1,8 +1,8 @@
-export default function click (state = false, action){
-    switch(action.type){
+export default function click(state = false, action) {
+    switch (action.type) {
         case 'CLICK':
-        return !state;
-    default:
-     return state;
+            return !state;
+        default:
+            return state;
     }
 }

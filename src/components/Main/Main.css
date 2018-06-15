@@ -26,10 +26,9 @@
 
 .headerRemove {
     background-color: #3f51b5;
-    /*flex-basis: 10%;*/
+
 }
 
-/*for header, remove before merge*/
 .headerButton-container {
     display: flex;
     justify-content: flex-end;
@@ -38,7 +37,6 @@
 }
 
 .header-sum {
-    /*flex-basis: 40%;*/
     font-family: 'Roboto', sans-serif;
     color: #c5cae9;
     font-size: 10px;
@@ -48,7 +46,6 @@
 }
 
 .header-bag {
-    /*flex-basis: 4%;*/
     outline: none;
     border: none;
     width: 20px;
@@ -61,7 +58,6 @@
 
 @media (min-width: 1024px) {
     .header-sum {
-        /*flex-basis: 16%;*/
         font-family: 'Roboto', sans-serif;
         color: #c5cae9;
         font-size: 16px;

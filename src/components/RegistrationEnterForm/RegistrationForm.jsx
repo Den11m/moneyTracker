@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import RegistrationFormErrors from './RegistrationFormErrors';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import './RegistrationForm.css';
 import Modale from '../Modale/Modale';
 import toggleShowRegistration from '../../actions/toggleRegistrationAction';
-import { loginHeader } from '../../actions/headerActions';
+import {loginHeader} from '../../actions/headerActions';
 
 class RegistrationForm extends Component {
     constructor(props) {
@@ -13,23 +13,23 @@ class RegistrationForm extends Component {
             login: '',
             email: '',
             password: '',
-            formErrors: { Email: '', Password: '', ExistUser: '' },
+            formErrors: {Email: '', Password: '', ExistUser: ''},
             loginValid: false,
             emailValid: false,
             passwordValid: false,
         }
     }
+
     hahdleUserInput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        this.setState({ [name]: value },
+        this.setState({[name]: value},
             () => {
                 this.validateField(name, value)
             });
     };
 
     validateField(fieldName, value) {
-        // let {fieldValidationErrors, loginValid, emailValid, passwordValid} = this.state;
         let fieldValidationErrors = this.state.formErrors;
         let loginValid = this.state.loginValid;
         let emailValid = this.state.emailValid;
@@ -45,7 +45,7 @@ class RegistrationForm extends Component {
                 break;
             case 'password':
                 passwordValid = value.match(/^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);
-                fieldValidationErrors.Password = passwordValid ? '' :': must include one of the big letter, small letter, number, and password length must be from 4 to 16 letters';
+                fieldValidationErrors.Password = passwordValid ? '' : ': must include one of the big letter, small letter, number, and password length must be from 4 to 16 letters';
                 break;
             default:
                 break;
@@ -91,51 +91,51 @@ class RegistrationForm extends Component {
                 <form action="" className='registration' onSubmit={this.localStorageSetData}>
                     <h3 className='registration__text'>Регистрация</h3>
 
-                    <RegistrationFormErrors formErrors={this.state.formErrors} />
+                    <RegistrationFormErrors formErrors={this.state.formErrors}/>
 
                     <div className='registration__valid'>
                         <label className='registration__name'
-                            htmlFor="name">
+                               htmlFor="name">
                             Login
-                    </label>
+                        </label>
                         <input type="text" required
-                            className='registration__control'
-                            name='login'
-                            placeholder="login"
-                            value={this.state.name}
-                            onChange={this.hahdleUserInput}
+                               className='registration__control'
+                               name='login'
+                               placeholder="login"
+                               value={this.state.name}
+                               onChange={this.hahdleUserInput}
                         />
 
                     </div>
                     <div className='registration__valid'>
                         <label className='registration__name'
-                            htmlFor="email">
+                               htmlFor="email">
                             Email
-                    </label>
+                        </label>
                         <input type="email" required
-                            className='registration__control'
-                            name='email'
-                            placeholder="mail@mail.mail"
-                            value={this.state.email}
-                            onChange={this.hahdleUserInput}
+                               className='registration__control'
+                               name='email'
+                               placeholder="mail@mail.mail"
+                               value={this.state.email}
+                               onChange={this.hahdleUserInput}
                         />
                     </div>
                     <div className='registration__valid'>
                         <label className='registration__name'
-                            htmlFor="password">
+                               htmlFor="password">
                             Password
-                    </label>
+                        </label>
                         <input type="password" required
-                            className='registration__control'
-                            name='password'
-                            placeholder="must be include: one of the big letter, small letter, number "
-                            value={this.state.password}
-                            onChange={this.hahdleUserInput}
+                               className='registration__control'
+                               name='password'
+                               placeholder="must be include: one of the big letter, small letter, number "
+                               value={this.state.password}
+                               onChange={this.hahdleUserInput}
                         />
                     </div>
                     <input type='submit'
-                        className='registration__btn'
-                        defaultValue="СОХРАНИТЬ"
+                           className='registration__btn'
+                           defaultValue="СОХРАНИТЬ"
                     />
                 </form>
             </Modale>
@@ -145,7 +145,7 @@ class RegistrationForm extends Component {
 
 const MSTP = (state) => ({
     visibleRegistration: state.visibleRegistration,
-})
+});
 
 const MDTP = (dispatch) => {
     return {
@@ -157,6 +157,6 @@ const MDTP = (dispatch) => {
             dispatch(loginHeader())
         },
     }
-}
+};
 
 export default connect(MSTP, MDTP)(RegistrationForm);
