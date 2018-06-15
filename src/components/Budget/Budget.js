@@ -40,7 +40,7 @@ const Budget = (props) => {
             toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget}>
             <h2 className='budget-title'>Создать бюджет</h2>
 
-            <form className='budget-form' action='#' onSubmit={(e) => {props.getSum(e, {
+            <form className='budget-form'  onSubmit={(e) => {props.getSum(e, {
                 plan: +budgetInput.value,
                 fact: 0,
                 date: checkPeriod(dateInput.value),
@@ -52,10 +52,10 @@ const Budget = (props) => {
 
                 <select className='budget-select statistic__select' ref={(input) => dateInput = input}>
                     <option value="month">Месяц</option>
-                    <option value="week">Неделя</option>
-                    <option value="day">День</option>
+                    {/*<option value="week">Неделя</option>*/}
+                    {/*<option value="day">День</option>*/}
                 </select>
-                <button className='modale__btn-save'
+                <button type='submit' className='modale__btn-save'
                 >СОХРАНИТЬ
                 </button>
             </form>

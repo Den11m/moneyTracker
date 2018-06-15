@@ -11,7 +11,14 @@
 
 .active {
     display: block;
+
 }
+.sidebar-link {
+    display: block;
+    line-height: 70px;
+    padding-left: 10px;
+}
+
 
 .sub-item {
     display: flex;
@@ -64,10 +71,8 @@
     width: 249px;
     font-size: 22px;
     height: 70px;
-    padding-top: 24px;
-    padding-left: 10px;
-    color: grey;
-    vertical-align: middle;
+    color: #000;
+
 }
 .menu-item:hover {
     background-color: #C5C9E9;

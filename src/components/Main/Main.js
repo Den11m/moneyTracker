@@ -4,6 +4,7 @@ import CostList from '../../components/CostList/CostList';
 import Budget from '../Budget/Budget';
 import SideBar from '../../components/sidebar/sidebar';
 import Statistics from '../../components/statistics/statistics';
+import {Route, Switch} from 'react-router-dom';
 
 
 const Main = (props) => {
@@ -14,8 +15,12 @@ const Main = (props) => {
                 <SideBar/>
             </div>
             <div className="flex-wrapper">
-                <CostList/>
-                <Statistics/>
+                <Switch>
+                    <Route exact path='/' component={CostList}/>
+                    <Route  path='/statistics' component={Statistics}/>
+
+                </Switch>
+
                 <Budget/>
             </div>
         </div>

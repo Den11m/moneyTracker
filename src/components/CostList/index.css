@@ -72,6 +72,25 @@
     background-size: contain;
 }
 
+.line:nth-child(even) {
+    background: #f3f4fb;
+}
+
+
+.deleteCost {
+    opacity: 0;
+    width: 15px;
+    height: 15px;
+}
+
+.line:hover  {
+    background-color: #dedede;
+}
+
+.line:hover .deleteCost {
+    opacity: 1;
+}
+
 table.Table {
     width: 95%;
     margin: auto;
@@ -96,9 +115,6 @@ table.Table tbody td:last-child {
     text-align: right;
 }
 
-table.Table tr:nth-child(even) {
-    background: #f3f4fb;
-}
 
 @media (min-width: 768px) {
     .spends-span {
