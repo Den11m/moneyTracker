@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getCosts, click, period, spent} from '../../selectors/CostListSelector';
-import {deleteCost} from '../../actions/addNewCostsAction';
+import {deleteCost, deleteFact} from '../../actions/addNewCostsAction';
 import toggleShowWindow from '../../actions/clickAction';
 import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
-
-import './index.css';
 import v4 from 'uuid/v4';
+import './index.css';
+
 
 const getPeriod = (costs, period, filterCategory = null) => {
     let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
@@ -29,9 +29,10 @@ const CostList = (props) => {
                     <tbody>{props.costs.length ? getPeriod(props.costs, props.period, props.category).map((el, index) => <tr className="line" id={el.date} key={v4()}>
                         <td className="start">{index + 1}.</td>
                         <td>{el.category} {el.comments === '' ? '' : `(${el.comments})`}</td>
-                        <td>{moment(el.date).format("DD.MM.YYYY")}</td>
+                        <td>{moment(el.date).format("DD.MM.YYYY h:mm:ss")}</td>
                         <td>{el.cost} грн</td>
-                        <td> <img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={()=> props.deleteCost(el.date)} />  </td>
+                        <td> <img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={()=> { props.deleteCost(el.date)
+                        props.deleteFact(el.cost)}}/>  </td>
 
                     </tr>) : null}
                     </tbody>
@@ -67,6 +68,9 @@ function MDTP(dispatch) {
         toggleShowWindow: function () {
             dispatch(toggleShowWindow())
         },
+        deleteFact: function (data) {
+            dispatch(deleteFact(data))
+        }
     }
 }
 

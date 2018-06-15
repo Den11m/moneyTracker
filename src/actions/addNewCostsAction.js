@@ -21,3 +21,9 @@ export function deleteCost(id) {
  }
 }
 
+export function deleteFact(data){
+    return {
+        type: 'FACT_DELETE',
+        data,
+    }
+}

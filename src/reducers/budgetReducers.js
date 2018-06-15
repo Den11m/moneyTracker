@@ -12,7 +12,8 @@ export default function budget(state = [], action) {
 
         case 'FACT-ADD':
             return [{...state[0], fact: state[0].fact + action.data} ];
-
+        case 'FACT_DELETE':
+            return [{...state[0], fact: state[0].fact - action.data} ]
         default:
             return state;
     }

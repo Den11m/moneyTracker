@@ -74,6 +74,12 @@ class AddNewCosts extends Component {
 
     handleChange = date => this.setState({date});
 
+    componentDidMount() {
+        this.setState({
+            date: new Date(),
+        })
+    }
+
     render() {
         return (
             <Modale toggleShowWindow={this.props.toggleShowWindow} click={this.props.click}>
