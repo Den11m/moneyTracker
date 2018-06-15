@@ -16,3 +16,8 @@
 
     margin-right: 15px;
 }
+
+.budget-fatal {
+    color: #ff4500;
+    font-weight: 700;
+}

@@ -1,4 +1,4 @@
-// import moment from 'moment';
+import moment from 'moment';
 
 export const getBudgetObj = state => {
     if(state.budget[0]) {
@@ -12,9 +12,16 @@ export const getBudgetObj = state => {
     }
 };
 
-export const getBudgetPlan = state =>  getBudgetObj(state) ? getBudgetObj(state).plan :0;
+export const sumCostPerDay = state => state.costs
+    .filter(obj => obj.date >= moment().startOf('day').valueOf() && obj.date <= moment().endOf('day').valueOf())
+    .reduce((acc, obj) => acc + obj.cost, 0);
 
-export const getBudgetSpend = state =>  getBudgetObj(state) ? getBudgetObj(state).spendPerDay :0;
+export const getBudgetPlan = state =>  getBudgetObj(state).plan > 0 ? getBudgetObj(state).plan : 0;
+
+export const getBudgetSpend = state =>  (getBudgetObj(state).plan - getBudgetObj(state).fact + sumCostPerDay(state))/ Math.ceil(moment.duration(moment().endOf('month').valueOf() - moment().startOf('day').valueOf()).asDays());
+
+export const getFactBudgetPerDay = state =>  getBudgetSpend(state) - sumCostPerDay(state);
+
 
 
 
