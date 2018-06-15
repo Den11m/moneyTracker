@@ -14,7 +14,7 @@ import {getBudgetObj, getBudgetPlan} from "../../selectors/BudgetForHeaderSelect
 
 
 const Header = (props) => {
-    let styleBar = (props.getBudgetObj.fact / props.getBudgetPlan*100)+ '%';
+    let styleBar = (props.getBudgetObj / props.getBudgetPlan*100)+'%';
     return (
         <div className="header">
                     <div className='progress-bar-fact' style={{backgroundImage: `linear-gradient(to right, red ${styleBar}, green ${styleBar})`}}>
