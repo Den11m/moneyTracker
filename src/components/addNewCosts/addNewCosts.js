@@ -74,7 +74,7 @@ class AddNewCosts extends Component {
 
     handleChange = date => this.setState({date});
 
-    componentDidMount() {
+    componentDidMount(){
         this.setState({
             date: new Date(),
         })
@@ -116,6 +116,7 @@ class AddNewCosts extends Component {
                            ref={(inputTag) => this.commentInput = inputTag}/>
                     <button className='category--save' onClick={(event) => {
                         event.preventDefault();
+                        this.handleChange();
                         let category = Array.from(this.categories.children);
                         category.some(el => el.children[0].checked === true) && this.state.date !== null && +this.sumInput.value > 0
                             ? this.props.addCosts(

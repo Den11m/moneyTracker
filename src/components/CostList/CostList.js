@@ -5,6 +5,7 @@ import {deleteCost, deleteFact} from '../../actions/addNewCostsAction';
 import toggleShowWindow from '../../actions/clickAction';
 import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
+import {getBudgetPlan} from '../../selectors/BudgetForHeaderSelector';
 import v4 from 'uuid/v4';
 import './index.css';
 
@@ -21,7 +22,7 @@ const CostList = (props) => {
             <AddNewCosts/>
             <div className="cost-list">
                 <div className="cost-form">
-                    <button className="cost-add" onClick={props.toggleShowWindow}> </button>
+                    <button className="cost-add" onClick={() => props.getBudgetPlan > 0 ? props.toggleShowWindow() : alert('введите бюджет')}> </button>
                     <p className="cost-info"> Период: {props.period.period.toLowerCase()} </p>
                     <p className="cost-category">Категория: {props.category === '' ? 'все' : props.category.toLowerCase()}</p>
                 </div>
@@ -56,7 +57,8 @@ function MSTP(state) {
         costs: getCosts(state),
         click: click(state),
         period: period(state),
-        category: spent(state)
+        category: spent(state),
+        getBudgetPlan: getBudgetPlan(state)
     }
 }
 
@@ -71,6 +73,7 @@ function MDTP(dispatch) {
         deleteFact: function (data) {
             dispatch(deleteFact(data))
         }
+
     }
 }
 

@@ -18,7 +18,7 @@ export const sumCostPerDay = state => state.costs
 
 export const getBudgetPlan = state =>  getBudgetObj(state).plan > 0 ? getBudgetObj(state).plan : 0;
 
-export const getBudgetSpend = state =>  (getBudgetObj(state).plan - getBudgetObj(state).fact + sumCostPerDay(state))/ Math.ceil(moment.duration(moment().endOf('month').valueOf() - moment().startOf('day').valueOf()).asDays());
+export const getBudgetSpend = state => getBudgetObj(state).plan > 0 ?  (getBudgetObj(state).plan - getBudgetObj(state).fact + sumCostPerDay(state))/ Math.ceil(moment.duration(moment().endOf('month').valueOf() - moment().startOf('day').valueOf()).asDays()) : 0;
 
 export const getFactBudgetPerDay = state =>  getBudgetSpend(state) - sumCostPerDay(state);
 
