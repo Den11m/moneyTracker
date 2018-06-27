@@ -1,5 +1,6 @@
 {
   "name": "money-tracker",
+  "homepage": "https://den11m.github.io/moneyTracker/build/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
