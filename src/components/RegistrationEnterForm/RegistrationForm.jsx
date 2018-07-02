@@ -1,10 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import RegistrationFormErrors from './RegistrationFormErrors';
 import {connect} from 'react-redux';
 import './RegistrationForm.css';
 import Modale from '../Modale/Modale';
 import toggleShowRegistration from '../../actions/toggleRegistrationAction';
 import {loginHeader} from '../../actions/headerActions';
+import {serverConfig} from "../../config/index.js";
+
+
+const {protocol, host, port} = serverConfig;
 
 class RegistrationForm extends Component {
     constructor(props) {
@@ -13,10 +17,11 @@ class RegistrationForm extends Component {
             login: '',
             email: '',
             password: '',
-            formErrors: {Email: '', Password: '', ExistUser: ''},
+            formErrors: {Email: '', Password: '', ExistUser: '', Message: ''},
             loginValid: false,
             emailValid: false,
             passwordValid: false,
+            isRegistered: false,
         }
     }
 
@@ -37,15 +42,15 @@ class RegistrationForm extends Component {
         switch (fieldName) {
             case 'login':
                 loginValid = value.match(/^[a-zA-Z]{4,}$/);
-                fieldValidationErrors.Login = loginValid ? '' : ' : Enter from 4 symbol for login';
+                fieldValidationErrors.Login = loginValid ? '': 'Enter from 4 symbol for login';
                 break;
             case 'email':
                 emailValid = value.match(/^([-\w.]{4,})+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,}$/);
-                fieldValidationErrors.Email = emailValid ? '' : ' : Enter from 4 symbol for email_login';
+                fieldValidationErrors.Email = emailValid ? '' : 'Enter from 4 symbol for email_login';
                 break;
             case 'password':
                 passwordValid = value.match(/^(?=^.{4,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/);
-                fieldValidationErrors.Password = passwordValid ? '' : ': must include one of the big letter, small letter, number, and password length must be from 4 to 16 letters';
+                fieldValidationErrors.Password = passwordValid ? '' : 'must include one of the big letter, small letter, number, and password length must be from 4 to 16 letters';
                 break;
             default:
                 break;
@@ -58,6 +63,7 @@ class RegistrationForm extends Component {
         });
     }
 
+
     localStorageSetData = (e) => {
         e.preventDefault();
         if (this.state.loginValid && this.state.emailValid && this.state.passwordValid) {
@@ -66,21 +72,40 @@ class RegistrationForm extends Component {
                 email: this.state.email,
                 password: this.state.password,
             };
-            const getDataUsers = localStorage.getItem("users") ? JSON.parse(localStorage.getItem('users')) : [];
-            if (getDataUsers.some(obj => obj.email === newUser.email)) {
-                this.setState({
-                    formErrors: {
-                        ...this.state.formErrors,
-                        ExistUser: ' : User already exists.'
-                    }
-                });
-                return;
-            }
-            getDataUsers.push(newUser);
-            localStorage.setItem('users', JSON.stringify(getDataUsers));
 
-            this.props.toggleShowRegistration();
-            this.props.login();
+            fetch(`${protocol}://${host}:${port}/signup`, {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+                body: JSON.stringify(newUser) // превращает js объект в формат json
+            }).then(response => {
+                if (response.status == 201){
+                    this.setState({isRegistered: true});
+                    return response.json();
+                }
+                return response.json();
+            }).then(data => {
+                this.setState({formErrors:{...this.state.formErrors, Message: data.message}})
+            }).catch(err => {
+                console.log('err:', err);
+            });
+
+            // const getDataUsers = localStorage.getItem("users") ? JSON.parse(localStorage.getItem('users')) : [];
+            // if (getDataUsers.some(obj => obj.email === newUser.email)) {
+            //     this.setState({
+            //         formErrors: {
+            //             ...this.state.formErrors,
+            //             ExistUser: ' : User already exists.'
+            //         }
+            //     });
+            //     return;
+            // }
+            // getDataUsers.push(newUser);
+            // localStorage.setItem('users', JSON.stringify(getDataUsers));
+            //
+            // this.props.toggleShowRegistration();
+            // this.props.login();
 
         }
     };
@@ -89,54 +114,59 @@ class RegistrationForm extends Component {
         return (
             <Modale click={this.props.visibleRegistration} toggleShowWindow={this.props.toggleShowRegistration}>
                 <form action="" className='registration' onSubmit={this.localStorageSetData}>
-                    <h3 className='registration__text'>Регистрация</h3>
+                    {this.state.isRegistered
+                        ? <h3>congrats</h3>
+                        : <Fragment>
+                            <h3 className='registration__text'>Регистрация</h3>
 
-                    <RegistrationFormErrors formErrors={this.state.formErrors}/>
+                            <RegistrationFormErrors formErrors={this.state.formErrors}/>
 
-                    <div className='registration__valid'>
-                        <label className='registration__name'
-                               htmlFor="name">
-                            Login
-                        </label>
-                        <input type="text" required
-                               className='registration__control'
-                               name='login'
-                               placeholder="login"
-                               value={this.state.name}
-                               onChange={this.hahdleUserInput}
-                        />
+                            <div className='registration__valid'>
+                                <label className='registration__name'
+                                       htmlFor="name">
+                                    Login
+                                </label>
+                                <input type="text" required
+                                       className='registration__control'
+                                       name='login'
+                                       placeholder="login"
+                                       value={this.state.name}
+                                       onChange={this.hahdleUserInput}
+                                />
 
-                    </div>
-                    <div className='registration__valid'>
-                        <label className='registration__name'
-                               htmlFor="email">
-                            Email
-                        </label>
-                        <input type="email" required
-                               className='registration__control'
-                               name='email'
-                               placeholder="mail@mail.mail"
-                               value={this.state.email}
-                               onChange={this.hahdleUserInput}
-                        />
-                    </div>
-                    <div className='registration__valid'>
-                        <label className='registration__name'
-                               htmlFor="password">
-                            Password
-                        </label>
-                        <input type="password" required
-                               className='registration__control'
-                               name='password'
-                               placeholder="must be include: one of the big letter, small letter, number "
-                               value={this.state.password}
-                               onChange={this.hahdleUserInput}
-                        />
-                    </div>
-                    <input type='submit'
-                           className='registration__btn'
-                           defaultValue="СОХРАНИТЬ"
-                    />
+                            </div>
+                            <div className='registration__valid'>
+                                <label className='registration__name'
+                                       htmlFor="email">
+                                    Email
+                                </label>
+                                <input type="email" required
+                                       className='registration__control'
+                                       name='email'
+                                       placeholder="mail@mail.mail"
+                                       value={this.state.email}
+                                       onChange={this.hahdleUserInput}
+                                />
+                            </div>
+                            <div className='registration__valid'>
+                                <label className='registration__name'
+                                       htmlFor="password">
+                                    Password
+                                </label>
+                                <input type="password" required
+                                       className='registration__control'
+                                       name='password'
+                                       placeholder="must be include: one of the big letter, small letter, number "
+                                       value={this.state.password}
+                                       onChange={this.hahdleUserInput}
+                                />
+                            </div>
+                            <input type='submit'
+                                   className='registration__btn'
+                                   defaultValue="СОХРАНИТЬ"
+                            />
+                        </Fragment>
+                    }
                 </form>
             </Modale>
         );
