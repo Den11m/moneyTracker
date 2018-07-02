@@ -6,7 +6,7 @@ const checkEmail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}
 let userSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId, // verify if need 
     login: {type: String, require: true, unique: true},
-    email: {type: String, require:  true, unique: true, checkEmail},
+    email: {type: String, require:  true, unique: true, match: checkEmail},
     password: {type: String, require: true, unique: true}
 })
 
