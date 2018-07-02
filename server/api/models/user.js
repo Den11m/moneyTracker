@@ -8,6 +8,6 @@ let userSchema = new Schema({
     login: {type: String, require: true, unique: true},
     email: {type: String, require:  true, unique: true, match: checkEmail},
     password: {type: String, require: true, unique: true}
-})
+});
 
 module.exports = mongoose.model('User', userSchema); /// verify "User" ?
