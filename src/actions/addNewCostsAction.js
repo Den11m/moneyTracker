@@ -5,6 +5,13 @@ export function addCosts(data){
     }
 }
 
+export function loadCosts(data){
+    return {
+        type: 'COSTS_LOADED',
+        data,
+    }
+}
+
 export function getFact(data) {
     return {
         type: 'FACT-ADD',
