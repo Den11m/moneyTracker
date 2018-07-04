@@ -4,7 +4,6 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const {secret} = require('../config/index');
-
 const User = require('../models/user');
 
 router.post('/', function (req, res, next) {
@@ -14,8 +13,11 @@ router.post('/', function (req, res, next) {
         .then(user => {
             if (user) {
                 bcrypt.compare(req.body.password, user.password, function (err, result) {
-                    if (err) {
-                        res.status(500).json({
+                    // console.log(req.body.password)
+                    // console.log(user.password)
+                    // console.log(user)
+                    if (!result) {
+                        res.status(401).json({
                             message: "wrong password"
                         })
                     } else {
@@ -29,10 +31,10 @@ router.post('/', function (req, res, next) {
                 })
             } else {
                 return res.status(400).json({
-                    message: "wrong password"
+                    message: "User is not registered"
                 })
             }
         })
 })
 
-module.exports = router
+module.exports = router;

@@ -6,7 +6,7 @@ const RegistrationFormErrors = ({formErrors}) => {
             {Object.keys(formErrors).map((fieldName, i) => {
                 if (formErrors[fieldName].length > 0) {
                     return (
-                        <p className='registration__errors-text' key={i}>{fieldName}{formErrors[fieldName]}</p>
+                        <p className='registration__errors-text' key={i}>{fieldName}: {formErrors[fieldName]}</p>
                     )
                 }
                 else {

@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
         const token = req.headers.authorization;
         req.auth = jwt.verify(token, secret);
         req.auth && console.log('Auth is successfull');
+        next()
     }
     catch (err) {
         console.log(err);

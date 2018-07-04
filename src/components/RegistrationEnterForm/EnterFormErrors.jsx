@@ -6,7 +6,7 @@ const EnterFormErrors = ({formErrors}) => {
             {Object.keys(formErrors).map((fieldName, i) => {
                 if (formErrors[fieldName].length > 0) {
                     return (
-                        <p className='enter__errors-text' key={i}>{fieldName}{formErrors[fieldName]}</p>
+                        <p className='enter__errors-text' key={i}>{fieldName}: {formErrors[fieldName]}</p>
                     )
                 }
                 else {
