@@ -7,13 +7,15 @@ import toggleShowLogin from '../../actions/toggleLoginAction';
 import toggleShowRegistration from '../../actions/toggleRegistrationAction';
 import {getBudgetObj, getBudgetPlan} from "../../selectors/BudgetForHeaderSelector";
 
-
 const Header = (props) => {
     let styleBar = (props.getBudgetObj / props.getBudgetPlan * 100) + '%';
     return (
         <div className="header">
-            <div className='progress-bar-fact'
-                 style={{backgroundImage: `linear-gradient(to right, red ${styleBar}, green ${styleBar})`}}>
+            <div className="header-relative-box" style= {{width: 100 + '%'}}>
+                <div className="progress-bar-fact" style={{width: `${styleBar}`}}>
+                </div>
+            </div>
+            <div className='header-index-3'>
                 <BudgetRender/>
                 <nav className="header-nav">
                     {props.isLogin
@@ -22,7 +24,6 @@ const Header = (props) => {
                             <button className="header-button" onClick={props.toggleShowRegistration}>Sign Up</button>
                             <button className="header-button" onClick={props.toggleShowLogin}>Login</button>
                         </div>
-
                     }
                 </nav>
             </div>
@@ -35,14 +36,11 @@ const MSTP = (state) => {
         isLogin: state.isLogin,
         getBudgetPlan: getBudgetPlan(state),
         getBudgetObj: getBudgetObj(state).fact
-
     }
 };
 
 const MDTP = (dispatch) => {
     return {
-
-
         logout: function () {
             dispatch(logOut())
         },
@@ -54,9 +52,7 @@ const MDTP = (dispatch) => {
         toggleShowRegistration: function () {
             dispatch(toggleShowRegistration())
         }
-
     }
 };
-
 
 export default connect(MSTP, MDTP)(Header);
