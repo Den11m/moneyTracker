@@ -11,7 +11,6 @@
 }
 
 .header-button {
-
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 14px;
     color: #fff;
@@ -19,11 +18,13 @@
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: rgba(0, 0, 0, 0.30) 0 -1.25px 0;
-    border: 1px solid #13619f;
-    background: #2371b7;
+    background: inherit;
     padding: 11px 20px;
     border-radius: 3px;
-    box-shadow: rgba(255, 255, 255, 0.3) 0 1px 0, inset rgba(255, 255, 255, 0.3) 0 1px 0;
+}
+
+.header-button:hover {
+    background-color: rgba(255,255,255,0.1);
 }
 
 .header-button:active {

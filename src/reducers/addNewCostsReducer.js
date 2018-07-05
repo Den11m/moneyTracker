@@ -1,5 +1,7 @@
 export default function costs(state = [], action) {
     switch (action.type) {
+        case 'COSTS_LOADED': 
+            return action.data;
         case 'ADD-COSTS':
             return [...state, action.data];
 

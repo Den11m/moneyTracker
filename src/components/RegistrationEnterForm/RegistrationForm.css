@@ -7,6 +7,10 @@
 .registration {
   width: 346px;
 }
+.registration__welcome{
+    text-align: center;
+    font-size: 21px;
+}
 
 .registration__text {
     text-align: center;
