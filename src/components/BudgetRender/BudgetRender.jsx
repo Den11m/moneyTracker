@@ -20,7 +20,6 @@ const BudgetRender = (props) => {
             </div>
 
         </Fragment>
-
     )
 };
 
