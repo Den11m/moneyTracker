@@ -149,7 +149,6 @@ class RegistrationForm extends Component {
   };
 
   render() {
-
     return (
       <Modale
         click={this.props.visibleRegistration}

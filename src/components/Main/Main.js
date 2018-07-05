@@ -16,11 +16,10 @@ const Main = (props) => {
             </div>
             <div className="flex-wrapper">
                 <Switch>
-                    <Route exact path='/' component={CostList}/>
+                    <Route  path='/' component={CostList}/>
                     <Route  path='/statistics' component={Statistics}/>
 
                 </Switch>
-
                 <Budget/>
             </div>
         </div>

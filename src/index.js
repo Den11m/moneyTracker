@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import configureStore, {history} from './store/store';
 import {loadState, saveState} from './localStorage';
 import {ConnectedRouter} from 'connected-react-router';
+import {Route} from 'react-router-dom';
 
 const persistedState = loadState();
 const store = configureStore(persistedState);
@@ -30,7 +31,7 @@ setInterval(() => {
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <App/>
+            <Route path="/" component={App} />
         </ConnectedRouter>
     </Provider>
     , document.getElementById('root'));
