@@ -48,19 +48,17 @@ class CostList extends React.Component {
             headers: new Headers({
                 "Authorization": localStorage.getItem('token')
             })
-                .then(response => {
-                    if(response.ok){
-                        this.props.deleteCost(date);
-                        this.props.deleteFact(cost)
-                    } else {
-                        throw new Error()
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
+        }).then(response => {
+            if(response.ok){
+                this.props.deleteCost(date);
+                this.props.deleteFact(cost)
+            } else {
+                throw new Error()
+            }
         })
+            .catch(err => {
+                console.log(err);
+            })
     };
 
     render() {
