@@ -20,7 +20,7 @@ const getPeriod = (costs, period, filterCategory = null) => {
 
 class CostList extends React.Component {
 
-    componentDidMount(){
+    componentDidMount() {
         console.log('adsf', localStorage.getItem('token'));
         fetch(`${protocol}://${host}:${port}/costs`, {
             method: 'GET',
@@ -29,20 +29,41 @@ class CostList extends React.Component {
                 "Authorization": localStorage.getItem('token')
             }),
         })
-        .then(response => {
-            if(response.ok || response.status == 401){
-                return response.json();
-            } 
-        })
-        .then(userCosts => {
-            this.props.loadUserCosts(userCosts.costs);
-        })
-        .catch(err => {
-            console.log(err)
+            .then(response => {
+                if (response.ok || response.status == 401) {
+                    return response.json();
+                }
+            })
+            .then(userCosts => {
+                this.props.loadUserCosts(userCosts.costs);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    delCost = (id, date, cost) => {
+        fetch(`${protocol}://${host}:${port}/costs/${id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                "Authorization": localStorage.getItem('token')
+            })
+                .then(response => {
+                    if(response.ok){
+                        this.props.deleteCost(date);
+                        this.props.deleteFact(cost)
+                    } else {
+                        throw new Error()
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
         })
     }
 
-    render(){
+    render() {
         return (
             <div className="cost-wrapper">
                 <AddNewCosts/>
@@ -60,11 +81,8 @@ class CostList extends React.Component {
                                 <td>{el.category} {el.comments === '' ? '' : `(${el.comments})`}</td>
                                 <td>{moment(el.date).format("DD.MM.YYYY h:mm:ss")}</td>
                                 <td>{el.cost} грн</td>
-                                <td><img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={() => {
-                                    this.props.deleteCost(el.date)
-                                    this.props.deleteFact(el.cost)
-                                }}/></td>
-    
+                                <td><img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={() => {this.delCost(el._id, el.date, el.cost)}}/></td>
+
                             </tr>) : null}
                         </tbody>
                     </table>
@@ -75,14 +93,14 @@ class CostList extends React.Component {
                             грн
                         </p>
                     </div>
-    
+
                 </div>
             </div>
-    
+
         )
-    
+
     }
-};
+}
 
 function MSTP(state) {
     return {
