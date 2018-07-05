@@ -21,7 +21,7 @@ const getPeriod = (costs, period, filterCategory = null) => {
 class CostList extends React.Component {
 
     componentDidMount(){
-        console.log('adsf', localStorage.getItem('token'));
+       
         fetch(`${protocol}://${host}:${port}/costs`, {
             method: 'GET',
             headers: new Headers({
@@ -30,7 +30,7 @@ class CostList extends React.Component {
             }),
         })
         .then(response => {
-            if(response.ok || response.status == 401){
+            if(response.ok || response.status === 401){
                 return response.json();
             } 
         })

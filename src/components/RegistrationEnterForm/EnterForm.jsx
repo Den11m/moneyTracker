@@ -36,9 +36,9 @@ class EnterForm extends Component {
     })
       .then(response => {
         if (
-          response.status == 200 ||
-          response.status == 201 ||
-          response.status == 401
+          response.status === 200 ||
+          response.status === 201 ||
+          response.status === 401
         ) {
           this.setState({ isEntered: true });
           setTimeout(() => {

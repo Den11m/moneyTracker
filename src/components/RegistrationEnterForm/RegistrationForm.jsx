@@ -93,7 +93,7 @@ class RegistrationForm extends Component {
       })
         .then(response => {
           console.log("response", response);
-          if (response.status == 201) {
+          if (response.status === 201) {
             // this.props.history.push("/login");
             this.setState({ isRegistered: true });
             setTimeout(() => {
@@ -149,7 +149,6 @@ class RegistrationForm extends Component {
   };
 
   render() {
-    console.log("this.props.history", this.props.history);
 
     return (
       <Modale

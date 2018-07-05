@@ -8,6 +8,9 @@ import {click} from '../../selectors/CostListSelector';
 import toggleShowWindow from '../../actions/clickAction';
 import v4 from 'uuid/v4';
 import './style.css';
+import {serverConfig} from '../../config/index';
+
+const {protocol, host, port}=serverConfig;
 
 
 let category = [
@@ -119,13 +122,39 @@ class AddNewCosts extends Component {
                         this.handleChange();
                         let category = Array.from(this.categories.children);
                         category.some(el => el.children[0].checked === true) && this.state.date !== null && +this.sumInput.value > 0
-                            ? this.props.addCosts(
-                            {
-                                cost: +this.sumInput.value,
-                                date: moment(this.state.date).valueOf(),
-                                category: category.find(el => el.children[0].checked === true).children[0].value,
-                                comments: this.commentInput.value,
+                               ? fetch(`${protocol}://${host}:${port}/costs`, {
+                                   method: 'POST',
+                                   headers: new Headers({
+                                    "Content-Type":"application/json",
+                                    "Authorization": localStorage.getItem('token')
+                                }),
+                                   body:JSON.stringify({
+                                    cost: +this.sumInput.value,
+                                    date: moment(this.state.date).valueOf(),
+                                    category: category.find(el => el.children[0].checked === true).children[0].value,
+                                    comments: this.commentInput.value,
+                                })                                 
+                               })
+                               .then(response => {
+                                if(response.ok || response.status === 401){
+                                    return response.json();
+                                } 
                             })
+                               .then(data => {
+                                this.props.addCosts(data.cost)
+                                console.log('MESSAGE: DATA was post', data.cost);
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
+
+                            // ? this.props.addCosts(
+                            // {
+                            //     cost: +this.sumInput.value,
+                            //     date: moment(this.state.date).valueOf(),
+                            //     category: category.find(el => el.children[0].checked === true).children[0].value,
+                            //     comments: this.commentInput.value,
+                            // })
                             : alert('fill in the category or date');
                         this.props.toggleShowWindow();
                         this.props.getFact(+this.sumInput.value);
