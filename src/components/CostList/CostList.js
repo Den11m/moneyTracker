@@ -42,7 +42,28 @@ class CostList extends React.Component {
         })
     }
 
-    render(){
+    delCost = (id, date, cost) => {
+        fetch(`${protocol}://${host}:${port}/costs/${id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                "Authorization": localStorage.getItem('token')
+            })
+                .then(response => {
+                    if(response.ok){
+                        this.props.deleteCost(date);
+                        this.props.deleteFact(cost)
+                    } else {
+                        throw new Error()
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+        })
+    };
+
+    render() {
         return (
             <div className="cost-wrapper">
                 <AddNewCosts/>
@@ -60,11 +81,8 @@ class CostList extends React.Component {
                                 <td>{el.category} {el.comments === '' ? '' : `(${el.comments})`}</td>
                                 <td>{moment(el.date).format("DD.MM.YYYY h:mm:ss")}</td>
                                 <td>{el.cost} грн</td>
-                                <td><img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={() => {
-                                    this.props.deleteCost(el.date)
-                                    this.props.deleteFact(el.cost)
-                                }}/></td>
-    
+                                <td><img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={() => {this.delCost(el._id, el.date, el.cost)}}/></td>
+
                             </tr>) : null}
                         </tbody>
                     </table>
