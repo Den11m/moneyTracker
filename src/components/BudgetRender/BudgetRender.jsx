@@ -18,7 +18,6 @@ const BudgetRender = (props) => {
                     className="BudgetRender-span"> / {props.getBudgetPlan} грн
                 </span>
             </div>
-
         </Fragment>
 
     )
