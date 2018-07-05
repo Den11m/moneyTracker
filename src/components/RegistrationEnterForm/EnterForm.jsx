@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import EnterFormErrors from "./EnterFormErrors";
 import "./EnterForm.css";
@@ -13,7 +13,8 @@ class EnterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formErrors: {}
+      formErrors: {},
+      isEntered: false
     };
   }
 
@@ -34,7 +35,18 @@ class EnterForm extends Component {
       })
     })
       .then(response => {
-        if (response.status == 200 || response.status == 201 || response.status == 401) {
+        if (
+          response.status == 200 ||
+          response.status == 201 ||
+          response.status == 401
+        ) {
+          this.setState({ isEntered: true });
+          setTimeout(() => {
+            this.props.toggleShowLogin();
+            this.props.login();
+            this.setState({ isEntered: false });
+          }, 3000);
+
           return response.json();
         }
         throw new Error();
@@ -43,10 +55,6 @@ class EnterForm extends Component {
         console.log(data);
         if (data.userToken) {
           localStorage.setItem("token", data.userToken);
-          setTimeout(this.props.toggleShowLogin, 3000);
-          setTimeout(this.props.login, 3000);
-          
-
         } else {
           this.setState({
             formErrors: {
@@ -89,37 +97,45 @@ class EnterForm extends Component {
         toggleShowWindow={this.props.toggleShowLogin}
       >
         <form action="" className="enter-form" onSubmit={this.validateField}>
-          <h3 className="enter-form__text">Вход</h3>
-          <EnterFormErrors formErrors={this.state.formErrors} />
-          <div className="enter-form__valid">
-            <label className="enter-form__name">Email</label>
-            <input
-              type="email"
-              required
-              className="enter-form__control"
-              name="email"
-              placeholder="mail@mail"
-              ref={input => (this.emailInput = input)}
-            />
-          </div>
-          <div className="enter-form__valid">
-            <label className="enter-form__name" htmlFor="password">
-              Password
-            </label>
-            <input
-              type="password"
-              required
-              className="enter-form__control"
-              name="password"
-              placeholder="......"
-              ref={input => (this.passwordInput = input)}
-            />
-          </div>
-          <input
-            type="submit"
-            className="enter-form__btn"
-            defaultValue="ВОЙТИ"
-          />
+          {this.state.isEntered ? (
+            <h3 className="registration__welcome">
+              Congratulations. You are entered.
+            </h3>
+          ) : (
+            <Fragment>
+              <h3 className="enter-form__text">Вход</h3>
+              <EnterFormErrors formErrors={this.state.formErrors} />
+              <div className="enter-form__valid">
+                <label className="enter-form__name">Email</label>
+                <input
+                  type="email"
+                  required
+                  className="enter-form__control"
+                  name="email"
+                  placeholder="mail@mail"
+                  ref={input => (this.emailInput = input)}
+                />
+              </div>
+              <div className="enter-form__valid">
+                <label className="enter-form__name" htmlFor="password">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  required
+                  className="enter-form__control"
+                  name="password"
+                  placeholder="......"
+                  ref={input => (this.passwordInput = input)}
+                />
+              </div>
+              <input
+                type="submit"
+                className="enter-form__btn"
+                defaultValue="ВОЙТИ"
+              />
+            </Fragment>
+          )}
         </form>
       </Modale>
     );

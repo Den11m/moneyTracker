@@ -96,7 +96,11 @@ class RegistrationForm extends Component {
           if (response.status == 201) {
             // this.props.history.push("/login");
             this.setState({ isRegistered: true });
-            setTimeout(this.props.toggleShowRegistration, 3000);
+            setTimeout(() => {
+              this.props.toggleShowRegistration();
+              this.props.login();
+              this.setState({ isRegistered: false });
+            }, 3000);
 
             // window.location.pathname="/login";
             return response.json();
@@ -158,7 +162,9 @@ class RegistrationForm extends Component {
           onSubmit={this.localStorageSetData}
         >
           {this.state.isRegistered ? (
-            <h3>congrats</h3>
+            <h3 className="registration__welcome">
+              Congratulations. You are registered.
+            </h3>
           ) : (
             <Fragment>
               <h3 className="registration__text">Регистрация</h3>
