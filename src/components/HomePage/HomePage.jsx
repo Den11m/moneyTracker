@@ -64,13 +64,13 @@ class HomePage extends React.Component {
                             tabIndex="0"
                         >
                             <img
-                                src="[image/path/please_change]"
+                                src="/costs.png"
                                 alt="title or description"
                                 style={{display: "block", width: "100%"}}
                             />
                         </div>
-                        <img src="[image/path/please_change]" alt="title or description"/>
-                        <img src="[image/path/please_change]" alt="title or description"/>
+                        <img src="/statistics.png" alt="title or description"/>
+                        <img src="/costs.png" alt="title or description"/>
                     </Coverflow>
                 </StyleRoot>
             </div>
