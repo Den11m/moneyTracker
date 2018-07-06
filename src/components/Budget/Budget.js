@@ -4,6 +4,7 @@ import Modale from '../Modale/Modale';
 import {addBudget} from '../../actions/budgetAction';
 import moment from 'moment';
 import toggleShowBudget from '../../actions/budgetShowAction';
+import {getBudgetObj} from '../../selectors/BudgetForHeaderSelector';
 import './budget.css';
 
 const Budget = (props) => {
@@ -43,7 +44,7 @@ const Budget = (props) => {
             <form className='budget-form' onSubmit={(e) => {
                 +budgetInput.value > 0 ? props.getSum(e, {
                     plan: +budgetInput.value,
-                    fact: 0,
+                    fact: props.getBudgetFact || 0,
                     date: checkPeriod(dateInput.value),
                     spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
                 }) : alert('Бюджет должен быть положительным числом');
@@ -82,7 +83,8 @@ function MDTP(dispatch) {
 function MSTP(state) {
     return {
         onClickBudget: state.budgetShow,
-        budget: state.budget
+        getBudgetFact: getBudgetObj(state).fact,
+        budget: state.budget,
     }
 }
 
