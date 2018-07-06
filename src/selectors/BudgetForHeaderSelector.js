@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 export const getBudgetObj = state => {
-    if (state.budget[0]) {
+    if (state.budget[state.budget.length - 1]) {
         return state.budget.find(el =>
             el.date.start <= Date.now()
             && el.date.end >= Date.now()

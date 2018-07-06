@@ -39,7 +39,7 @@ const Budget = (props) => {
     return (
         <Modale
             toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget}>
-            <h2 className='budget-title'>Создать бюджет</h2>
+            <h2 className='budget-title'>{!props.getBudgetObj ? "Создать бюджет" : "Редактировать бюджет"}</h2>
 
             <form className='budget-form' onSubmit={(e) => {
                 +budgetInput.value > 0 ? props.getSum(e, {
@@ -84,6 +84,7 @@ function MSTP(state) {
     return {
         onClickBudget: state.budgetShow,
         getBudgetFact: getBudgetObj(state).fact,
+        getBudgetObj: getBudgetObj(state),
         budget: state.budget,
     }
 }
