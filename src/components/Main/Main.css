@@ -8,12 +8,12 @@
 
 .total-wrapper {
     display: flex;
-    background-color: #f1f2f2;
+    background-color: #ebecf0;
 }
 
 .sideBar {
     flex-basis: 20%;
-    background-color: #fff;
+    background-color: #5a5b62;
 }
 
 .flex-wrapper {

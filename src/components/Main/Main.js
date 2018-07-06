@@ -18,7 +18,6 @@ const Main = (props) => {
                 <Switch>
                     <Route path='/' component={CostList}/>
                     <Route path='/statistics' component={Statistics}/>
-
                 </Switch>
                 <Budget/>
             </div>

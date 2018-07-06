@@ -18,22 +18,22 @@ class App extends Component {
         console.log("props", this.props);
         return (
             <Fragment>
-                {/*<Switch>*/}
-                    <PrivateRoute
-                        path="/"
-                        redirectTo="/homepage"
-                        isLogin={isLogin}
-                        component={Layout}
-                    />
+                <Switch>
                     <PrivateRoute
                         path="/homepage"
                         redirectTo="/"
                         isLogin={!isLogin}
                         component={HomePage}
                     />
+                    <PrivateRoute
+                        path="/"
+                        redirectTo="/homepage"
+                        isLogin={isLogin}
+                        component={Layout}
+                    />
                     {/* <Route  path='/' component={Layout}/> */}
                     {/* <Route path='/homepage' component={HomePage}/> */}
-                {/*</Switch>*/}
+                </Switch>
                 <RegistrationForm/>
                 <EnterForm/>
             </Fragment>
