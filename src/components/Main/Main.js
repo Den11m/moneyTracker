@@ -15,10 +15,10 @@ const Main = (props) => {
                 <SideBar/>
             </div>
             <div className="flex-wrapper">
-                <Switch>
-                    <Route path='/' component={CostList}/>
+                {/* <Switch> */}
+                    <Route path='/costs' component={CostList}/>
                     <Route path='/statistics' component={Statistics}/>
-                </Switch>
+                {/* </Switch> */}
                 <Budget/>
             </div>
         </div>
@@ -27,5 +27,3 @@ const Main = (props) => {
 };
 
 export default Main;
-
-
