@@ -105,7 +105,7 @@ class AddNewCosts extends Component {
                     <input type='number' placeholder='сумма' className='category--sum' required
                            ref={(inputTag) => this.sumInput = inputTag}/>
                     <div className='icons-category' ref={(input) => this.categories = input}>
-                        {category.map(el => <div key={v4()} className='icon-category'>
+                        {category.map((el, index) => <div key={index} className='icon-category'>
                             <input type="radio" className='radio' id={el.id} name="contact" value={el.value}/>
                             <label htmlFor={el.id} className={el.id}> </label>
                             <p className='category--text'>{el.value}</p>
