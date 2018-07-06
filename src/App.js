@@ -18,7 +18,7 @@ class App extends Component {
         console.log("props", this.props);
         return (
             <Fragment>
-                <Switch>
+                {/*<Switch>*/}
                     <PrivateRoute
                         path="/"
                         redirectTo="/homepage"
@@ -33,7 +33,7 @@ class App extends Component {
                     />
                     {/* <Route  path='/' component={Layout}/> */}
                     {/* <Route path='/homepage' component={HomePage}/> */}
-                </Switch>
+                {/*</Switch>*/}
                 <RegistrationForm/>
                 <EnterForm/>
             </Fragment>
