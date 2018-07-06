@@ -16,8 +16,8 @@ const Main = (props) => {
             </div>
             <div className="flex-wrapper">
                 <Switch>
-                    <Route  path='/' component={CostList}/>
-                    <Route  path='/statistics' component={Statistics}/>
+                    <Route path='/' component={CostList}/>
+                    <Route path='/statistics' component={Statistics}/>
 
                 </Switch>
                 <Budget/>
