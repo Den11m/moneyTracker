@@ -21,7 +21,7 @@ class App extends Component {
                 <Switch>
                     <PrivateRoute
                         path="/homepage"
-                        redirectTo="/"
+                        redirectTo="/costs"
                         isLogin={!isLogin}
                         component={HomePage}
                     />

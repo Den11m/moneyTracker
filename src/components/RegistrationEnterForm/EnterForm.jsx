@@ -35,18 +35,12 @@ class EnterForm extends Component {
       })
     })
       .then(response => {
+        console.log('ststus', response.status);
         if (
           response.status === 200 ||
           response.status === 201 ||
           response.status === 401
         ) {
-          this.setState({ isEntered: true });
-          setTimeout(() => {
-            this.props.toggleShowLogin();
-            this.props.login();
-            this.setState({ isEntered: false });
-          }, 3000);
-
           return response.json();
         }
         throw new Error();
@@ -55,6 +49,12 @@ class EnterForm extends Component {
         console.log(data);
         if (data.userToken) {
           localStorage.setItem("token", data.userToken);
+          this.setState({ isEntered: true });
+          setTimeout(() => {
+            this.props.toggleShowLogin();
+            this.props.login();
+            this.setState({ isEntered: false });
+          }, 3000);
         } else {
           this.setState({
             formErrors: {
