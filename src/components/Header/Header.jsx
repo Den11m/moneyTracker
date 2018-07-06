@@ -42,7 +42,8 @@ const MSTP = (state) => {
 const MDTP = (dispatch) => {
     return {
         logout: function () {
-            dispatch(logOut())
+            localStorage.removeItem('token');
+            dispatch(logOut());
         },
 
         toggleShowLogin: function () {
