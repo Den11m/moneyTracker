@@ -84,7 +84,7 @@ class RegistrationForm extends Component {
         password: this.state.password
       };
 
-      fetch(`${protocol}://${host}:${port}/signup`, {
+      fetch(`/signup`, {
         method: "POST",
         headers: new Headers({
           "Content-Type": "application/json"

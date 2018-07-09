@@ -24,7 +24,7 @@ class EnterForm extends Component {
     const passwordInput = this.passwordInput.value;
     // const getDataUsers = localStorage.getItem("users") ? JSON.parse(localStorage.getItem('users')) : [];
 
-    fetch(`${protocol}://${host}:${port}/login`, {
+    fetch(`/login`, {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json"

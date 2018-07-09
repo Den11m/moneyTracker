@@ -122,7 +122,7 @@ class AddNewCosts extends Component {
                         this.handleChange();
                         let category = Array.from(this.categories.children);
                         category.some(el => el.children[0].checked === true) && this.state.date !== null && +this.sumInput.value > 0
-                               ? fetch(`${protocol}://${host}:${port}/costs`, {
+                               ? fetch(`/costs`, {
                                    method: 'POST',
                                    headers: new Headers({
                                     "Content-Type":"application/json",

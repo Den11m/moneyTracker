@@ -22,7 +22,7 @@ class CostList extends React.Component {
 
     componentDidMount(){
        
-        fetch(`${protocol}://${host}:${port}/costs`, {
+        fetch(`/costs`, {
             method: 'GET',
             headers: new Headers({
                 // "Access-Control-Request-Headers": "Authorization",
@@ -43,7 +43,7 @@ class CostList extends React.Component {
     }
 
     delCost = (id, date, cost) => {
-        fetch(`${protocol}://${host}:${port}/costs/${id}`, {
+        fetch(`/costs/${id}`, {
             method: 'DELETE',
             headers: new Headers({
                 "Authorization": localStorage.getItem('token')
