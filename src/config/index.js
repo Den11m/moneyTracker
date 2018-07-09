@@ -1,5 +1,5 @@
 export const serverConfig = {
-     protocol: 'http',
-     host: 'localhost',
-     port: 3000,
+     protocol: 'https',
+     host: 'money-tracker-2018.herokuapp.com',
+     port: process.env.PORT || 3001,
 };
