@@ -31,8 +31,9 @@ coverage
 bower_components
 # node-waf configuration
 .lock-wscript
-
-
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+/build
 # Dependency directories
 node_modules/
 jspm_packages/
