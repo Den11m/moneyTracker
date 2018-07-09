@@ -1,5 +1,5 @@
 export const serverConfig = {
      protocol: 'http',
      host: 'localhost',
-     port: 3001,
-}
+     port: 3000,
+};
