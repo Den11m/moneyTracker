@@ -28,7 +28,8 @@ app.use('/signup', signUpRouter);
 app.use('/costs', checkAuth, costsRouter);
 
 app.get('/', function (req, res, next) {
-    res.sendFile(path.resolve(__dirname + '/client/build/index.html'));
+    // res.sendFile(path.resolve(__dirname + '/client/build/index.html'));
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
     // res.send("Work!");
 });
 
