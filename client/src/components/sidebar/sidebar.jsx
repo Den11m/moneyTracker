@@ -23,6 +23,7 @@ import v4 from "uuid/v4";
 import {Link} from "react-router-dom";
 
 const nameCategory = [
+    "all",
     "health",
     "food",
     "hygiena",
@@ -35,7 +36,6 @@ const nameCategory = [
     "animals",
     "gifts",
     "other",
-    "all"
 ];
 
 class Sidebar extends Component {
@@ -45,6 +45,7 @@ class Sidebar extends Component {
             periodVisablilty: false,
             costVisability: false,
             categories: [
+                "Все",
                 "Здоровье",
                 "Еда",
                 "Гигиена",
@@ -57,7 +58,6 @@ class Sidebar extends Component {
                 "Питомцы",
                 "Подарки",
                 "Другое",
-                "Все"
             ]
         };
     }
