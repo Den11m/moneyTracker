@@ -8,9 +8,6 @@ import {click} from '../../selectors/CostListSelector';
 import toggleShowWindow from '../../actions/clickAction';
 import v4 from 'uuid/v4';
 import './style.css';
-import {serverConfig} from '../../config/index';
-
-const {protocol, host, port}=serverConfig;
 
 
 let category = [

@@ -14,7 +14,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization') //указываем какие хэдеры разрешенно поддержать -"стандартные headers node.js"
 
     if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'POST, GET, DELETE, PATCH, PUT')
+        res.header('Access-Control-Allow-Methods', 'POST, GET, DELETE, PATCH, PUT');
         return res.status(200).json({
             Message: 'It\'s okey',
         })
@@ -30,9 +30,7 @@ app.use('/signup', signUpRouter);
 app.use('/costs', checkAuth, costsRouter);
 
 app.get('/', function (req, res, next) {
-    // res.sendFile(path.resolve(__dirname + '/client/build/index.html'));
     res.sendFile(path.join(__dirname,'client/build/index.html'));
-    // res.send("Work!");
 });
 
 module.exports = app;

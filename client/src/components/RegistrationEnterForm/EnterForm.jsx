@@ -5,9 +5,7 @@ import "./EnterForm.css";
 import Modale from "../Modale/Modale";
 import toggleShowLogin from "../../actions/toggleLoginAction";
 import { loginHeader } from "../../actions/headerActions";
-import { serverConfig } from "../../config/index.js";
 
-const { protocol, host, port } = serverConfig;
 
 class EnterForm extends Component {
   constructor(props) {
@@ -22,7 +20,6 @@ class EnterForm extends Component {
     e.preventDefault();
     const emailInput = this.emailInput.value;
     const passwordInput = this.passwordInput.value;
-    // const getDataUsers = localStorage.getItem("users") ? JSON.parse(localStorage.getItem('users')) : [];
 
     fetch(`/login`, {
       method: "POST",

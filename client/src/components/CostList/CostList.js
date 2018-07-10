@@ -6,11 +6,8 @@ import toggleShowWindow from '../../actions/clickAction';
 import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
 import {getBudgetPlan} from '../../selectors/BudgetForHeaderSelector';
-import {serverConfig} from '../../config/index';
 import v4 from 'uuid/v4';
 import './index.css';
-
-const {protocol, host, port} = serverConfig;
 
 const getPeriod = (costs, period, filterCategory = null) => {
     let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
@@ -25,7 +22,6 @@ class CostList extends React.Component {
         fetch(`/costs`, {
             method: 'GET',
             headers: new Headers({
-                // "Access-Control-Request-Headers": "Authorization",
                 "Authorization": localStorage.getItem('token')
             }),
         })

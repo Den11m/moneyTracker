@@ -5,9 +5,6 @@ import "./RegistrationForm.css";
 import Modale from "../Modale/Modale";
 import toggleShowRegistration from "../../actions/toggleRegistrationAction";
 import { loginHeader } from "../../actions/headerActions";
-import { serverConfig } from "../../config/index.js";
-
-const { protocol, host, port } = serverConfig;
 
 class RegistrationForm extends Component {
   constructor(props) {
@@ -102,7 +99,6 @@ class RegistrationForm extends Component {
               this.setState({ isRegistered: false });
             }, 3000);
 
-            // window.location.pathname="/login";
             return response.json();
           }
           return response.json();
