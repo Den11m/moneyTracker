@@ -92,7 +92,7 @@ class RegistrationForm extends Component {
           console.log("response", response);
           if (response.status === 201) {
             // this.props.history.push("/login");
-            this.setState({ isRegistered: true });
+            this.setState({ isRegistered: true , login: '', email: '', password: ''});
             setTimeout(() => {
               this.props.toggleShowRegistration();
               this.props.login();

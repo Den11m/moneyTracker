@@ -5,5 +5,8 @@ export function addBudget(budgetInfo) {
     }
 }
 
-
-
+export function clearBudget() {
+    return {
+        type: 'CLEAR_BUDGET',
+    }
+}

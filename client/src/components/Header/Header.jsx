@@ -6,6 +6,8 @@ import BudgetRender from '../BudgetRender/BudgetRender';
 import toggleShowLogin from '../../actions/toggleLoginAction';
 import toggleShowRegistration from '../../actions/toggleRegistrationAction';
 import {getBudgetObj, getBudgetPlan} from "../../selectors/BudgetForHeaderSelector";
+import {clearBudget} from '../../actions/budgetAction';
+import {Week} from '../../actions/periodAction';
 
 const Header = (props) => {
     let styleBar = (props.getBudgetObj / props.getBudgetPlan * 100) + '%';
@@ -43,6 +45,9 @@ const MDTP = (dispatch) => {
     return {
         logout: function () {
             localStorage.removeItem('token');
+            localStorage.removeItem('redux-state');
+            dispatch(clearBudget());
+            dispatch(Week());
             dispatch(logOut());
         },
 

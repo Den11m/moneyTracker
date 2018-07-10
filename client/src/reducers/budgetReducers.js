@@ -9,6 +9,8 @@ export default function budget(state = [], action) {
                 newState[findObj(state)] = action.data;
                 return newState;
             }
+        case 'CLEAR_BUDGET':
+            return [];
 
         case 'FACT-ADD':
             return [{...state[0], fact: state[0].fact + action.data}];
@@ -23,4 +25,3 @@ function findObj(state) {
     const index = state.findIndex(obj => obj.date.start <= Date.now() && obj.date.end >= Date.now());
     return index;
 }
-
