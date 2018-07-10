@@ -64,6 +64,7 @@ class CostList extends React.Component {
                 <div className="cost-list">
                     <div className="cost-form">
                         <button className="cost-add"
+                                title='добавить расходы'
                                 onClick={() => this.props.getBudgetPlan > 0 ? this.props.toggleShowWindow() : alert('введите бюджет')}></button>
                         <p className="cost-info"> Период: {this.props.period.period.toLowerCase()} </p>
                         <p className="cost-category">Категория: {this.props.category === '' ? 'все' : this.props.category.toLowerCase()}</p>
