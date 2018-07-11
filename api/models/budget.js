@@ -1,24 +1,26 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
+let costSchema = require("./cost");
 
 let Budget = new Schema(
-  {
-    _id: mongoose.Schema.Types.ObjectId,
-    userId: {
-      type: String,
-      require: true
+    {
+        value: {type: Number, required: true},
+        costs: [costSchema],
+        date: {
+            start: {type: Date, required: true},
+            end: {type: Date, required: true},
+        },
+        // spendPerDay: {type: Number, required: true},
     },
-    plan: {type: Number, required: true},
-    fact: {type: Number, default: 0},
-    date: {
-      start: {type: Number, required: true},
-      end: {type: Number, required: true},
-    },
-    spendPerDay: {type: Number, required: true},
-  },
-  {
-    versionKey: false
-  }
+    {
+        versionKey: false
+    }
 );
+Budget.virtual('fact').get(function () {
+    debugger;
+    return this.costs;
+});
 
-module.exports = mongoose.model("Budget", Budget);
+module.exports = Budget;
+
+
