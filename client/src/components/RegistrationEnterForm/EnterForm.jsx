@@ -48,11 +48,11 @@ class EnterForm extends Component {
         if (data.userToken) {
           localStorage.setItem("token", data.userToken);
           this.setState({ isEntered: true });
-          setTimeout(() => {
+          // setTimeout(() => {
             this.props.toggleShowLogin();
             this.props.login();
             this.setState({ isEntered: false });
-          }, 3000);
+          // }, 3000);
         } else {
           this.setState({
             formErrors: {
@@ -95,12 +95,13 @@ class EnterForm extends Component {
         toggleShowWindow={this.props.toggleShowLogin}
       >
         <form action="" className="enter-form" onSubmit={this.validateField}>
-          {this.state.isEntered ? (
-            <h3 className="registration__welcome">
-              Congratulations. You are entered.
-            </h3>
-          ) : (
-            <Fragment>
+          {
+          //   this.state.isEntered ? (
+          //   <h3 className="registration__welcome">
+          //     Congratulations. You are entered.
+          //   </h3>
+          // ) : (
+            (<Fragment>
               <h3 className="enter-form__text">Вход</h3>
               <EnterFormErrors formErrors={this.state.formErrors} />
               <div className="enter-form__valid">
