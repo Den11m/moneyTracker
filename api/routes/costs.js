@@ -66,17 +66,45 @@ router.get('/', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
+    const decoded = jwt.decode(req.headers.authorization);
     console.log('req params', req.params);
-    Cost.findByIdAndRemove(req.params.id)
-        .exec()
-        .then(cost => {
-            res.status(200).json({
-                Message: 'Your cost deleted ',
-                costId: cost._id,
-            })
+    Users.findOne({
+        _id: decoded._id
+    })
+    .exec()
+    .then((user) => {
+        return user.budgets.find(budget => {
+          return budget.date.start <= moment().valueOf() 
+          && budget.date.end >=  moment().valueOf();
         })
-        .catch(error => {
-            res.status(500).json(error)
+      })
+    .then( budget => {
+        budget.costs.findByIdAndRemove(req.params.id)
+    })
+    .then(cost => {
+        res.status(200).json({
+            Message: 'Your cost deleted ',
+            costId: cost._id,
         })
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
 });
+
+// router.delete('/:id', (req, res, next) => {
+//         console.log('req params', req.params);
+//     Costs.findByIdAndRemove(req.params.id)
+//         .exec()
+//         .then(cost => {
+//             res.status(200).json({
+//                 Message: 'Your cost deleted ',
+//                 costId: cost._id,
+//             })
+//         })
+//         .catch(error => {
+//             res.status(500).json(error)
+//         })
+// });
+
 module.exports = router;
