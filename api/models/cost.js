@@ -1,24 +1,24 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+const moment = require("moment");
 
 let Cost = new Schema({
-
+    _id: mongoose.Schema.Types.ObjectId,
      cost: {
           type: Number,
-          require: true
+          required: true
      },
      date: {
-          type: Number,
-          require: true
+          type: Date,
+          default: moment().valueOf()
      },
      category: {
           type: String,
-          require: true
+          required: true
      },
      comments: {
           type: String,
-          require: true
-     },
+     }
 }, {
      versionKey: false
 })
