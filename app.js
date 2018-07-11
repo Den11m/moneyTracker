@@ -4,6 +4,7 @@ const path = require('path');
 const loginRouter = require('./api/routes/login');
 const signUpRouter = require('./api/routes/signup');
 const costsRouter = require('./api/routes/costs');
+const budgetRouter = require('./api/routes/budget');
 const checkAuth = require('./api/middlewares/auth');
 
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname,'client/build')));
 app.use('/login', loginRouter);
 app.use('/signup', signUpRouter);
 app.use('/costs', checkAuth, costsRouter);
+app.use('/budget', checkAuth, budgetRouter);
 
 app.get('/', function (req, res, next) {
     res.sendFile(path.join(__dirname,'client/build/index.html'));
