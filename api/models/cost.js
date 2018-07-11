@@ -3,6 +3,7 @@ let Schema = mongoose.Schema;
 const moment = require("moment");
 
 let Cost = new Schema({
+    _id: mongoose.Schema.Types.ObjectId,
      cost: {
           type: Number,
           required: true

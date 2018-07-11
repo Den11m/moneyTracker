@@ -43,18 +43,40 @@ router.get('/', (req, res, next) => {
 
 });
 
-router.delete('/:id', (req, res, next) => {
-    console.log('req params', req.params);
-    Budget.findByIdAndRemove(req.params.id)
-        .exec()
-        .then(budget => {
-            res.status(200).json({
-                Message: 'Your budget deleted ',
-                budgetId: budget._id,
-            })
+router.put('/', (req, res, next) => {
+  const decoded = jwt.decode(req.headers.authorization);
+  console.log('decoded', decoded);
+  Users.findOne({
+      _id: decoded._id
+  }).exec()
+      .then((user) => {
+        return user.budgets.find(budget => {
+          return budget.date.start <= moment().valueOf() 
+          && budget.date.end >=  moment().valueOf();
         })
-        .catch(error => {
-            res.status(500).json(error)
-        })
+      })
+      .then((userBudget => {
+        userBudget.value = req.body.value
+
+       return user.save();
+       debugger;
+      }))
+      .catch(error => {
+          res.status(500).json(error) 
+      })
 });
+// router.delete('/:id', (req, res, next) => {
+//     console.log('req params', req.params);
+//     Budget.findByIdAndRemove(req.params.id)
+//         .exec()
+//         .then(budget => {
+//             res.status(200).json({
+//                 Message: 'Your budget deleted ',
+//                 budgetId: budget._id,
+//             })
+//         })
+//         .catch(error => {
+//             res.status(500).json(error)
+//         })
+// });
 module.exports = router;
