@@ -1,17 +1,14 @@
 .wrapper-sidebar {
     width: 250px;
 }
-
 .sub-menu {
     font-size: 12px;
     color: black;
     background-color: white;
     display: none;
 }
-
 .active {
     display: block;
-
 }
 .sidebar-link {
     display: block;
@@ -19,8 +16,6 @@
     padding-left: 10px;
     color: #000;
 }
-
-
 .sub-item {
     display: flex;
     flex-direction: row;
@@ -36,7 +31,6 @@
 .sub-item:hover {
     color: #375980;
 }
-
 .sum-of-cost {
     background-color: #3f51b5;
     color: white;
@@ -49,7 +43,6 @@
     font-size: 12px;
     font-weight: 300;
 }
-
 .create-btn {
     background-color: orangered;
     color: white;
@@ -67,13 +60,11 @@
     background-color: white;
     color: orangered;
 }
-
 .menu-item {
     width: 249px;
     font-size: 22px;
     height: 70px;
     color: #000;
-
 }
 .menu-item:hover {
     background-color: #C5C9E9;
@@ -86,5 +77,15 @@
     background-color: #C5C9E9;
     color: #ffffff;
 }
-
-
+.budget-button-link {
+    color: #ffffff;
+}
+.budget-button-link:hover {
+    color: orangered;
+}
+.sub-item-link {
+    color: darkgray;
+}
+.sub-item-link:hover {
+    color: #375980;
+}

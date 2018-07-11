@@ -3,7 +3,6 @@ import "./index.css";
 import {connect} from "react-redux";
 import {Day, Week, Month} from "../../actions/periodAction";
 import {getBudgetObj} from "../../selectors/BudgetForHeaderSelector";
-
 import {
     health,
     food,
@@ -130,19 +129,25 @@ class Sidebar extends Component {
                             this.state.costVisability ? "menu-item-active" : ""
                             }`}
                     >
-                        <a className="sidebar-link"> Период </a>
+                        <Link className="sidebar-link" to='/costs'> Период </Link>
                     </li>
                     <ul
                         className={`sub-menu ${this.state.costVisability ? "active" : ""}`}
                     >
                         <li onClick={this.props.day} className="sub-item">
-                            День
+                            <a href="#" className='sub-item-link'>
+                                День
+                            </a>
                         </li>
                         <li onClick={this.props.week} className="sub-item">
-                            Неделя
+                            <a href="#" className='sub-item-link'>
+                                Неделя
+                            </a>
                         </li>
                         <li onClick={this.props.month} className="sub-item">
-                            Месяц
+                            <a href="#" className='sub-item-link'>
+                                Месяц
+                            </a>
                         </li>
                     </ul>
 
@@ -154,7 +159,9 @@ class Sidebar extends Component {
                     </li>
                 </ul>
                 <button className="create-btn" onClick={this.props.toggleShowBudget}>
-                    {!this.props.getBudgetObj ? "создать бюджет" : "редактировать бюджет"}
+                    <a href="#" className='budget-button-link'>
+                        {!this.props.getBudgetObj ? "создать бюджет" : "редактировать бюджет"}
+                    </a>
                 </button>
             </div>
         );
