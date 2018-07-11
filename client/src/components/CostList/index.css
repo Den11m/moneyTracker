@@ -65,6 +65,7 @@
     background-image: url("/plus.svg");
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .line:nth-child(even) {

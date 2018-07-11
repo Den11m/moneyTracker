@@ -29,26 +29,22 @@
 
 .header-button:active {
     border-color: #083559;
-    -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
-    -moz-box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
     box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
 }
 
 .progress-bar-fact {
-    background-color: #e94422;
+    background-color: #e64c3c;
     z-index: 2;
     height: 100%;
     transition-duration: 2s;
 }
 
-
 .header-relative-box {
     position: absolute;
     z-index: 1;
     height: 100%;
-    background-color: #333333;
+    background-color: #3f51b5;
 }
-
 
 .header-index-3 {
     position: absolute;

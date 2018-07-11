@@ -135,19 +135,13 @@ class Sidebar extends Component {
                         className={`sub-menu ${this.state.costVisability ? "active" : ""}`}
                     >
                         <li onClick={this.props.day} className="sub-item">
-                            <a href="#" className='sub-item-link'>
-                                День
-                            </a>
+                            День
                         </li>
                         <li onClick={this.props.week} className="sub-item">
-                            <a href="#" className='sub-item-link'>
-                                Неделя
-                            </a>
+                            Неделя
                         </li>
                         <li onClick={this.props.month} className="sub-item">
-                            <a href="#" className='sub-item-link'>
-                                Месяц
-                            </a>
+                            Месяц
                         </li>
                     </ul>
 
