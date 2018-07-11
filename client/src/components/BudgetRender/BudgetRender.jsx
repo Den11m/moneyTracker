@@ -8,7 +8,10 @@ const BudgetRender = (props) => {
     return (
         <Fragment>
             <div onClick={props.toggleShowBudget} className="BudgetRender">
-                <img className="BudgetRender-img" src="/iconBudgetRender.png" alt="budget"/>
+                <img className="BudgetRender-img"
+                     src="/iconBudgetRender.png"
+                     alt="budget"
+                     title='создать бюджет'/>
                 <span
                     className={props.getFactBudgetPerDay.toFixed(0) >= 0 ? 'BudgetRender-span' : 'BudgetRender-span' +
                         ' budget-fatal'}>{props.getFactBudgetPerDay.toFixed(0)}

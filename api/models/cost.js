@@ -25,6 +25,6 @@ let Cost = new Schema({
      },
 }, {
      versionKey: false
-})
+});
 
 module.exports = mongoose.model('Cost', Cost);
