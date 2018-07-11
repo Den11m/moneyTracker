@@ -13,13 +13,16 @@
     display: block;
 
 }
+
 .sidebar-link {
     display: block;
     line-height: 70px;
     padding-left: 10px;
     color: #000;
 }
-
+.sidebar-link:hover{
+    cursor: pointer;
+}
 
 .sub-item {
     display: flex;
@@ -33,8 +36,10 @@
     height: 45px;
     align-items: center;
 }
+
 .sub-item:hover {
     color: #375980;
+    cursor: pointer;
 }
 
 .sum-of-cost {
@@ -73,7 +78,6 @@
     font-size: 22px;
     height: 70px;
     color: #000;
-
 }
 .menu-item:hover {
     background-color: #C5C9E9;
