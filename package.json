@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js ",
+    "develop": "nodemon --inspect server",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Bootcamp-5",
@@ -14,6 +15,7 @@
     "bcrypt": "^2.0.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
+    "moment": "^2.22.2",
     "mongoose": "^5.1.7"
   }
 }
