@@ -5,6 +5,13 @@ export function addBudget(budgetInfo) {
     }
 }
 
+export function loadBudgetArr(budgetArr) {
+    return {
+        type: 'LOAD_USER_BUDGET',
+        data: budgetArr
+    }
+}
+
 export function clearBudget() {
     return {
         type: 'CLEAR_BUDGET',
