@@ -2,11 +2,7 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let Cost = new Schema({
-     _id: mongoose.Schema.Types.ObjectId,
-     userId: {
-          type: String,
-          require: true
-     },
+
      cost: {
           type: Number,
           require: true
@@ -27,4 +23,4 @@ let Cost = new Schema({
      versionKey: false
 })
 
-module.exports = mongoose.model('Cost', Cost);
+module.exports = Cost;
