@@ -11,6 +11,53 @@ const Budget = (props) => {
     let budgetInput = '';
     let dateInput = '';
 
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+        if(+budgetInput.value) {
+            fetch('/budget', {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('token')
+                }),
+                body: JSON.stringify({
+                    plan: +budgetInput.value,
+                    fact: props.getBudgetFact || 0,
+                    date: checkPeriod(dateInput.value),
+                    spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
+                })
+            })
+                .then(response => {
+                    if(response.ok || response.status === 401){
+                        return response.json();
+                    }
+                })
+                .then(data => {
+                    props.getSum(data.budget)
+                    console.log('MESSAGE: Budget was post', data.budget);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            // props.getSum(e, {
+            //     plan: +budgetInput.value,
+            //     fact: props.getBudgetFact || 0,
+            //     date: checkPeriod(dateInput.value),
+            //     spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
+            // })
+        } else {
+            alert('Бюджет должен быть положительным числом');
+        }
+        // +budgetInput.value > 0 ? props.getSum(e, {
+        //     plan: +budgetInput.value,
+        //     fact: props.getBudgetFact || 0,
+        //     date: checkPeriod(dateInput.value),
+        //     spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
+        // }) : alert('Бюджет должен быть положительным числом');
+        // props.toggleShowBudget();
+    }
+
     function checkPeriod(values) {
         switch (values) {
             case 'day' :
@@ -41,15 +88,7 @@ const Budget = (props) => {
             toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget}>
             <h2 className='budget-title'>{!props.getBudgetObj ? "Создать бюджет" : "Редактировать бюджет"}</h2>
 
-            <form className='budget-form' onSubmit={(e) => {
-                +budgetInput.value > 0 ? props.getSum(e, {
-                    plan: +budgetInput.value,
-                    fact: props.getBudgetFact || 0,
-                    date: checkPeriod(dateInput.value),
-                    spendPerDay: +budgetInput.value / Math.ceil(moment.duration(checkPeriod(dateInput.value).end - checkPeriod(dateInput.value).start).asDays()),
-                }) : alert('Бюджет должен быть положительным числом');
-                props.toggleShowBudget();
-            }}>
+            <form className='budget-form' onSubmit={handleSubmit}>
 
                 <input className='input-budget statistic__select' type="number" placeholder='Сумма'
                        ref={(input) => budgetInput = input}/>
@@ -69,8 +108,7 @@ const Budget = (props) => {
 
 function MDTP(dispatch) {
     return {
-        getSum: function (e, budgetInfo) {
-            e.preventDefault();
+        getSum: function (budgetInfo) {
             dispatch(addBudget(budgetInfo))
         },
 
