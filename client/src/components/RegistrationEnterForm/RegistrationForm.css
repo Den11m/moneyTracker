@@ -6,6 +6,7 @@
 
 .registration {
     width: 346px;
+    /*position: relative;*/
 }
 .registration__welcome{
     text-align: center;
@@ -14,9 +15,13 @@
 
 .registration__text {
     text-align: center;
-    font-size: 18px;
-    color: #3f51b5;
     margin-bottom: 32px;
+    background-color: #3f51b5;
+    width: 240px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    padding: 10px 0 0 0;
 }
 
 .registration__btn {
@@ -49,7 +54,7 @@
 
 
 .registration__valid:last-of-type {
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 .registration__valid:first-of-type{

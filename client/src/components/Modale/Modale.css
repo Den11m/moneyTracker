@@ -18,7 +18,7 @@
     position: absolute;
     padding: 0 0 40px ;
     display: inline-block;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
@@ -31,19 +31,19 @@
     width: 240px;
 }
 
-.registration__text {
-    background-color: #3f51b5;
-    width: 240px;
-    height: 50px;
-    color: white;
-    font-size: 20px;
-    padding: 10px 50px 0 0;
-}
+/*.registration__text {*/
+    /*background-color: #3f51b5;*/
+    /*width: 240px;*/
+    /*height: 50px;*/
+    /*color: white;*/
+    /*font-size: 20px;*/
+    /*padding: 10px 50px 0 0;*/
+/*}*/
 
 .modale__btn-close {
     display: block;
     width: 10px;
-    height: 10px;
+    height: 15px;
     position: absolute;
     top: 5px;
     right: 5px;

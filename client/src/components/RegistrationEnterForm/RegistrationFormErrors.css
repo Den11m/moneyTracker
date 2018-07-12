@@ -6,4 +6,7 @@
 .registration__errors-text{
     color: #e40c12;
     font-size: 13px;
+    padding-bottom: 8px;
+    /*position: absolute;*/
+    /*top: 30%;*/
 }
