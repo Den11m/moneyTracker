@@ -21,6 +21,7 @@
     background: inherit;
     padding: 11px 20px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .header-button:hover {

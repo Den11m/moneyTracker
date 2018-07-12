@@ -65,10 +65,15 @@
     padding: 7px 0 3px 0;
     display: block;
     margin: auto;
+    cursor: pointer;
 }
 .create-btn:hover {
     background-color: white;
     color: orangered;
+}
+.create-btn:active {
+    border-color: orangered;
+    box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
 }
 
 .menu-item {

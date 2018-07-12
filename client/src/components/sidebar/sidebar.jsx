@@ -153,9 +153,7 @@ class Sidebar extends Component {
                     </li>
                 </ul>
                 <button className="create-btn" onClick={this.props.toggleShowBudget}>
-                    <a href="#" className='budget-button-link'>
-                        {!this.props.getBudgetObj ? "создать бюджет" : "редактировать бюджет"}
-                    </a>
+                    {!this.props.getBudgetObj ? "создать бюджет" : "редактировать бюджет"}
                 </button>
             </div>
         );

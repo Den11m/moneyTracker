@@ -27,6 +27,15 @@
     padding: 8px;
     font-size: 12px;
     margin: auto;
+    cursor: pointer;
+}
+.enter-form__btn:hover {
+    background-color: #fff;
+    color: #ff5722;
+}
+.enter-form__btn:active {
+    border-color: #083559;
+    box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
 }
 
 .enter-form__valid {

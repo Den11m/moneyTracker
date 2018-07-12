@@ -9,7 +9,6 @@
     margin: auto;
     box-shadow: 0 2px 5px 1px #b8b9b9;
 }
-
 .result {
     color: #ff5722;
     font-weight: bold;
@@ -38,6 +37,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+}
+
+.tool-tip-add {
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+    /*border: 1px solid black;*/
+    color: #fff;
+    position: absolute;
+    left: 14px;
+    cursor: pointer;
 }
 
 .cost-info {
@@ -67,7 +78,6 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
-
 .line:nth-child(even) {
     background: #f3f4fb;
 }

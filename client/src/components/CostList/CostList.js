@@ -8,8 +8,9 @@ import AddNewCosts from '../addNewCosts/addNewCosts';
 import {getBudgetPlan} from '../../selectors/BudgetForHeaderSelector';
 import v4 from 'uuid/v4';
 import './index.css';
+import ReactTooltip from 'react-tooltip';
 
-const getPeriod = (costs, period, filterCategory = null) => {
+export const getPeriod = (costs, period, filterCategory = null) => {
     let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
     let result = filterCategory && filterPeriod.filter(obj => obj.category === filterCategory);
     return filterCategory ? result.sort((a, b) => a.date - b.date) : filterPeriod.sort((a, b) => a.date - b.date);
@@ -64,8 +65,12 @@ class CostList extends React.Component {
                 <div className="cost-list">
                     <div className="cost-form">
                         <button className="cost-add"
-                                title='добавить расходы'
                                 onClick={() => this.props.getBudgetPlan > 0 ? this.props.toggleShowWindow() : alert('введите бюджет')}></button>
+                        <a className='tool-tip-add' data-tip data-for="add">
+                            <ReactTooltip id='add' type='error'>
+                <span className='tool-tip-span-wallet' data-tooltip>Добавить расходы</span>
+                            </ReactTooltip>
+                        </a>
                         <p className="cost-info"> Период: {this.props.period.period.toLowerCase()} </p>
                         <p className="cost-category">Категория: {this.props.category === '' ? 'все' : this.props.category.toLowerCase()}</p>
                     </div>
@@ -91,9 +96,7 @@ class CostList extends React.Component {
     
                 </div>
             </div>
-    
         )
-    
     }
 };
 
@@ -121,14 +124,7 @@ function MDTP(dispatch) {
         loadUserCosts: function (data) {
             dispatch(loadCosts(data))
         }
-
     }
 }
 
 export default connect(MSTP, MDTP)(CostList);
-
-
-
-
-
-

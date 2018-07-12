@@ -7,6 +7,8 @@ import {
   getFactBudgetPerDay
 } from "../../selectors/BudgetForHeaderSelector";
 import toggleShowBudget from "../../actions/budgetShowAction";
+import ReactTooltip from 'react-tooltip';
+import {getBudgetObj} from "../../selectors/BudgetForHeaderSelector";
 
 class BudgetRender extends React.Component {
   componentDidMount() {
@@ -22,6 +24,7 @@ class BudgetRender extends React.Component {
           return response.json();
         }
       })
+        // весь код написан под массив с объектами
       .then(data => {
         this.props.loadButgets(data.budgets);
         console.log("MESSAGE: Budget loaded", data.budgets);
@@ -54,6 +57,20 @@ class BudgetRender extends React.Component {
             {" "}
             / {this.props.getBudgetPlan} грн
           </span>
+            <a className='tool-tip-balance' data-tip data-for="balance">
+                <ReactTooltip id='balance' type='error'>
+                <span className='tool-tip-span' data-tooltip>
+                    Бюджет на день
+                </span>
+                </ReactTooltip>
+            </a>
+            <a className='tool-tip-wallet' data-tip data-for="budget">
+                <ReactTooltip id='budget' type='error'>
+                <span className='tool-tip-span-wallet' data-tooltip>
+                    {!this.props.getBudgetObj ? "Создать бюджет" : "Редактировать бюджет"}
+                </span>
+                </ReactTooltip>
+            </a>
         </div>
       </Fragment>
     );
@@ -61,8 +78,9 @@ class BudgetRender extends React.Component {
 }
 
 const MSTP = state => ({
-  getBudgetPlan: getBudgetPlan(state),
-  getFactBudgetPerDay: getFactBudgetPerDay(state)
+    getBudgetPlan: getBudgetPlan(state),
+    getFactBudgetPerDay: getFactBudgetPerDay(state),
+    getBudgetObj: getBudgetObj(state),
 });
 
 const MDTP = dispatch => ({

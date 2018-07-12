@@ -34,6 +34,7 @@
     position: absolute;
     top: 5px;
     right: 5px;
+    cursor: pointer;
 }
 .modale__btn-close:hover {
     fill: #9b2907;
