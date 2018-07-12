@@ -14,7 +14,7 @@ const Budget = (props) => {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        if(+budgetInput.value) {
+        if (+budgetInput.value) {
             fetch('/budget', {
                 method: 'POST',
                 headers: new Headers({
@@ -29,7 +29,7 @@ const Budget = (props) => {
                 })
             })
                 .then(response => {
-                    if(response.ok || response.status === 401){
+                    if (response.ok || response.status === 401) {
                         return response.json();
                     }
                 })
