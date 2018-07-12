@@ -20,6 +20,6 @@ let Cost = new Schema({
      }
 }, {
      versionKey: false
-})
+});
 
 module.exports = Cost;

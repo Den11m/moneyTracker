@@ -167,42 +167,42 @@ class RegistrationForm extends Component {
 
               <div className="registration__valid">
                 <label className="registration__name" htmlFor="name">
-                  Login
+
                 </label>
                 <input
                   type="text"
                   required
                   className="registration__control"
                   name="login"
-                  placeholder="login"
+                  placeholder="Name"
                   value={this.state.name}
                   onChange={this.hahdleUserInput}
                 />
               </div>
               <div className="registration__valid">
                 <label className="registration__name" htmlFor="email">
-                  Email
+
                 </label>
                 <input
                   type="email"
                   required
                   className="registration__control"
                   name="email"
-                  placeholder="mail@mail.mail"
+                  placeholder="Email"
                   value={this.state.email}
                   onChange={this.hahdleUserInput}
                 />
               </div>
               <div className="registration__valid">
                 <label className="registration__name" htmlFor="password">
-                  Password
+
                 </label>
                 <input
                   type="password"
                   required
                   className="registration__control"
                   name="password"
-                  placeholder="must be include: one of the big letter, small letter, number "
+                  placeholder="Password "
                   value={this.state.password}
                   onChange={this.hahdleUserInput}
                 />
