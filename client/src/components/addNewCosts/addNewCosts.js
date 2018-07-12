@@ -69,8 +69,68 @@ class AddNewCosts extends Component {
 
     state = {
         date: new Date(),
-
+        categoryIndex: null
     };
+
+    selectCategory = (index) => {
+        this.setState({
+            categoryIndex: index
+        });
+    };
+
+    fetchPostCost = (event) => {
+        fetch(`/costs`, {
+                method: 'POST',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem('token')
+                }),
+                body: JSON.stringify({
+                    cost: +this.sumInput.value,
+                    date: moment(this.state.date).valueOf(),
+                    category: category[this.state.categoryIndex].id,
+                    comments: this.commentInput.value,
+                })
+            })
+                .then(response => {
+                    if (response.ok || response.status === 401) {
+                        return response.json();
+                    }
+                })
+                .then(data => {
+                    this.props.addCosts(data.cost)
+                    console.log('MESSAGE: DATA was post', data.cost);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+
+            // ? this.props.addCosts(
+            // {
+            //     cost: +this.sumInput.value,
+            //     date: moment(this.state.date).valueOf(),
+            //     category: category.find(el => el.children[0].checked === true).children[0].value,
+            //     comments: this.commentInput.value,
+            // })
+        this.props.toggleShowWindow();
+        this.props.getFact(+this.sumInput.value);
+    };
+
+    submitHandler = (event) => {
+        event.preventDefault();
+        let category = Array.from(this.categories.children);
+        category.some(el => el.children[0].checked === true)
+            ? this.props.addCosts(
+            {
+                cost: +this.sumInput.value,
+                date: moment(this.state.date).valueOf(),
+                category: category.find(el => el.children[0].checked === true).children[0].value,
+                comments: this.commentInput.value,
+
+            })
+            : alert('fill in the category and price');
+        this.props.toggleShowWindow()
+    }
 
     handleChange = date => this.setState({date});
 
@@ -84,26 +144,12 @@ class AddNewCosts extends Component {
         return (
             <Modale toggleShowWindow={this.props.toggleShowWindow} click={this.props.click}>
 
-                <form onSubmit={(event) => {
-                    event.preventDefault();
-                    let category = Array.from(this.categories.children);
-                    category.some(el => el.children[0].checked === true)
-                        ? this.props.addCosts(
-                        {
-                            cost: +this.sumInput.value,
-                            date: moment(this.state.date).valueOf(),
-                            category: category.find(el => el.children[0].checked === true).children[0].value,
-                            comments: this.commentInput.value,
-
-                        })
-                        : alert('fill in the category and price');
-                    this.props.toggleShowWindow()
-                }} className='category-container'>
+                <form onSubmit={this.submitHandler} className='category-container'>
                     <input type='number' placeholder='сумма' className='category--sum' required
                            ref={(inputTag) => this.sumInput = inputTag}/>
-                    <div className='icons-category' ref={(input) => this.categories = input}>
-                        {category.map((el, index) => <div key={index} className='icon-category'>
-                            <input type="radio" className='radio' id={el.id} name="contact" value={el.value}/>
+                    <div className='icons-category'>
+                        {category.map((el, index) => <div key={index} className='icon-category' onClick={this.selectCategory.bind(this, index)}>
+                            <input type="radio" className='radio' id={el.id} name="contact" value={el.value} checked={this.state.categoryIndex === index}/>
                             <label htmlFor={el.id} className={el.id}> </label>
                             <p className='category--text'>{el.value}</p>
                         </div>)}
@@ -114,48 +160,8 @@ class AddNewCosts extends Component {
                     </div>
                     <input type='text' placeholder='комментарий' className='category--comment'
                            ref={(inputTag) => this.commentInput = inputTag}/>
-                    <button className='category--save' onClick={(event) => {
-                        event.preventDefault();
-                        this.handleChange();
-                        let category = Array.from(this.categories.children);
-                        category.some(el => el.children[0].checked === true) && this.state.date !== null && +this.sumInput.value > 0
-                               ? fetch(`/costs`, {
-                                   method: 'POST',
-                                   headers: new Headers({
-                                    "Content-Type":"application/json",
-                                    "Authorization": localStorage.getItem('token')
-                                }),
-                                   body:JSON.stringify({
-                                    cost: +this.sumInput.value,
-                                    date: moment(this.state.date).valueOf(),
-                                    category: category.find(el => el.children[0].checked === true).children[0].value,
-                                    comments: this.commentInput.value,
-                                })                                 
-                               })
-                               .then(response => {
-                                if(response.ok || response.status === 401){
-                                    return response.json();
-                                } 
-                            })
-                               .then(data => {
-                                this.props.addCosts(data.cost)
-                                console.log('MESSAGE: DATA was post', data.cost);
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            })
-
-                            // ? this.props.addCosts(
-                            // {
-                            //     cost: +this.sumInput.value,
-                            //     date: moment(this.state.date).valueOf(),
-                            //     category: category.find(el => el.children[0].checked === true).children[0].value,
-                            //     comments: this.commentInput.value,
-                            // })
-                            : alert('fill in the category or date');
-                        this.props.toggleShowWindow();
-                        this.props.getFact(+this.sumInput.value);
-                    }}>coxpанить
+                    <button className='category--save' onClick={this.fetchPostCost}>\
+                        coxpанить
                     </button>
                 </form>
             </Modale>

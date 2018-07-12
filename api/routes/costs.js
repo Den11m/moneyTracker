@@ -20,9 +20,13 @@ router.post('/', (req, res, next) => {
             return user.save();
         })
         .then((user) => {
+            const currentBudget = user.budgets.find((budget) => {
+                return budget.date.start <= costDate && budget.date.end >= costDate;
+            });
+            const lastIndex = currentBudget.costs.length - 1;
             res.status(201).json({
                 Message: "Your cost saved",
-                cost: user.budgets,
+                cost: currentBudget.costs[lastIndex],
             })
 
         })

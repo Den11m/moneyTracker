@@ -4,20 +4,8 @@ import {connect} from "react-redux";
 import {Day, Week, Month} from "../../actions/periodAction";
 import {getBudgetObj} from "../../selectors/BudgetForHeaderSelector";
 
-import {
-    health,
-    food,
-    hygiena,
-    home,
-    clothes,
-    sport,
-    resort, mobile,
-    transport,
-    animals,
-    gifts,
-    other,
-    all
-} from "../../actions/categoryAction";
+
+import {changeCategory} from "../../actions/categoryAction";
 import toggleShowBudget from "../../actions/budgetShowAction";
 import v4 from "uuid/v4";
 import {Link} from "react-router-dom";
@@ -26,15 +14,15 @@ const nameCategory = [
     "all",
     "health",
     "food",
-    "hygiena",
+    "hygiene",
     "home",
     "clothes",
     "sport",
-    "resort",
-    "mobile",
+    "relax",
+    "communication",
     "transport",
-    "animals",
-    "gifts",
+    "nursling",
+    "present",
     "other",
 ];
 
@@ -60,6 +48,13 @@ class Sidebar extends Component {
                 "Другое",
             ]
         };
+    }
+
+    totalCost = (categoryName) => {
+        return this.props.costs.reduce((total, cost) => {
+            if(cost.category !== categoryName) return total;
+            return total + cost.cost;
+        }, 0);
     }
  
     totalCostForPeriod = category => {
@@ -111,15 +106,15 @@ class Sidebar extends Component {
                             }`}
                     >
                         {this.state.categories.map((obj, index) => {
-                            let action = nameCategory[index];
+                            let categoryName = nameCategory[index];
                             return (
                                 <li
-                                    onClick={this.props[action]}
+                                    onClick={this.props.changeCategory(categoryName)}
                                     key={v4()}
                                     className="sub-item"
                                 >
                                     {obj}
-                                    <p className="sum-of-cost">{this.totalCostForPeriod(obj)}</p>
+                                    <p className="sum-of-cost">{this.totalCost(categoryName)}</p>
                                 </li>
                             );
                         })}
@@ -182,45 +177,7 @@ function MDTP(dispatch) {
         month: function () {
             dispatch(Month());
         },
-        health: function () {
-            dispatch(health());
-        },
-        food: function () {
-            dispatch(food());
-        },
-        hygiena: function () {
-            dispatch(hygiena());
-        },
-        home: function () {
-            dispatch(home());
-        },
-        clothes: function () {
-            dispatch(clothes());
-        },
-        sport: function () {
-            dispatch(sport());
-        },
-        resort: function () {
-            dispatch(resort());
-        },
-        mobile: function () {
-            dispatch(mobile());
-        },
-        transport: function () {
-            dispatch(transport());
-        },
-        animals: function () {
-            dispatch(animals());
-        },
-        gifts: function () {
-            dispatch(gifts());
-        },
-        other: function () {
-            dispatch(other());
-        },
-        all: function () {
-            dispatch(all());
-        }
+        changeCategory
     };
 }
 
