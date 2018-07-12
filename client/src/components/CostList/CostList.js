@@ -31,7 +31,9 @@ const getPeriod = (costs, period, filterCategory = null) => {
 };
 
 class CostList extends React.Component {
-
+    get costsSum(){
+        return this.props.costs.reduce((total, cost) => total + cost.cost, 0);
+    }
     componentDidMount() {
 
         fetch(`/costs`, {
@@ -101,7 +103,7 @@ class CostList extends React.Component {
                     <div className="result">
                         <p className="spends-result"> Всего
                             <span
-                                className="spends-span">{this.props.costs.length && getPeriod(this.props.costs, this.props.period, this.props.category).reduce((prev, curr) => prev + curr.cost, 0)}</span>
+                                className="spends-span">{this.costsSum}</span>
                             грн
                         </p>
                     </div>

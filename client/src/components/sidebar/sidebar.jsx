@@ -10,8 +10,23 @@ import toggleShowBudget from "../../actions/budgetShowAction";
 import v4 from "uuid/v4";
 import {Link} from "react-router-dom";
 
+let categoryMap = {
+    "all": "все",
+    'health': 'здоровье',
+    'food': 'еда',
+    'hygiene': 'гигиена',
+    'home': 'жилье',
+    'clothes': 'одежда',
+    'sport': 'спорт',
+    'relax': 'отдых',
+    'communication': 'связь',
+    'transport': 'транспорт',
+    'nursling': 'питомцы',
+    'present': 'подарки',
+    'other': 'другое'
+};
+
 const nameCategory = [
-    "all",
     "health",
     "food",
     "hygiene",
@@ -33,7 +48,6 @@ class Sidebar extends Component {
             periodVisablilty: false,
             costVisability: false,
             categories: [
-                "Все",
                 "Здоровье",
                 "Еда",
                 "Гигиена",
@@ -50,13 +64,59 @@ class Sidebar extends Component {
         };
     }
 
+    resetCategory = () => {
+        this.props.changeCategory("all");
+        fetch(`/costs`, {
+            method: 'GET',
+            headers: new Headers({
+                "Authorization": localStorage.getItem('token')
+            }),
+        })
+            .then(response => {
+                if (response.ok || response.status === 401) {
+                    return response.json();
+                }
+            })
+            .then(costs => {
+                this.props.updateCosts(costs.costs)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    changeCategory = (categoryName) => {
+        this.props.changeCategory(categoryName);
+        fetch(`/costs?category=${categoryName}`, {
+            method: 'GET',
+            headers: new Headers({
+                "Authorization": localStorage.getItem('token')
+            }),
+        })
+            .then(response => {
+                if (response.ok || response.status === 401) {
+                    return response.json();
+                }
+            })
+            .then(costs => {
+                this.props.updateCosts(costs.costs)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     totalCost = (categoryName) => {
         return this.props.costs.reduce((total, cost) => {
-            if(cost.category !== categoryName) return total;
+            if (cost.category !== categoryName) return total;
             return total + cost.cost;
         }, 0);
+    };
+
+    get costsSum() {
+        return this.props.costs.reduce((total, cost) => total + cost.cost, 0);
     }
- 
+
     totalCostForPeriod = category => {
         const arrCostFromPeriod = this.props.costs.filter(
             obj =>
@@ -105,11 +165,18 @@ class Sidebar extends Component {
                             this.state.periodVisablilty ? "" : "active"
                             }`}
                     >
+                        <li onClick={this.resetCategory}
+                            key={v4()}
+                            className="sub-item"
+                        >
+                            Все
+                            <p className="sum-of-cost">{this.costsSum}</p>
+                        </li>
                         {this.state.categories.map((obj, index) => {
                             let categoryName = nameCategory[index];
                             return (
                                 <li
-                                    onClick={this.props.changeCategory(categoryName)}
+                                    onClick={this.changeCategory.bind(this, categoryName)}
                                     key={v4()}
                                     className="sub-item"
                                 >
@@ -168,6 +235,12 @@ function MDTP(dispatch) {
         toggleShowBudget: function () {
             dispatch(toggleShowBudget());
         },
+        updateCosts(costs){
+          dispatch({
+              type: 'COSTS_LOADED',
+              data: costs,
+          });
+        },
         day: function () {
             dispatch(Day());
         },
@@ -177,7 +250,12 @@ function MDTP(dispatch) {
         month: function () {
             dispatch(Month());
         },
-        changeCategory
+        changeCategory(categoryName){
+            dispatch({
+                type: "CHANGE_CATEGORY",
+                category: categoryMap[categoryName]
+            })
+        }
     };
 }
 
