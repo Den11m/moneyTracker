@@ -16,7 +16,7 @@
 
 .modale {
     position: absolute;
-    padding: 40px 0;
+    padding: 0 0 40px ;
     display: inline-block;
     top: 50%;
     left: 50%;

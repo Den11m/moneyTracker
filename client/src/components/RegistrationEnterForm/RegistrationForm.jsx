@@ -166,6 +166,7 @@ class RegistrationForm extends Component {
               <RegistrationFormErrors formErrors={this.state.formErrors} />
 
               <div className="registration__valid">
+                  <img className="png-bg" src="/user.png" alt="png"/>
                 <label className="registration__name" htmlFor="name">
 
                 </label>
@@ -180,6 +181,7 @@ class RegistrationForm extends Component {
                 />
               </div>
               <div className="registration__valid">
+                  <img className="png-bg" src="/email.png" alt="png"/>
                 <label className="registration__name" htmlFor="email">
 
                 </label>
@@ -194,6 +196,7 @@ class RegistrationForm extends Component {
                 />
               </div>
               <div className="registration__valid">
+                  <img className="png-bg" src="/lock.png" alt="png"/>
                 <label className="registration__name" htmlFor="password">
 
                 </label>

@@ -34,9 +34,19 @@
 }
 
 .registration__valid {
+    position: relative;
     text-align: left;
     margin-bottom: 30px;
+    padding-left: 10%;
 }
+
+.png-bg{
+    position: absolute;
+    top: 30%;
+    left: 5%;
+}
+
+
 
 .registration__valid:last-of-type {
     margin-bottom: 100px;
