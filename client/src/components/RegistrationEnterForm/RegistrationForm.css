@@ -5,7 +5,8 @@
 }
 
 .registration {
-    width: 346px;
+    width: 300px;
+    /*position: relative;*/
 }
 .registration__welcome{
     text-align: center;
@@ -14,9 +15,13 @@
 
 .registration__text {
     text-align: center;
-    font-size: 18px;
-    color: #3f51b5;
     margin-bottom: 32px;
+    background-color: #3f51b5;
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    padding: 10px 0 0 0;
 }
 
 .registration__btn {
@@ -49,7 +54,7 @@
 
 
 .registration__valid:last-of-type {
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 .registration__valid:first-of-type{
@@ -84,48 +89,10 @@
         font-size: 21px;
     }
 
-    .registration__text {
-        text-align: center;
-        font-size: 21px;
-        color: #3f51b5;
-        margin-bottom: 32px;
+    .registration__valid:last-of-type {
+        margin-bottom: 110px;
     }
 
-    .registration__btn {
-        display: block;
-        border-radius: 9px;
-        height: 33px;
-        width: 106px;
-        background-color: #ff5722;
-        color: #ffffff;
-        font-weight: 500;
-        box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
-        padding: 8px;
-        font-size: 12px;
-        margin: auto;
-    }
-
-    .registration__valid {
-        text-align: left;
-        margin-bottom: 30px;
-    }
-
-    .registration__control {
-        margin: auto;
-        display: block;
-        height: 34px;
-        width: 100%;
-        border: 1px solid #ff5722;
-        padding: 10px;
-    }
-
-    .registration__name {
-        display: block;
-        font-size: 16px;
-        color: #ff5722;
-        font-weight: 700;
-        margin-bottom: 16px;
-    }
 }
 
 
