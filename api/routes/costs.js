@@ -73,18 +73,17 @@ router.delete('/:id', (req, res, next) => {
     })
     .exec()
     .then((user) => {
-        return user.budgets.find(budget => {
+        const budget = user.budgets.find(budget => {
           return budget.date.start <= moment().valueOf() 
           && budget.date.end >=  moment().valueOf();
-        })
-      })
-    .then( budget => {
-        budget.costs.findByIdAndRemove(req.params.id)
+        });
+        budget.costs = budget.costs.filter(({id}) => id !== req.params.id);
+        return user.save()
     })
-    .then(cost => {
+    .then(user => {
         res.status(200).json({
             Message: 'Your cost deleted ',
-            costId: cost._id,
+            costId: req.params.id,
         })
     })
     .catch(error => {
