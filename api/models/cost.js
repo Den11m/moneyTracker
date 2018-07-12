@@ -18,6 +18,8 @@ let Cost = new Schema({
      comments: {
           type: String,
      }
-})
+}, {
+     versionKey: false
+});
 
 module.exports = Cost;
