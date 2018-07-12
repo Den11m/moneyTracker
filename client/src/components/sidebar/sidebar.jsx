@@ -61,7 +61,7 @@ class Sidebar extends Component {
             ]
         };
     }
-
+ 
     totalCostForPeriod = category => {
         const arrCostFromPeriod = this.props.costs.filter(
             obj =>
@@ -98,7 +98,7 @@ class Sidebar extends Component {
                     <li
                         onClick={this.subPeriod}
                         className={`menu-item ${
-                            this.state.periodVisablilty ? "menu-item-active" : ""
+                            this.state.periodVisablilty ? "" : "menu-item-active"
                             }`}
                     >
                         <Link className="sidebar-link" to="/costs">
@@ -107,7 +107,7 @@ class Sidebar extends Component {
                     </li>
                     <ul
                         className={`sub-menu ${
-                            this.state.periodVisablilty ? "active" : ""
+                            this.state.periodVisablilty ? "" : "active"
                             }`}
                     >
                         {this.state.categories.map((obj, index) => {

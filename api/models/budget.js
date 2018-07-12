@@ -5,6 +5,7 @@ let costSchema = require("./cost");
 
 let Budget = new Schema(
     {
+        _id: mongoose.Schema.Types.ObjectId,
         value: {type: Number, required: true},
         costs: [costSchema],
         date: {
