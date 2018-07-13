@@ -48,7 +48,7 @@ router.get('/', (req, res, next) => {
                     return [...allCosts, ...budget.costs];
                 }, [])
                 .filter((cost) => {
-                    return cost.date > period.start && cost.date < period.end;
+                    return moment(cost.date).valueOf() > period.start && moment(cost.date).valueOf() < period.end;
                 })
                 .filter((cost) => {
                     if(!category) {
@@ -60,7 +60,8 @@ router.get('/', (req, res, next) => {
             
             res.status(200).json({
                 Message: 'Your collection costs',
-                costs: costs
+                costs: costs,
+                query: req.query
             })
         })
         .catch(error => {
