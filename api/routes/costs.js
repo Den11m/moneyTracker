@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 router.post('/', (req, res, next) => {
     const decoded = jwt.decode(req.headers.authorization);
-    console.log('decoded', decoded);
+    // console.log('decoded', decoded);
     const costDate = req.body.date || moment().valueOf();
     Users.findOne({
         _id: decoded._id

@@ -8,7 +8,7 @@ export default function costs(state = [], action) {
         }
 
         case 'DELETE-COST':
-            return state.filter(cost => cost.date !== action.id);
+            return state.filter(cost => cost._id !== action.id);
 
         default:
             return state;

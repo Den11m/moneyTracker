@@ -31,9 +31,10 @@ const getPeriod = (costs, period, filterCategory = null) => {
 };
 
 class CostList extends React.Component {
-    get costsSum(){
+    get costsSum() {
         return this.props.costs.reduce((total, cost) => total + cost.cost, 0);
     }
+
     componentDidMount() {
 
         fetch(`/costs`, {
@@ -55,7 +56,7 @@ class CostList extends React.Component {
             })
     }
 
-    delCost = (id, date, cost) => {
+    delCost = (id, cost) => {
         fetch(`/costs/${id}`, {
             method: 'DELETE',
             headers: new Headers({
@@ -63,7 +64,7 @@ class CostList extends React.Component {
             })
         }).then(response => {
             if (response.ok) {
-                this.props.deleteCost(date);
+                this.props.deleteCost(id);
                 this.props.deleteFact(cost)
             } else {
                 throw new Error()
@@ -84,7 +85,8 @@ class CostList extends React.Component {
                                 title='добавить расходы'
                                 onClick={() => this.props.getBudgetPlan > 0 ? this.props.toggleShowWindow() : alert('введите бюджет')}></button>
                         <p className="cost-info"> Период: {this.props.period.period.toLowerCase()} </p>
-                        <p className="cost-category">Категория: {this.props.category === '' ? 'все' : this.props.category.toLowerCase()}</p>
+                        <p className="cost-category">
+                            Категория: {this.props.category === '' ? 'все' : this.props.category.toLowerCase()}</p>
                     </div>
                     <table className="Table">
                         <tbody>{this.props.costs.length ? this.props.costs.map((el, index) =>
@@ -93,9 +95,12 @@ class CostList extends React.Component {
                                 <td>{categoryMap[el.category]} {el.comments === '' ? '' : `(${el.comments})`}</td>
                                 <td>{moment(el.date).format("DD.MM.YYYY h:mm")}</td>
                                 <td>{el.cost} грн</td>
-                                <td><img className="deleteCost" src="/tag-delete.svg" alt="delete" onClick={() => {
-                                    this.delCost(el._id, el.date, el.cost)
-                                }}/></td>
+                                <td><img className="deleteCost"
+                                         src="/tag-delete.svg"
+                                         alt="delete"
+                                         onClick={() => {
+                                             this.delCost(el._id, el.cost)
+                                         }}/></td>
 
                             </tr>) : null}
                         </tbody>

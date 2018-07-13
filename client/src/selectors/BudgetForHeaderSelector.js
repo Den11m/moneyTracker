@@ -13,7 +13,7 @@ export const getBudgetObj = state => {
 };
 
 export const sumCostPerDay = state => state.costs
-    .filter(obj => obj.date >= moment().startOf('day').valueOf() && obj.date <= moment().endOf('day').valueOf())
+    .filter(obj => moment(obj.date).valueOf() >= moment().startOf('day').valueOf() && moment(obj.date).valueOf() <= moment().endOf('day').valueOf())
     .reduce((acc, obj) => acc + obj.cost, 0);
 
 export const getBudgetPlan = state => getBudgetObj(state).value > 0 ? getBudgetObj(state).value : 0;
