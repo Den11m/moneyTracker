@@ -143,15 +143,21 @@ const Budget = (props) => {
             <h2 className='budget-title'>{!props.getBudgetObj ? "Создать бюджет" : "Редактировать бюджет"}</h2>
 
             <form className='budget-form' onSubmit={checkBudget}>
+                <div className="budget-create">
+                    <img className="icon_budget" src="/plus.png" alt=""/>
+                    <input className='input-budget statistic__select' type="number" placeholder='Сумма'
+                           ref={(input) => budgetInput = input}/>
+                </div>
 
-                <input className='input-budget statistic__select' type="number" placeholder='Сумма'
-                       ref={(input) => budgetInput = input}/>
-
-                <select className='budget-select statistic__select' ref={(input) => dateInput = input}>
-                    <option value="month">Месяц</option>
+                <div className="budget-create">
+                    <img className="icon_budget" src="/period.png" alt=""/>
+                    <input className='input-budget statistic__select' ref={(input) => dateInput = input}
+                           placeholder='Месяц' >
+                    {/*<option value="month">Месяц</option>*/}
                     {/*<option value="week">Неделя</option>*/}
                     {/*<option value="day">День</option>*/}
-                </select>
+                    </input>
+                </div>
                 <button type='submit' className='modale__btn-save'
                 >СОХРАНИТЬ
                 </button>
