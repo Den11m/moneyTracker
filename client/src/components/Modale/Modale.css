@@ -33,11 +33,11 @@
 
 .modale__btn-close {
     display: block;
-    width: 10px;
-    height: 15px;
+    width: 17px;
+    height: 18px;
     position: absolute;
     top: 12px;
-    right: 18px;
+    right: 13px;
 }
 .modale__btn-close:hover {
     fill: #9b2907;
@@ -83,11 +83,10 @@
 
     .modale__btn-close {
         display: block;
-        width: 15px;
-        height: 15px;
         position: absolute;
+        width: 17px;
+        height: 18px;
         top: 12px;
-        right: 12px;
     }
     .modale__btn-close:hover {
         fill: #9b2907;

@@ -183,7 +183,6 @@ class RegistrationForm extends Component {
               <div className="registration__valid">
                   <img className="png-bg" src="/email.png" alt="png"/>
                 <label className="registration__name" htmlFor="email">
-
                 </label>
                 <input
                   type="email"
