@@ -62,16 +62,17 @@ class Sidebar extends Component {
                 "Подарки",
                 "Другое",
             ],
-            currentCategory: 'all'
         };
     }
 
+    currentCategory = 'all';
+    currentPeriod = 'day';
+
+
     resetCategory = () => {
-        this.setState({
-            currentCategory: 'all'
-        });
-        this.props.changeCategory("all");
-        fetch(`/costs`, {
+        this.currentCategory = 'all'
+        this.props.changeCategory('all');
+        fetch(`/costs?period[start]=${periods[this.currentPeriod].start}&period[end]=${periods[this.currentPeriod].end}`, {
             method: 'GET',
             headers: new Headers({
                 "Authorization": localStorage.getItem('token')
@@ -90,12 +91,14 @@ class Sidebar extends Component {
             })
     }
 
-    changeCategory = (categoryName) => {
-        this.setState({
-            currentCategory: categoryName
-        });
+    changeCategory = (categoryName, period) => {
+        this.currentCategory = categoryName;
         this.props.changeCategory(categoryName);
-        fetch(`/costs?category=${categoryName}`, {
+        const url = (this.currentCategory === 'all'
+            ? `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}`
+            : `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}&category=${this.currentCategory}`)
+        console.log('URL CATEGORY!!!', url)
+        fetch(url, {
             method: 'GET',
             headers: new Headers({
                 "Authorization": localStorage.getItem('token')
@@ -115,12 +118,23 @@ class Sidebar extends Component {
     }
 
     changePeriod = (period) => {
-        if( period === 'day') {this.props.day()};
-        if( period === 'week') {this.props.week()};
-        if( period === 'month') {this.props.month()};
-        const url = (this.state.currentCategory === 'all'
+        this.currentPeriod = period;
+        if (period === 'day') {
+            this.props.day()
+        }
+        ;
+        if (period === 'week') {
+            this.props.week()
+        }
+        ;
+        if (period === 'month') {
+            this.props.month()
+        }
+        ;
+        const url = (this.currentCategory === 'all'
             ? `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}`
-            : `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}&category=${this.state.currentCategory}`)
+            : `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}&category=${this.currentCategory}`)
+        console.log('URL PERIOD!!!', url)
         fetch(url, {
             method: 'GET',
             headers: new Headers({
@@ -210,7 +224,7 @@ class Sidebar extends Component {
                             let categoryName = nameCategory[index];
                             return (
                                 <li
-                                    onClick={this.changeCategory.bind(this, categoryName)}
+                                    onClick={this.changeCategory.bind(this, categoryName, this.currentPeriod)}
                                     key={v4()}
                                     className="sub-item"
                                 >
@@ -231,13 +245,13 @@ class Sidebar extends Component {
                     <ul
                         className={`sub-menu ${this.state.costVisability ? "active" : ""}`}
                     >
-                        <li onClick={()=>this.changePeriod('day')} className="sub-item">
+                        <li onClick={() => this.changePeriod('day')} className="sub-item">
                             День
                         </li>
-                        <li onClick={()=>this.changePeriod('week')} className="sub-item">
+                        <li onClick={() => this.changePeriod('week')} className="sub-item">
                             Неделя
                         </li>
-                        <li onClick={()=>this.changePeriod('month')} className="sub-item">
+                        <li onClick={() => this.changePeriod('month')} className="sub-item">
                             Месяц
                         </li>
                     </ul>
@@ -269,11 +283,11 @@ function MDTP(dispatch) {
         toggleShowBudget: function () {
             dispatch(toggleShowBudget());
         },
-        updateCosts(costs){
-          dispatch({
-              type: 'COSTS_LOADED',
-              data: costs,
-          });
+        updateCosts(costs) {
+            dispatch({
+                type: 'COSTS_LOADED',
+                data: costs,
+            });
         },
         day: function () {
             dispatch(Day());
@@ -284,7 +298,7 @@ function MDTP(dispatch) {
         month: function () {
             dispatch(Month());
         },
-        changeCategory(categoryName){
+        changeCategory(categoryName) {
             dispatch({
                 type: "CHANGE_CATEGORY",
                 category: categoryMap[categoryName]
