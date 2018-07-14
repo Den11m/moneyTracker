@@ -21,7 +21,7 @@
 }
 .sidebar-link:hover{
     cursor: pointer;
-    color: orangered;
+    color: #ff5722;
 }
 
 .sub-item {
@@ -55,9 +55,9 @@
 }
 
 .create-btn {
-    background-color: orangered;
+    background-color: #ff5722;
     color: white;
-    border: 1px solid orangered;
+    border: 1px solid #ff5722;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
@@ -70,10 +70,10 @@
 }
 .create-btn:hover {
     background-color: white;
-    color: orangered;
+    color: #ff5722;
 }
 .create-btn:active {
-    border-color: orangered;
+    border-color: #ff5722;
     box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
 }
 
