@@ -8,6 +8,7 @@
     background-color: white;
     margin: auto;
     box-shadow: 0 2px 5px 1px #b8b9b9;
+    /*z-index: 1;*/
 }
 .result {
     color: #ff5722;
@@ -39,6 +40,8 @@
     align-items: center;
     position: relative;
 }
+
+
 
 .tool-tip-add {
     z-index: 2;
@@ -77,6 +80,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
     z-index: 1;
 }
 .line:nth-child(even) {

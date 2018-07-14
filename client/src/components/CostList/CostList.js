@@ -84,12 +84,14 @@ class CostList extends React.Component {
                 <div className="cost-list">
                     <div className="cost-form">
                         <button className="cost-add"
-                                onClick={() => this.props.getBudgetPlan > 0 ? this.props.toggleShowWindow() : alert('введите бюджет')}></button>
-                        <a className='tool-tip-add' data-tip data-for="add">
-                            <ReactTooltip id='add' type='error'>
-                                <span className='tool-tip-span-wallet' data-tooltip>Добавить расходы</span>
-                            </ReactTooltip>
-                        </a>
+                                title="Добавить расходы"
+                                onClick={() => this.props.getBudgetPlan > 0 ? this.props.toggleShowWindow() : alert('введите бюджет')}>
+                            <a className='tool-tip-add' data-tip data-for="add">
+                                <ReactTooltip id='add' type='error'>
+                                    <span className='tool-tip-span-wallet' data-tooltip>Добавить расходы</span>
+                                </ReactTooltip>
+                            </a>
+                        </button>
                         <p className="cost-info"> Период: {this.props.period.period.toLowerCase()} </p>
                         <p className="cost-category">
                             Категория: {this.props.category === '' ? 'все' : this.props.category.toLowerCase()}</p>
