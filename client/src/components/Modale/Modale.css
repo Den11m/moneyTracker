@@ -52,6 +52,9 @@
     width: 17px;
     height: 18px;
     position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
     top: 12px;
     right: 13px;
 }

@@ -1,11 +1,9 @@
-export default function budgetShow(state = false, action) {
+export default function sidebarShow(state = false, action) {
     switch (action.type) {
-        case 'ON_CLICK':
+        case 'SIDEBAR_TOGGLE':
             return !state;
 
         default:
             return state;
     }
 }
-
-

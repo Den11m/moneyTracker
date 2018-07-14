@@ -7,7 +7,7 @@ const Modale = (props) => {
         <Fragment>
             {props.click && (<div className='modale-overlay'>
                 <div className='modale'>
-                    <img className="menu-png menu-png1" src="/menu.svg" alt="png"/>
+                    {/*<img className="menu-png menu-png1" src="/menu.svg" alt="png"/>*/}
                     <img src="/cancel.svg"
                          alt="close"
                          className='modale__btn-close'

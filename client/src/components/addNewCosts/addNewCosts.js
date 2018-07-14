@@ -146,10 +146,13 @@ class AddNewCosts extends Component {
             <Modale toggleShowWindow={this.props.toggleShowWindow} click={this.props.click}>
 
                 <form className='category-container'
-                      onSubmit={this.fetchPostCost}
-                >
-                    <input type='number' placeholder='сумма' className='category--sum' required
+                      onSubmit={this.fetchPostCost}>
+                    <h3 className="enter-cost">Новые расходы</h3>
+                    <div className="input-cost">
+                        {/*<img className="icon_cost" src="/plus.png" alt=""/>*/}
+                        <input type='number' placeholder='сумма' className='category--sum' required
                            ref={inputTag => this.sumInput = inputTag}/>
+                    </div>
                     <div className='icons-category'
                          ref={el=> this.categories = el}>
                         {category.map((el, index) => <div key={index}
@@ -176,8 +179,8 @@ class AddNewCosts extends Component {
                            placeholder='комментарий'
                            className='category--comment'
                            ref={(inputTag) => this.commentInput = inputTag}/>
-                    <button className='category--save'>\
-                        coxpанить
+                    <button className='category--save'>
+                        сoxpанить
                     </button>
                 </form>
             </Modale>

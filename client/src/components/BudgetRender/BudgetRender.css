@@ -4,7 +4,8 @@
     display: flex;
     color: #fff;
     align-items: center;
-
+    z-index: 1;
+    position: relative;
 }
 
 .BudgetRender-span {
@@ -20,5 +21,30 @@
 .budget-fatal {
     color: #80080f;
     font-weight: 700;
+}
+.tool-tip-balance {
+    z-index: 2;
+    width: 53px;
+    height: 26px;
+    /*border: 1px solid black;*/
+    color: #fff;
+    position: absolute;
+    left: 34px;
+}
+.tool-tip-wallet {
+    z-index: 3;
+    width: 22px;
+    height: 26px;
+    /*border: 1px solid black;*/
+    color: #fff;
+    position: absolute;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+
+    .menu-svg {
+        display: none;
+    }
 }
 

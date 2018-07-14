@@ -8,6 +8,7 @@ import toggleShowRegistration from '../../actions/toggleRegistrationAction';
 import {getBudgetObj, getBudgetPlan} from "../../selectors/BudgetForHeaderSelector";
 import {clearBudget} from '../../actions/budgetAction';
 import {Week} from '../../actions/periodAction';
+import toggleSidebar from '../../actions/sidebarAction';
 
 const Header = (props) => {
     let styleBar = (props.getBudgetObj / props.getBudgetPlan * 100) + '%';
@@ -18,6 +19,7 @@ const Header = (props) => {
                 </div>
             </div>
             <div className='header-index-3'>
+                <img src="/menu.svg" className="menu-svg" alt="menu" onClick={props.toggleSidebar}/>
                 <BudgetRender/>
                 <nav className="header-nav">
                     {props.isLogin
@@ -57,6 +59,10 @@ const MDTP = (dispatch) => {
 
         toggleShowRegistration: function () {
             dispatch(toggleShowRegistration())
+        },
+
+        toggleSidebar: function () {
+            dispatch(toggleSidebar())
         }
     }
 };

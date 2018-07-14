@@ -21,6 +21,7 @@
     background: inherit;
     padding: 11px 20px;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .header-button:hover {
@@ -36,7 +37,7 @@
     background-color: #e64c3c;
     z-index: 2;
     height: 100%;
-    transition-duration: 2s;
+    transition-duration: 1.5s;
 }
 
 .header-relative-box {
@@ -58,3 +59,7 @@
     padding: 0 20px;
 }
 
+.menu-svg {
+    width: 82px;
+    height: 38px;
+}

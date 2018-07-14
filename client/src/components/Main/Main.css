@@ -9,11 +9,21 @@
 .total-wrapper {
     display: flex;
     background-color: #ebecf0;
+    position: relative;
 }
 
 .sideBar {
-    flex-basis: 20%;
+    /*flex-basis: 20%;*/
+    position: absolute;
+    top: 0;
+    left:-500px;
+    transition: 1s;
     /*background-color: #5a5b62;*/
+}
+
+.sideBar-active {
+    top: 0;
+    left: 0;
 }
 
 .flex-wrapper {
@@ -55,6 +65,12 @@
     background-image: url("/bag-icon.svg");
     background-position: center;
     background-size: contain;
+}
+@media (min-width: 768px){
+    .sideBar{
+        position: static;
+        flex-basis: 20%
+    }
 }
 
 @media (min-width: 1024px) {
