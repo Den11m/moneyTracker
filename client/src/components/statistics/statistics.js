@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {changeType} from '../../actions/typeChartActions';
 import {changeCategory} from '../../actions/filterCategoryActions';
 import {chartData, options} from './chartData';
+import moment from 'moment';
 import './statistics.css';
 
 
@@ -18,7 +19,7 @@ class Statistics extends Component {
 
     uniqCategory = () => {
         const uniqCategory = [];
-        for (let obj of this.props.costs.filter(obj => obj.date >= this.props.period.start && obj.date <= this.props.period.end)) {
+        for (let obj of this.props.costs.filter(obj => moment(obj.date).valueOf() >= this.props.period.start && moment(obj.date).valueOf() <= this.props.period.end)) {
             !uniqCategory.includes(obj.category) && uniqCategory.push(obj.category)
         }
         return uniqCategory
