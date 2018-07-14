@@ -2,21 +2,7 @@ import moment from 'moment';
 import {categoryMap} from '../../categories';
 
 export const chartData = (costs, period, typeChart, categoryFromChart) => {
-    // const category = ['Здоровье', 'Еда', 'Гигиена', 'Жилье', 'Одежда', 'Спорт', 'Отдых', 'Связь', 'Транспорт', 'Питомцы', 'Подарки', 'Другое'];
-    const nameCategory = [
-        "health",
-        "food",
-        "hygiene",
-        "home",
-        "clothes",
-        "sport",
-        "relax",
-        "communication",
-        "transport",
-        "nursling",
-        "present",
-        "other",
-    ];
+    const nameCategory = Object.keys(categoryMap);
     const newArrCosts = [];
     const newArrDate = [];
 

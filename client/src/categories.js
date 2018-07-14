@@ -1,5 +1,5 @@
 export const categoryMap = {
-    // "all": "все",
+    "all": "все",
     'health': 'здоровье',
     'food': 'еда',
     'hygiene': 'гигиена',

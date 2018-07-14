@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {changeType} from '../../actions/typeChartActions';
 import {changeCategory} from '../../actions/filterCategoryActions';
 import {chartData, options} from './chartData';
+import {categoryMap} from '../../categories';
 import moment from 'moment';
 import './statistics.css';
 
@@ -48,7 +49,7 @@ class Statistics extends Component {
                             onChange={this.handleInputChange}>
                         <option value="все">все категории</option>
                         {this.uniqCategory().map(el => <option key={el}
-                                                               value={el}>{el}</option>)}
+                                                               value={el}>{categoryMap[el]}</option>)}
                     </select>}
 
                     {typeChart === 'Doughnut' &&
