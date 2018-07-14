@@ -5,16 +5,18 @@ export const getBudgetObj = state => {
         return state.budget.find(el =>
             moment(el.date.start).valueOf() <= Date.now()
             && moment(el.date.end).valueOf() >= Date.now()
-        );
+        ) || {value: 0, costs: []};
     }
     else {
         return false;
     }
 };
 
-export const sumCostPerDay = state => getBudgetObj(state) ? getBudgetObj(state).costs
+export const sumCostPerDay = state => getBudgetObj(state)
+    ? getBudgetObj(state).costs
     .filter(obj => moment(obj.date).valueOf() >= moment().startOf('day').valueOf() && moment(obj.date).valueOf() <= moment().endOf('day').valueOf())
-    .reduce((acc, obj) => acc + obj.cost, 0) : 0;
+    .reduce((acc, obj) => acc + obj.cost, 0)
+    : 0;
 
 export const getBudgetPlan = state => getBudgetObj(state).value > 0 ? getBudgetObj(state).value : 0;
 

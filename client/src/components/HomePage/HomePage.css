@@ -21,7 +21,7 @@
      /*display: flex;*/
      justify-content: space-around;
      background-color: #ffffff;
-     height: 25px;
+     /*height: 25px;*/
      z-index: 200;
      background: transparent;
 }
@@ -29,9 +29,9 @@
 .homepage__title {
     display: flex;
     justify-content:center;
-    margin: 0 auto 16px;
-     color: #ff5722;
-     font-size: 23px;
+    /*margin: 0 auto 16px;*/
+    color: #ff5722;
+    font-size: 23px;
 }
 
 .homepage__btn {

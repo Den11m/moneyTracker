@@ -6,6 +6,7 @@ import moment from 'moment';
 import Modale from '../Modale/Modale';
 import {click} from '../../selectors/CostListSelector';
 import toggleShowWindow from '../../actions/clickAction';
+import {addCostForBudget} from '../../actions/budgetAction';
 import v4 from 'uuid/v4';
 import './style.css';
 
@@ -108,7 +109,8 @@ class AddNewCosts extends Component {
                 // console.log('THIS!!',this)
                 this.props.addCosts(data.cost);
                 this.props.getFact(data.cost.cost);
-                console.log('MESSAGE: DATA was post', data.cost);
+                this.props.addCostForBudget(data.cost);
+                // console.log('MESSAGE: DATA was post', data.cost);
             })
             .catch(err => {
                 console.log(err)
@@ -174,8 +176,8 @@ class AddNewCosts extends Component {
                            placeholder='комментарий'
                            className='category--comment'
                            ref={(inputTag) => this.commentInput = inputTag}/>
-                    <button className='category--save'>\
-                        coxpанить
+                    <button className='category--save'>
+                        сoxpанить
                     </button>
                 </form>
             </Modale>
@@ -200,6 +202,9 @@ function MDTP(dispatch) {
         },
         getFact: function (data) {
             dispatch(getFact(data))
+        },
+        addCostForBudget: function (data) {
+            dispatch(addCostForBudget(data))
         }
     }
 }
