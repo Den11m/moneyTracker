@@ -15,9 +15,9 @@
     "bcrypt": "^2.0.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.1.7",
-    "nodemon": "^1.18.0",
     "moment": "^2.22.2",
+    "mongoose": "^5.1.7",
+    "nodemon": "^1.18.2",
     "react-tooltip": "^3.6.1"
   }
 }
