@@ -140,9 +140,10 @@ const Budget = (props) => {
     return (
         <Modale
             toggleShowWindow={props.toggleShowBudget} click={props.onClickBudget}>
-            <h2 className='budget-title'>{!props.getBudgetObj ? "Создать бюджет" : "Редактировать бюджет"}</h2>
+
 
             <form className='budget-form' onSubmit={checkBudget}>
+                <h3 className='budget-title'>{!props.getBudgetObj ? "Создать бюджет" : "Редактировать бюджет"}</h3>
                 <div className="budget-create">
                     <img className="icon_budget" src="/plus.png" alt=""/>
                     <input className='input-budget statistic__select' type="number" placeholder='Сумма'

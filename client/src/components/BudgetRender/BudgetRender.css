@@ -13,12 +13,19 @@
 }
 
 .BudgetRender-img {
-
     margin-right: 15px;
 }
+
 
 .budget-fatal {
     color: #80080f;
     font-weight: 700;
+}
+
+@media (min-width: 768px) {
+
+    .menu-svg {
+        display: none;
+    }
 }
 

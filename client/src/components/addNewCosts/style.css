@@ -3,7 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
-.category--sum, .category--choose, .category--comment{
+.category--sum {
+    border: 1px solid #fff;
+    border-bottom: 2px solid #d4d4d4;
+    padding: 10px 0 3px 14px;
+    text-transform: capitalize;
+    font-size: 16px;
+    margin-bottom: 20px;
+    min-width: 100%;
+    color: #474545;
+    font-weight: 500;
+}
+.category--choose, .category--comment{
     border: 1px solid #fff;
     border-bottom: 2px solid #d4d4d4;
     padding: 10px;
@@ -26,13 +37,39 @@ input {
     flex-basis: 22%;
     justify-content: center;
     text-align: center;
+    width: 90%;
+    margin:auto;
 }
+.input-cost{
+    position: relative;
+}
+.icon_cost{
+    top: 10px;
+    left: 10px;
+    position: absolute;
+}
+.enter-cost {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 12px;
+    background-color: #3f51b5;
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    padding: 11px 0 0 0;
+}
+.category-container {
+    max-width: 400px;
+    min-width: 300px;
+}
+
 .health, .food, .hygiene, .home, .clothes, .sport, .relax, .communication, .transport, .nursling, .present, .other{
     position: relative;
     display: inline-block;
     padding: 29px;
     border-radius: 5px;
- 
+
 }
 .radio {
     display: none;
@@ -107,7 +144,7 @@ input {
     color: #919191;
 }
 .category__date{
-    margin: 30px 0;
+    margin: 15px 0;
 
 }
 
@@ -115,14 +152,14 @@ input {
     display: block;
     border-radius: 9px;
     height: 33px;
-    width: 106px;
+    width: 90%;
     background-color: #ff5722;
     color: #ffffff;
     font-weight: 500;
     box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
     padding: 8px;
     font-size: 12px;
-    margin: auto;
+    margin: 35px auto 0 ;
     text-transform: uppercase;
 }
 .react-date-picker {

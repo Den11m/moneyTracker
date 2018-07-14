@@ -5,13 +5,13 @@ import Budget from '../Budget/Budget';
 import SideBar from '../../components/sidebar/sidebar';
 import Statistics from '../../components/statistics/statistics';
 import {Route, Switch} from 'react-router-dom';
-
+import {connect} from 'react-redux';
 
 const Main = (props) => {
     return (
 
         <div className="total-wrapper">
-            <div className="sideBar">
+            <div className={props.sidebarShow ? "sideBar sideBar-active" : "sideBar"} >
                 <SideBar/>
             </div>
             <div className="flex-wrapper">
@@ -26,4 +26,10 @@ const Main = (props) => {
     )
 };
 
-export default Main;
+function MSTP(state) {
+    return{
+        sidebarShow: state.sidebarShow,
+    }
+}
+
+export default connect(MSTP)(Main);

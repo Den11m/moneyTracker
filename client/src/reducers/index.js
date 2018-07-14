@@ -11,6 +11,7 @@ import period from './periodReducer';
 import spent from './reducerCategory';
 import typeChart from './typeChartReducers';
 import categoryFromChart from './filterCategoryReducers';
+import sidebarShow from './sidebarShowReducer';
 
 
 const reducers = combineReducers({
@@ -26,6 +27,7 @@ const reducers = combineReducers({
     budget,
     typeChart,
     categoryFromChart,
+    sidebarShow,
 
 });
 
