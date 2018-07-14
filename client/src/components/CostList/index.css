@@ -51,6 +51,7 @@
     color: #fff;
     position: absolute;
     left: 14px;
+    top: 19px;
     cursor: pointer;
 }
 
@@ -92,6 +93,7 @@
     opacity: 0;
     width: 15px;
     height: 15px;
+    cursor: pointer;
 }
 
 .line:hover  {

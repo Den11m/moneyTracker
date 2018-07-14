@@ -21,6 +21,7 @@
 }
 .sidebar-link:hover{
     cursor: pointer;
+    color: orangered;
 }
 
 .sub-item {
@@ -94,5 +95,16 @@
     background-color: #C5C9E9;
     color: #ffffff;
 }
-
+.icon-budget {
+    width: 20px;
+    margin-right: 15px;
+}
+.icon-stopwatch {
+    width: 20px;
+    margin-right: 15px;
+}
+.icon-bars {
+    width: 20px;
+    margin-right: 15px;
+}
 

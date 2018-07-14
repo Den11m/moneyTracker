@@ -125,6 +125,17 @@ input {
     margin: auto;
     text-transform: uppercase;
 }
+
+/*стили, которые добавил Вася*/
+/*.category--save:hover {*/
+    /*background-color: #fff;*/
+    /*color: #ff5722;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.category--save:active {*/
+    /*border-color: #083559;*/
+    /*box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;*/
+/*}*/
 .react-date-picker {
     width: 100%;
     display: flex;

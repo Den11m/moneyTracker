@@ -93,7 +93,6 @@ class CostList extends React.Component {
                 <div className="cost-list">
                     <div className="cost-form">
                         <button className="cost-add"
-                                title="Добавить расходы"
                                 onClick={() => this.props.getBudgetPlan > 0 ? this.props.toggleShowWindow() : alert('введите бюджет')}>
                             <a className='tool-tip-add' data-tip data-for="add">
                                 <ReactTooltip id='add' type='error'>
@@ -112,12 +111,15 @@ class CostList extends React.Component {
                                 <td>{categoryMap[el.category]} {el.comments === '' ? '' : `(${el.comments})`}</td>
                                 <td>{moment(el.date).format("DD.MM.YYYY h:mm")}</td>
                                 <td>{el.cost} грн</td>
-                                <td><img className="deleteCost"
+                                <td className="td-delete">
+                                    <img className="deleteCost"
                                          src="/tag-delete.svg"
                                          alt="delete"
+                                         // title="Удалить"
                                          onClick={() => {
                                              this.delCost(el._id, el.cost)
-                                         }}/></td>
+                                         }}/>
+                                </td>
 
                             </tr>) : null}
                         </tbody>
