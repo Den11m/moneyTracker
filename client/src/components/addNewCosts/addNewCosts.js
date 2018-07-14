@@ -114,7 +114,6 @@ class AddNewCosts extends Component {
                 console.log(err)
             })
         this.props.toggleShowWindow();
-
     };
 
     // submitHandler = (event) => {

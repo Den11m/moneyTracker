@@ -6,6 +6,7 @@ import toggleShowWindow from '../../actions/clickAction';
 import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
 import {getBudgetPlan} from '../../selectors/BudgetForHeaderSelector';
+import {periods} from '../../periods';
 import v4 from 'uuid/v4';
 import './index.css';
 import ReactTooltip from 'react-tooltip';
@@ -38,7 +39,7 @@ class CostList extends React.Component {
 
     componentDidMount() {
 
-        fetch(`/costs`, {
+        fetch(`/costs?period[start]=${periods['day'].start}&period[end]=${periods['day'].end}`, {
             method: 'GET',
             headers: new Headers({
                 "Authorization": localStorage.getItem('token')

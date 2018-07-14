@@ -77,6 +77,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 .line:nth-child(even) {
     background: #f3f4fb;

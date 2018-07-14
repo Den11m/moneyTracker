@@ -105,26 +105,27 @@ class EnterForm extends Component {
               <h3 className="enter-form__text">Вход</h3>
               <EnterFormErrors formErrors={this.state.formErrors} />
               <div className="enter-form__valid">
-                <label className="enter-form__name">Email</label>
+                  <img className="png-bg" src="/email.png" alt="png"/>
+                <label className="enter-form__name" for="enter"></label>
                 <input
                   type="email"
                   required
                   className="enter-form__control"
                   name="email"
-                  placeholder="mail@mail"
+                  placeholder="Email"
                   ref={input => (this.emailInput = input)}
                 />
               </div>
               <div className="enter-form__valid">
-                <label className="enter-form__name" htmlFor="password">
-                  Password
+                  <img className="png-bg" src="/lock.png" alt="png"/>
+                <label className="enter-form__name" htmlFor="password" for="password">
                 </label>
                 <input
                   type="password"
                   required
                   className="enter-form__control"
                   name="password"
-                  placeholder="......"
+                  placeholder="Password"
                   ref={input => (this.passwordInput = input)}
                 />
               </div>

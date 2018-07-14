@@ -12,7 +12,7 @@
      height: 100vh;
      background-color: rgba(0, 0, 0, 0.2);
      z-index: 1;
-} */
+}*/
 
 .homepage__main {
      padding-top: 20px;
@@ -73,7 +73,7 @@
     }
 
     .homepage__title {
-        /* text-align: center; */
+        /*text-align: center;*/
         color: #ff5722;
         font-size: 23px;
     }
