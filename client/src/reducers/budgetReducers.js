@@ -12,6 +12,9 @@ export default function budget(state = [], action) {
       return action.data;
     case "CLEAR_BUDGET":
       return [];
+      case "BUDGET_UPDATE": {
+          return [{...state[0], value: action.budget}];
+      }
 
     case "FACT-ADD":
       return [{ ...state[0], fact: state[0].fact + action.data }];

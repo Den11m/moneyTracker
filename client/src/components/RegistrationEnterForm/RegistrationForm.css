@@ -5,7 +5,8 @@
 }
 
 .registration {
-  width: 346px;
+    width: 300px;
+    /*position: relative;*/
 }
 .registration__welcome{
     text-align: center;
@@ -14,16 +15,20 @@
 
 .registration__text {
     text-align: center;
-    font-size: 21px;
-    color: #3f51b5;
     margin-bottom: 32px;
+    background-color: #3f51b5;
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    padding: 10px 0 0 0;
 }
 
 .registration__btn {
     display: block;
     border-radius: 9px;
     height: 33px;
-    width: 106px;
+    width: 90%;
     background-color: #ff5722;
     color: #ffffff;
     font-weight: 500;
@@ -43,16 +48,35 @@
 }
 
 .registration__valid {
+    position: relative;
     text-align: left;
     margin-bottom: 30px;
+    padding-left: 10%;
 }
+
+.png-bg{
+    position: absolute;
+    top: 30%;
+    left: 5%;
+}
+
+
+
+.registration__valid:last-of-type {
+    margin-bottom: 80px;
+}
+
+.registration__valid:first-of-type{
+    background-image: url("/lock.png");;
+}
+
 
 .registration__control {
     margin: auto;
     display: block;
     height: 34px;
-    width: 100%;
-    border: 1px solid #ff5722;
+    width: 85%;
+    border-bottom: 1px solid #bebebf;
     padding: 10px;
 }
 
@@ -63,3 +87,21 @@
     font-weight: 700;
     margin-bottom: 16px;
 }
+
+
+@media (min-width: 768px) {
+    .registration {
+        width: 346px;
+    }
+    .registration__welcome{
+        text-align: center;
+        font-size: 21px;
+    }
+
+    .registration__valid:last-of-type {
+        margin-bottom: 110px;
+    }
+
+}
+
+

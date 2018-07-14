@@ -26,6 +26,7 @@ class BudgetRender extends React.Component {
       })
         // весь код написан под массив с объектами
       .then(data => {
+
         this.props.loadButgets(data.budgets);
         console.log("MESSAGE: Budget loaded", data.budgets);
       })

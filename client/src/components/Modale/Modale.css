@@ -16,25 +16,31 @@
 
 .modale {
     position: absolute;
-    padding: 40px;
+    padding: 10px 10px 40px ;
     display: inline-block;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
     margin: auto;
     box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.5);
-    max-width: 450px;
+    max-width: 100%;
 }
+
+/*.registration {*/
+    /*width: 240px;*/
+/*}*/
 
 .modale__btn-close {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 15px;
     position: absolute;
     top: 5px;
     right: 5px;
     cursor: pointer;
+    top: 12px;
+    right: 18px;
 }
 .modale__btn-close:hover {
     fill: #9b2907;
@@ -52,4 +58,59 @@
     font-size: 12px;
     margin: auto;
 }
+
+
+@media (min-width: 768px) {
+    /*.modale-overlay {*/
+        /*position: fixed;*/
+        /*top: 0;*/
+        /*left: 0;*/
+        /*width: 100%;*/
+        /*height: 100vh;*/
+        /*background-color: rgba(0, 0, 0, 0.2);*/
+        /*z-index: 1;*/
+    /*}*/
+
+    /*.modale {*/
+        /*position: absolute;*/
+        /*padding: 40px;*/
+        /*display: inline-block;*/
+        /*top: 50%;*/
+        /*left: 50%;*/
+        /*transform: translate(-50%, -50%);*/
+        /*background-color: #ffffff;*/
+        /*margin: auto;*/
+        /*box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.5);*/
+        /*max-width: 450px;*/
+    /*}*/
+
+    .modale__btn-close {
+        display: block;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+    }
+    .modale__btn-close:hover {
+        fill: #9b2907;
+    }
+    .modale__btn-save {
+        display: block;
+        border-radius: 9px;
+        height: 33px;
+        width: 106px;
+        background-color: #ff5722;
+        color: #ffffff;
+        font-weight: 500;
+        box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.5);
+        padding: 8px;
+        font-size: 12px;
+        margin: auto;
+    }
+}
+
+
+
+
 

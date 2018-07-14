@@ -18,7 +18,7 @@
      padding-top: 20px;
      width: 100vw;
      position: fixed;
-     display: flex;
+     /*display: flex;*/
      justify-content: space-around;
      background-color: #ffffff;
      height: 25px;
@@ -27,51 +27,102 @@
 }
 
 .homepage__title {
-     /* text-align: center; */
+    display: flex;
+    justify-content:center;
+    margin: 0 auto 16px;
      color: #ff5722;
      font-size: 23px;
 }
 
 .homepage__btn {
      display: flex;
-     text-align: center;
-     /* width: 100vw; */
+    justify-content:center;
 }
 
 .homepage__btn-reg {
      display: block;
-     height: 30px;
+     height: 20px;
      padding: 0 15px;
      font-size: 16px;
      color: #ff5722;
      font-weight: 700;
      background: transparent;
-     cursor: pointer;
-     border-radius: 3px;
-}
-.homepage__btn-reg:hover {
-     background-color: rgba(190, 190, 190, 0.22);
-}
-.homepage__btn-reg:active {
-     border-color: #083559;
-     box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
 }
 
 .homepage__btn-log {
      display: block;
-     height: 30px;
+     height: 20px;
      padding: 0 15px;
      font-size: 16px;
      color: #ff5722;
      font-weight: 700;
      background: transparent;
-     cursor: pointer;
-     border-radius: 3px;
 }
-.homepage__btn-log:hover {
-     background-color: rgba(190, 190, 190, 0.22);
-}
-.homepage__btn-log:active {
-     border-color: #083559;
-     box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
+
+@media (min-width: 768px) {
+    .homepage__main {
+        padding-top: 20px;
+        width: 100vw;
+        position: fixed;
+        display: flex;
+        justify-content: space-around;
+        background-color: #ffffff;
+        height: 25px;
+        z-index: 200;
+        background: transparent;
+    }
+
+    .homepage__title {
+        /* text-align: center; */
+        color: #ff5722;
+        font-size: 23px;
+    }
+
+    .homepage__btn {
+        display: flex;
+        text-align: center;
+        /* width: 100vw; */
+    }
+
+    .homepage__btn-reg {
+        display: block;
+        height: 30px;
+        padding: 0 15px;
+        font-size: 16px;
+        color: #ff5722;
+        font-weight: 700;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .homepage__btn-reg:hover {
+        background-color: rgba(190, 190, 190, 0.22);
+    }
+
+    .homepage__btn-reg:active {
+        border-color: #083559;
+        box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
+    }
+
+    .homepage__btn-log {
+        display: block;
+        height: 30px;
+        padding: 0 15px;
+        font-size: 16px;
+        color: #ff5722;
+        font-weight: 700;
+        background: transparent;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .homepage__btn-log:hover {
+        background-color: rgba(190, 190, 190, 0.22);
+    }
+
+    .homepage__btn-log:active {
+        border-color: #083559;
+        box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
+    }
 }

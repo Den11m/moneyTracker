@@ -3,37 +3,41 @@ import "./index.css";
 import {connect} from "react-redux";
 import {Day, Week, Month} from "../../actions/periodAction";
 import {getBudgetObj} from "../../selectors/BudgetForHeaderSelector";
-import {
-    health,
-    food,
-    hygiena,
-    home,
-    clothes,
-    sport,
-    resort, mobile,
-    transport,
-    animals,
-    gifts,
-    other,
-    all
-} from "../../actions/categoryAction";
+
+
+import {changeCategory} from "../../actions/categoryAction";
 import toggleShowBudget from "../../actions/budgetShowAction";
 import v4 from "uuid/v4";
 import {Link} from "react-router-dom";
 
+let categoryMap = {
+    "all": "все",
+    'health': 'здоровье',
+    'food': 'еда',
+    'hygiene': 'гигиена',
+    'home': 'жилье',
+    'clothes': 'одежда',
+    'sport': 'спорт',
+    'relax': 'отдых',
+    'communication': 'связь',
+    'transport': 'транспорт',
+    'nursling': 'питомцы',
+    'present': 'подарки',
+    'other': 'другое'
+};
+
 const nameCategory = [
-    "all",
     "health",
     "food",
-    "hygiena",
+    "hygiene",
     "home",
     "clothes",
     "sport",
-    "resort",
-    "mobile",
+    "relax",
+    "communication",
     "transport",
-    "animals",
-    "gifts",
+    "nursling",
+    "present",
     "other",
 ];
 
@@ -44,7 +48,6 @@ class Sidebar extends Component {
             periodVisablilty: false,
             costVisability: false,
             categories: [
-                "Все",
                 "Здоровье",
                 "Еда",
                 "Гигиена",
@@ -59,6 +62,59 @@ class Sidebar extends Component {
                 "Другое",
             ]
         };
+    }
+
+    resetCategory = () => {
+        this.props.changeCategory("all");
+        fetch(`/costs`, {
+            method: 'GET',
+            headers: new Headers({
+                "Authorization": localStorage.getItem('token')
+            }),
+        })
+            .then(response => {
+                if (response.ok || response.status === 401) {
+                    return response.json();
+                }
+            })
+            .then(costs => {
+                this.props.updateCosts(costs.costs)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    changeCategory = (categoryName) => {
+        this.props.changeCategory(categoryName);
+        fetch(`/costs?category=${categoryName}`, {
+            method: 'GET',
+            headers: new Headers({
+                "Authorization": localStorage.getItem('token')
+            }),
+        })
+            .then(response => {
+                if (response.ok || response.status === 401) {
+                    return response.json();
+                }
+            })
+            .then(costs => {
+                this.props.updateCosts(costs.costs)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    totalCost = (categoryName) => {
+        return this.props.costs.reduce((total, cost) => {
+            if (cost.category !== categoryName) return total;
+            return total + cost.cost;
+        }, 0);
+    };
+
+    get costsSum() {
+        return this.props.costs.reduce((total, cost) => total + cost.cost, 0);
     }
 
     totalCostForPeriod = category => {
@@ -97,7 +153,7 @@ class Sidebar extends Component {
                     <li
                         onClick={this.subPeriod}
                         className={`menu-item ${
-                            this.state.periodVisablilty ? "menu-item-active" : ""
+                            this.state.periodVisablilty ? "" : "menu-item-active"
                             }`}
                     >
                         <Link className="sidebar-link" to="/costs">
@@ -106,19 +162,26 @@ class Sidebar extends Component {
                     </li>
                     <ul
                         className={`sub-menu ${
-                            this.state.periodVisablilty ? "active" : ""
+                            this.state.periodVisablilty ? "" : "active"
                             }`}
                     >
+                        <li onClick={this.resetCategory}
+                            key={v4()}
+                            className="sub-item"
+                        >
+                            Все
+                            <p className="sum-of-cost">{this.costsSum}</p>
+                        </li>
                         {this.state.categories.map((obj, index) => {
-                            let action = nameCategory[index];
+                            let categoryName = nameCategory[index];
                             return (
                                 <li
-                                    onClick={this.props[action]}
+                                    onClick={this.changeCategory.bind(this, categoryName)}
                                     key={v4()}
                                     className="sub-item"
                                 >
                                     {obj}
-                                    <p className="sum-of-cost">{this.totalCostForPeriod(obj)}</p>
+                                    <p className="sum-of-cost">{this.totalCost(categoryName)}</p>
                                 </li>
                             );
                         })}
@@ -129,7 +192,7 @@ class Sidebar extends Component {
                             this.state.costVisability ? "menu-item-active" : ""
                             }`}
                     >
-                        <Link className="sidebar-link" to='/costs'> Период </Link>
+                        <a className="sidebar-link"> Период </a>
                     </li>
                     <ul
                         className={`sub-menu ${this.state.costVisability ? "active" : ""}`}
@@ -172,6 +235,12 @@ function MDTP(dispatch) {
         toggleShowBudget: function () {
             dispatch(toggleShowBudget());
         },
+        updateCosts(costs){
+          dispatch({
+              type: 'COSTS_LOADED',
+              data: costs,
+          });
+        },
         day: function () {
             dispatch(Day());
         },
@@ -181,44 +250,11 @@ function MDTP(dispatch) {
         month: function () {
             dispatch(Month());
         },
-        health: function () {
-            dispatch(health());
-        },
-        food: function () {
-            dispatch(food());
-        },
-        hygiena: function () {
-            dispatch(hygiena());
-        },
-        home: function () {
-            dispatch(home());
-        },
-        clothes: function () {
-            dispatch(clothes());
-        },
-        sport: function () {
-            dispatch(sport());
-        },
-        resort: function () {
-            dispatch(resort());
-        },
-        mobile: function () {
-            dispatch(mobile());
-        },
-        transport: function () {
-            dispatch(transport());
-        },
-        animals: function () {
-            dispatch(animals());
-        },
-        gifts: function () {
-            dispatch(gifts());
-        },
-        other: function () {
-            dispatch(other());
-        },
-        all: function () {
-            dispatch(all());
+        changeCategory(categoryName){
+            dispatch({
+                type: "CHANGE_CATEGORY",
+                category: categoryMap[categoryName]
+            })
         }
     };
 }

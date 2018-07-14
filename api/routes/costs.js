@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 router.post('/', (req, res, next) => {
     const decoded = jwt.decode(req.headers.authorization);
-    console.log('decoded', decoded);
+    // console.log('decoded', decoded);
     const costDate = req.body.date || moment().valueOf();
     Users.findOne({
         _id: decoded._id
@@ -20,9 +20,13 @@ router.post('/', (req, res, next) => {
             return user.save();
         })
         .then((user) => {
+            const currentBudget = user.budgets.find((budget) => {
+                return budget.date.start <= costDate && budget.date.end >= costDate;
+            });
+            const lastIndex = currentBudget.costs.length - 1;
             res.status(201).json({
                 Message: "Your cost saved",
-                cost: user.budgets,
+                cost: currentBudget.costs[lastIndex],
             })
 
         })
@@ -66,17 +70,44 @@ router.get('/', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
+    const decoded = jwt.decode(req.headers.authorization);
     console.log('req params', req.params);
-    Cost.findByIdAndRemove(req.params.id)
-        .exec()
-        .then(cost => {
-            res.status(200).json({
-                Message: 'Your cost deleted ',
-                costId: cost._id,
-            })
+    Users.findOne({
+        _id: decoded._id
+    })
+    .exec()
+    .then((user) => {
+        const budget = user.budgets.find(budget => {
+          return budget.date.start <= moment().valueOf() 
+          && budget.date.end >=  moment().valueOf();
+        });
+        budget.costs = budget.costs.filter(({id}) => id !== req.params.id);
+        return user.save()
+    })
+    .then(user => {
+        res.status(200).json({
+            Message: 'Your cost deleted ',
+            costId: req.params.id,
         })
-        .catch(error => {
-            res.status(500).json(error)
-        })
+    })
+    .catch(error => {
+        res.status(500).json(error)
+    })
 });
+
+// router.delete('/:id', (req, res, next) => {
+//         console.log('req params', req.params);
+//     Costs.findByIdAndRemove(req.params.id)
+//         .exec()
+//         .then(cost => {
+//             res.status(200).json({
+//                 Message: 'Your cost deleted ',
+//                 costId: cost._id,
+//             })
+//         })
+//         .catch(error => {
+//             res.status(500).json(error)
+//         })
+// });
+
 module.exports = router;
