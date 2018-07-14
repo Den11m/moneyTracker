@@ -8,8 +8,8 @@
     background-color: white;
     margin: auto;
     box-shadow: 0 2px 5px 1px #b8b9b9;
+    /*z-index: 1;*/
 }
-
 .result {
     color: #ff5722;
     font-weight: bold;
@@ -38,6 +38,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+}
+
+
+
+.tool-tip-add {
+    z-index: 2;
+    width: 22px;
+    height: 22px;
+    /*border: 1px solid black;*/
+    color: #fff;
+    position: absolute;
+    left: 14px;
+    top: 19px;
+    cursor: pointer;
 }
 
 .cost-info {
@@ -66,8 +81,9 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 1;
 }
-
 .line:nth-child(even) {
     background: #f3f4fb;
 }
@@ -77,6 +93,7 @@
     opacity: 0;
     width: 15px;
     height: 15px;
+    cursor: pointer;
 }
 
 .line:hover  {

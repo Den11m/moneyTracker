@@ -69,7 +69,7 @@
 @media (min-width: 768px){
     .sideBar{
         position: static;
-        flex-basis: 20%;
+        flex-basis: 20%
     }
 }
 

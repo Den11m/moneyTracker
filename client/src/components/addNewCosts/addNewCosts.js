@@ -180,7 +180,7 @@ class AddNewCosts extends Component {
                            className='category--comment'
                            ref={(inputTag) => this.commentInput = inputTag}/>
                     <button className='category--save'>
-                        coxpанить
+                        сoxpанить
                     </button>
                 </form>
             </Modale>

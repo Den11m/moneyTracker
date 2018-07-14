@@ -11,6 +11,10 @@ import toggleShowBudget from "../../actions/budgetShowAction";
 import v4 from "uuid/v4";
 import {Link} from "react-router-dom";
 
+import budget from './icons/budget.svg';
+import stopwatch from './icons/stopwatch.svg';
+import bars from './icons/bars.svg';
+
 let categoryMap = {
     "all": "все",
     'health': 'здоровье',
@@ -205,6 +209,7 @@ class Sidebar extends Component {
                             }`}
                     >
                         <Link className="sidebar-link" to="/costs">
+                            <img className='icon-budget' src={budget} alt="icon"/>
                             Расходы
                         </Link>
                     </li>
@@ -240,7 +245,10 @@ class Sidebar extends Component {
                             this.state.costVisability ? "menu-item-active" : ""
                             }`}
                     >
-                        <a className="sidebar-link"> Период </a>
+                        <a className="sidebar-link">
+                            <img className='icon-stopwatch' src={stopwatch} alt="icon"/>
+                            Период
+                        </a>
                     </li>
                     <ul
                         className={`sub-menu ${this.state.costVisability ? "active" : ""}`}
@@ -259,6 +267,7 @@ class Sidebar extends Component {
                     <li className="menu-item">
                         <Link className="sidebar-link" to="/statistics">
                             {" "}
+                            <img className='icon-bars' src={bars} alt="icon"/>
                             Статистика
                         </Link>
                     </li>
