@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {changeType} from '../../actions/typeChartActions';
 import {changeCategory} from '../../actions/filterCategoryActions';
 import {chartData, options} from './chartData';
+import {categoryMap} from '../../categories';
+import moment from 'moment';
 import './statistics.css';
 
 
@@ -18,7 +20,7 @@ class Statistics extends Component {
 
     uniqCategory = () => {
         const uniqCategory = [];
-        for (let obj of this.props.costs.filter(obj => obj.date >= this.props.period.start && obj.date <= this.props.period.end)) {
+        for (let obj of this.props.costs.filter(obj => moment(obj.date).valueOf() >= this.props.period.start && moment(obj.date).valueOf() <= this.props.period.end)) {
             !uniqCategory.includes(obj.category) && uniqCategory.push(obj.category)
         }
         return uniqCategory
@@ -47,7 +49,7 @@ class Statistics extends Component {
                             onChange={this.handleInputChange}>
                         <option value="все">все категории</option>
                         {this.uniqCategory().map(el => <option key={el}
-                                                               value={el}>{el}</option>)}
+                                                               value={el}>{categoryMap[el]}</option>)}
                     </select>}
 
                     {typeChart === 'Doughnut' &&

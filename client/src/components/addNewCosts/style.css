@@ -86,54 +86,91 @@ input {
     background: transparent;
     top: 10px;
     left: 10px;
+    cursor: pointer;
 }
 .health:before {
     background-image: url('/health.svg');
     background-repeat: no-repeat;
 }
+.health:hover {
+    background-color: #c8cde5;
+}
 .food:before {
     background-image: url('/food.svg');
     background-repeat: no-repeat;
+}
+.food:hover {
+    background-color: #c8cde5;
 }
 .hygiene:before {
     background-image: url('/hygiene.svg');
     background-repeat: no-repeat;
 }
+.hygiene:hover {
+    background-color: #c8cde5;
+}
 .home:before {
     background-image: url('/home.svg');
     background-repeat: no-repeat;
+}
+.home:hover {
+    background-color: #c8cde5;
 }
 .clothes:before{
     background-image: url('/clothes.svg');
     background-repeat: no-repeat;
 }
+.clothes:hover {
+    background-color: #c8cde5;
+}
 .sport:before {
     background-image: url('/sport.svg');
     background-repeat: no-repeat;
+}
+.sport:hover {
+    background-color: #c8cde5;
 }
 .relax:before {
     background-image: url('/relax.svg');
     background-repeat: no-repeat;
 }
+.relax:hover {
+    background-color: #c8cde5;
+}
 .communication:before {
     background-image: url('/communication.svg');
     background-repeat: no-repeat;
+}
+.communication:hover {
+    background-color: #c8cde5;
 }
 .transport:before {
     background-image: url('/transport.svg');
     background-repeat: no-repeat;
 }
+.transport:hover {
+    background-color: #c8cde5;
+}
 .nursling:before {
     background-image: url('/nursling.svg');
     background-repeat: no-repeat;
+}
+.nursling:hover {
+    background-color: #c8cde5;
 }
 .present:before{
     background-image: url('/present.svg');
     background-repeat: no-repeat;
 }
+.present:hover {
+    background-color: #c8cde5;
+}
 .other:before{
     background-image: url('/other.svg');
     background-repeat: no-repeat;
+}
+.other:hover {
+    background-color: #c8cde5;
 }
 .radio:checked+.health, .radio:checked+.food, .radio:checked+.hygiene, .radio:checked+.home, .radio:checked+.clothes, .radio:checked+.sport, .radio:checked+.relax, .radio:checked+.communication, .radio:checked+.transport, .radio:checked+.nursling, .radio:checked+.present, .radio:checked+.other{
     background-color: #c5cae9;
@@ -163,16 +200,16 @@ input {
     text-transform: uppercase;
 }
 
-/*стили, которые добавил Вася*/
-/*.category--save:hover {*/
-    /*background-color: #fff;*/
-    /*color: #ff5722;*/
-    /*cursor: pointer;*/
-/*}*/
-/*.category--save:active {*/
-    /*border-color: #083559;*/
-    /*box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;*/
-/*}*/
+.category--save:hover {
+    background-color: #fff;
+    color: #ff5722;
+    cursor: pointer;
+}
+.category--save:active {
+    border-color: #083559;
+    box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, inset rgba(0, 0, 0, 0.25) 0 1px 4px;
+}
+
 .react-date-picker {
     width: 100%;
     display: flex;

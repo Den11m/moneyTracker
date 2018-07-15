@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {Day, Week, Month} from "../../actions/periodAction";
 import {getBudgetObj} from "../../selectors/BudgetForHeaderSelector";
 import {periods} from "../../periods";
+import {categoryMap} from "../../categories";
 
 
 import {changeCategory} from "../../actions/categoryAction";
@@ -14,22 +15,6 @@ import {Link} from "react-router-dom";
 import budget from './icons/budget.svg';
 import stopwatch from './icons/stopwatch.svg';
 import bars from './icons/bars.svg';
-
-let categoryMap = {
-    "all": "все",
-    'health': 'здоровье',
-    'food': 'еда',
-    'hygiene': 'гигиена',
-    'home': 'жилье',
-    'clothes': 'одежда',
-    'sport': 'спорт',
-    'relax': 'отдых',
-    'communication': 'связь',
-    'transport': 'транспорт',
-    'nursling': 'питомцы',
-    'present': 'подарки',
-    'other': 'другое'
-};
 
 const nameCategory = [
     "health",
@@ -68,13 +53,12 @@ class Sidebar extends Component {
             ],
         };
     }
-
     currentCategory = 'all';
     currentPeriod = 'day';
 
 
     resetCategory = () => {
-        this.currentCategory = 'all'
+        this.currentCategory = 'all';
         this.props.changeCategory('all');
         fetch(`/costs?period[start]=${periods[this.currentPeriod].start}&period[end]=${periods[this.currentPeriod].end}`, {
             method: 'GET',

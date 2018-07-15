@@ -1,13 +1,14 @@
 import moment from 'moment';
+import {categoryMap} from '../../categories';
 
 export const chartData = (costs, period, typeChart, categoryFromChart) => {
-    const category = ['Здоровье', 'Еда', 'Гигиена', 'Жилье', 'Одежда', 'Спорт', 'Отдых', 'Связь', 'Транспорт', 'Питомцы', 'Подарки', 'Другое'];
+    const nameCategory = Object.keys(categoryMap);
     const newArrCosts = [];
     const newArrDate = [];
 
-    const sumArrCostFromPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
+    const sumArrCostFromPeriod = costs.filter(obj => moment(obj.date).valueOf() >= period.start && moment(obj.date).valueOf() <= period.end);
 
-    for (let item of category) {
+    for (let item of nameCategory) {
         let totalSum = sumArrCostFromPeriod.filter((obj) => obj.category === item.toLowerCase()).reduce((acc, obj) => acc + obj.cost, 0);
         if (totalSum > 0) {
             newArrCosts.push({
