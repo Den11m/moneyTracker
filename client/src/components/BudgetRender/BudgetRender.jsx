@@ -28,7 +28,7 @@ class BudgetRender extends React.Component {
       .then(data => {
 
         this.props.loadButgets(data.budgets);
-        console.log("MESSAGE: Budget loaded", data.budgets);
+        // console.log("MESSAGE: Budget loaded", data.budgets);
       })
       .catch(err => {
         console.log(err);
@@ -48,7 +48,7 @@ class BudgetRender extends React.Component {
             className={
               this.props.getFactBudgetPerDay.toFixed(0) >= 0
                 ? "BudgetRender-span"
-                : "BudgetRender-span" + " budget-fatal"
+                : "BudgetRender-span budget-fatal"
             }
           >
             {this.props.getFactBudgetPerDay.toFixed(0)}

@@ -9,16 +9,15 @@ import {connect} from 'react-redux';
 
 const Main = (props) => {
     return (
-
         <div className="total-wrapper">
-            <div className={props.sidebarShow ? "sideBar sideBar-active" : "sideBar"} >
+            <div className={props.sidebarShow ? "sideBar sideBar-active" : "sideBar"}>
                 <SideBar/>
             </div>
             <div className="flex-wrapper">
-                {/* <Switch> */}
+                <Switch>
                     <Route path='/costs' component={CostList}/>
                     <Route path='/statistics' component={Statistics}/>
-                {/* </Switch> */}
+                </Switch>
                 <Budget/>
             </div>
         </div>
@@ -27,7 +26,7 @@ const Main = (props) => {
 };
 
 function MSTP(state) {
-    return{
+    return {
         sidebarShow: state.sidebarShow,
     }
 }

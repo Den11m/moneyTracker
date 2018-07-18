@@ -8,30 +8,31 @@ import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
 import {getBudgetPlan} from '../../selectors/BudgetForHeaderSelector';
 import {periods} from '../../periods';
+import {categoryMap} from '../../categories';
 import v4 from 'uuid/v4';
 import './index.css';
 import ReactTooltip from 'react-tooltip';
 
-let categoryMap = {
-    'health': 'здоровье',
-    'food': 'еда',
-    'hygiene': 'гигиена',
-    'home': 'жилье',
-    'clothes': 'одежда',
-    'sport': 'спорт',
-    'relax': 'отдых',
-    'communication': 'связь',
-    'transport': 'транспорт',
-    'nursling': 'питомцы',
-    'present': 'подарки',
-    'other': 'другое'
-};
+// let categoryMap = {
+//     'health': 'здоровье',
+//     'food': 'еда',
+//     'hygiene': 'гигиена',
+//     'home': 'жилье',
+//     'clothes': 'одежда',
+//     'sport': 'спорт',
+//     'relax': 'отдых',
+//     'communication': 'связь',
+//     'transport': 'транспорт',
+//     'nursling': 'питомцы',
+//     'present': 'подарки',
+//     'other': 'другое'
+// };
 
-const getPeriod = (costs, period, filterCategory = null) => {
-    let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
-    let result = filterCategory && filterPeriod.filter(obj => obj.category === filterCategory);
-    return filterCategory ? result.sort((a, b) => a.date - b.date) : filterPeriod.sort((a, b) => a.date - b.date);
-};
+// const getPeriod = (costs, period, filterCategory = null) => {
+//     let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
+//     let result = filterCategory && filterPeriod.filter(obj => obj.category === filterCategory);
+//     return filterCategory ? result.sort((a, b) => a.date - b.date) : filterPeriod.sort((a, b) => a.date - b.date);
+// };
 
 class CostList extends React.Component {
     get costsSum() {

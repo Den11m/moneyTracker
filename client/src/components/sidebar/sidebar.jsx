@@ -7,7 +7,7 @@ import {periods} from "../../periods";
 import {categoryMap} from "../../categories";
 
 
-import {changeCategory} from "../../actions/categoryAction";
+// import {changeCategory} from "../../actions/categoryAction";
 import toggleShowBudget from "../../actions/budgetShowAction";
 import v4 from "uuid/v4";
 import {Link} from "react-router-dom";
@@ -85,7 +85,7 @@ class Sidebar extends Component {
         const url = (this.currentCategory === 'all'
             ? `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}`
             : `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}&category=${this.currentCategory}`)
-        console.log('URL CATEGORY!!!', url)
+        // console.log('URL CATEGORY!!!', url)
         fetch(url, {
             method: 'GET',
             headers: new Headers({
@@ -109,20 +109,17 @@ class Sidebar extends Component {
         this.currentPeriod = period;
         if (period === 'day') {
             this.props.day()
-        }
-        ;
+        };
         if (period === 'week') {
             this.props.week()
-        }
-        ;
+        };
         if (period === 'month') {
             this.props.month()
-        }
-        ;
+        };
         const url = (this.currentCategory === 'all'
             ? `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}`
             : `/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}&category=${this.currentCategory}`)
-        console.log('URL PERIOD!!!', url)
+        // console.log('URL PERIOD!!!', url)
         fetch(url, {
             method: 'GET',
             headers: new Headers({
@@ -153,19 +150,19 @@ class Sidebar extends Component {
         return this.props.costs.reduce((total, cost) => total + cost.cost, 0);
     }
 
-    totalCostForPeriod = category => {
-        const arrCostFromPeriod = this.props.costs.filter(
-            obj =>
-                obj.date >= this.props.period.start && obj.date <= this.props.period.end
-        );
-        if (category === "Все") {
-            return arrCostFromPeriod.reduce((acc, obj) => acc + obj.cost, 0);
-        } else {
-            return arrCostFromPeriod
-                .filter(obj => obj.category === category.toLowerCase())
-                .reduce((acc, obj) => acc + obj.cost, 0);
-        }
-    };
+    // totalCostForPeriod = category => {
+    //     const arrCostFromPeriod = this.props.costs.filter(
+    //         obj =>
+    //             obj.date >= this.props.period.start && obj.date <= this.props.period.end
+    //     );
+    //     if (category === "Все") {
+    //         return arrCostFromPeriod.reduce((acc, obj) => acc + obj.cost, 0);
+    //     } else {
+    //         return arrCostFromPeriod
+    //             .filter(obj => obj.category === category.toLowerCase())
+    //             .reduce((acc, obj) => acc + obj.cost, 0);
+    //     }
+    // };
 
     subPeriod = () => {
         this.setState(prevState => ({
@@ -179,8 +176,8 @@ class Sidebar extends Component {
         }));
     };
 
-    showPeriod = event => {
-    };
+    // showPeriod = event => {
+    // };
 
     render() {
         return (
@@ -250,7 +247,7 @@ class Sidebar extends Component {
 
                     <li className="menu-item">
                         <Link className="sidebar-link" to="/statistics">
-                            {" "}
+                           {/*{" "}*/}
                             <img className='icon-bars' src={bars} alt="icon"/>
                             Статистика
                         </Link>

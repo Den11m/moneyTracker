@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import toggleShowLogin from "../../actions/toggleLoginAction";
 import toggleShowRegistration from "../../actions/toggleRegistrationAction";
