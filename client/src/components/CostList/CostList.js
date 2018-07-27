@@ -7,26 +7,11 @@ import toggleShowWindow from '../../actions/clickAction';
 import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
 import {getBudgetPlan} from '../../selectors/BudgetForHeaderSelector';
-import {periods} from '../../periods';
+import {periods, periodMap} from '../../periods';
 import {categoryMap} from '../../categories';
 import v4 from 'uuid/v4';
 import './index.css';
 import ReactTooltip from 'react-tooltip';
-
-// let categoryMap = {
-//     'health': 'здоровье',
-//     'food': 'еда',
-//     'hygiene': 'гигиена',
-//     'home': 'жилье',
-//     'clothes': 'одежда',
-//     'sport': 'спорт',
-//     'relax': 'отдых',
-//     'communication': 'связь',
-//     'transport': 'транспорт',
-//     'nursling': 'питомцы',
-//     'present': 'подарки',
-//     'other': 'другое'
-// };
 
 // const getPeriod = (costs, period, filterCategory = null) => {
 //     let filterPeriod = costs.filter(obj => obj.date >= period.start && obj.date <= period.end);
@@ -40,15 +25,11 @@ class CostList extends React.Component {
     }
 
     componentDidMount() {
-        this.updateLoadCost()
+        this.updateLoadCost(periodMap[this.props.period.period])
     }
 
-    // componentDidUpdate() {
-    //     this.updateLoadCost()
-    // }
-
- updateLoadCost = () => (
-     fetch(`/costs?period[start]=${periods['day'].start}&period[end]=${periods['day'].end}`, {
+ updateLoadCost = (period) => (
+     fetch(`/costs?period[start]=${periods[period].start}&period[end]=${periods[period].end}`, {
          method: 'GET',
          headers: new Headers({
              "Authorization": localStorage.getItem('token')
@@ -65,7 +46,7 @@ class CostList extends React.Component {
          .catch(err => {
              console.log(err)
          })
- )
+ );
 
     delCost = (id, cost) => {
         fetch(`/costs/${id}`, {
@@ -139,7 +120,7 @@ class CostList extends React.Component {
         )
 
     }
-};
+}
 
 function MSTP(state) {
     return {

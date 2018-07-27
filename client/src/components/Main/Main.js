@@ -6,6 +6,8 @@ import SideBar from '../../components/sidebar/sidebar';
 import Statistics from '../../components/statistics/statistics';
 import {Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import { history } from '../../store/store';
 
 const Main = (props) => {
     return (
@@ -13,6 +15,7 @@ const Main = (props) => {
             <div className={props.sidebarShow ? "sideBar sideBar-active" : "sideBar"}>
                 <SideBar/>
             </div>
+            <ConnectedRouter history={history}>
             <div className="flex-wrapper">
                 <Switch>
                     <Route path='/costs' component={CostList}/>
@@ -20,6 +23,7 @@ const Main = (props) => {
                 </Switch>
                 <Budget/>
             </div>
+            </ConnectedRouter>
         </div>
 
     )

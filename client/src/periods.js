@@ -14,3 +14,9 @@ export const periods = {
         end: moment().endOf('month').valueOf()
     }
 };
+
+export const periodMap = {
+    'День': 'day',
+    'Неделя': 'week',
+    'Месяц': 'month'
+};
