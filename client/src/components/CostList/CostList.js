@@ -87,7 +87,7 @@ class CostList extends React.Component {
                             Категория: {this.props.category === '' ? 'все' : this.props.category.toLowerCase()}</p>
                     </div>
                     <table className="Table">
-                        <tbody>{this.props.costs.length ? this.props.costs.map((el, index) =>
+                        <tbody>{this.props.costs.length ? this.props.costs.sort((a,b)=> moment(b.date).valueOf() - moment(a.date).valueOf()).map((el, index) =>
                             <tr className="line" id={el.date} key={v4()}>
                                 <td className="start">{index + 1}.</td>
                                 <td>{categoryMap[el.category]} {el.comments === '' ? '' : `(${el.comments})`}</td>

@@ -24,11 +24,12 @@ router.post('/', (req, res, next) => {
                 return budget.date.start <= costDate && budget.date.end >= costDate;
             });
             const lastIndex = currentBudget.costs.length - 1;
+            // if(moment(currentBudget.costs[lastIndex].date).valueOf() > period.start && moment(currentBudget.costs[lastIndex].date).valueOf() < period.end){
             res.status(201).json({
                 Message: "Your cost saved",
                 cost: currentBudget.costs[lastIndex],
-            })
-
+                })
+            // }
         })
         .catch(error => {
             res.status(500).json(error) //ошибки сервера статус 500 и выше

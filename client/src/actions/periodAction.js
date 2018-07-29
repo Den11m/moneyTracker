@@ -1,16 +1,10 @@
-export const Day = () => {
-    return {
+export const Day = () => ({
         type: 'День',
-    }
-};
+    });
 
- export const Week = () => {
-     return {
+ export const Week = () => ({
          type: 'Неделя'
-     }
- };
-  export const Month = () => {
-      return {
+     });
+  export const Month = () => ({
           type: 'Месяц'
-      }
-  };
+      });

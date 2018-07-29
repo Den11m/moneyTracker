@@ -1,13 +1,9 @@
-export const loginHeader = () => {
-    return {
+export const loginHeader = () => ({
         type: 'LOGIN',
         login: true,
-    }
-};
+    });
 
-export const logOut = () => {
-    return {
+export const logOut = () => ({
         type: 'LOGOUT',
         login: false,
-    }
-};
+    });

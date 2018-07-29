@@ -6,8 +6,8 @@ export const periods = {
         end: moment().endOf('day').valueOf()
     },
     week: {
-        start: moment().startOf('week').add(1, 'days').valueOf(),
-        end: moment().endOf('week').add(1, 'days').valueOf()
+        start: moment().startOf('week').isoWeekday(1).valueOf(),
+        end: moment().startOf('week').isoWeekday(7).valueOf(),
     },
     month: {
         start: moment().startOf('month').valueOf(),

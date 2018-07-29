@@ -1,4 +1,6 @@
-export const changeType = chart => ({
+ const changeType = chart => ({
     type: 'CHANGE-TYPE-CHART',
     chart,
 });
+
+export default changeType

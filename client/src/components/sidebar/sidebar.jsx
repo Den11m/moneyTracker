@@ -7,7 +7,7 @@ import {periods} from "../../periods";
 import {categoryMap} from "../../categories";
 
 
-// import {changeCategory} from "../../actions/categoryAction";
+// import changeCategory from "../../actions/categoryAction";
 import toggleShowBudget from "../../actions/budgetShowAction";
 import v4 from "uuid/v4";
 import {Link} from "react-router-dom";

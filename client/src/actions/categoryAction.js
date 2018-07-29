@@ -1,9 +1,7 @@
-export const changeCategory = (category) => {
-    return {
+ const changeCategory = (category) => ({
         category
-    }
-};
+    });
 
 
-
+export default changeCategory
 

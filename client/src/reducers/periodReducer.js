@@ -14,8 +14,8 @@ const period = (state = {
             };
         case 'Неделя':
             return {
-                start: moment().startOf('week').add(1, 'days').valueOf(),
-                end: moment().endOf('week').add(1, 'days').valueOf(),
+                start: moment().startOf('week').isoWeekday(1).valueOf(),
+                end: moment().startOf('week').isoWeekday(7).valueOf(),
                 period: action.type,
             };
         case 'Месяц':

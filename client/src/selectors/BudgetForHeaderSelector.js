@@ -7,9 +7,9 @@ export const getBudgetObj = state => {
             && moment(el.date.end).valueOf() >= Date.now()
         ) || {value: 0, costs: []};
     }
-    else {
+    
         return false;
-    }
+    
 };
 
 export const sumCostPerDay = state => getBudgetObj(state)

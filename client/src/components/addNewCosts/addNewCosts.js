@@ -106,6 +106,7 @@ class AddNewCosts extends Component {
                 }
             })
             .then(data => {
+                console.log(data)
                 // console.log('THIS!!',this)
                 this.props.addCosts(data.cost);
                 this.props.getFact(data.cost.cost);
