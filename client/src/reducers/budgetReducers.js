@@ -13,14 +13,18 @@ export default function budget(state = [], action) {
     case "CLEAR_BUDGET":
       return [];
       case "BUDGET_UPDATE": {
-          return [{...state[0], value: action.budget}];
+          return [{...state[state.length-1], value: action.budget}];
       }
 
     case "FACT-ADD":
-      return [{ ...state[0], fact: state[0].fact + action.data }];
+      return [{ ...state[state.length-1], fact: state[state.length-1].fact + action.data }];
     case "FACT_DELETE":
-      return [{ ...state[0], fact: state[0].fact - action.data }];
-    default:
+      return [{ ...state[state.length-1], fact: state[state.length-1].fact - action.data }];
+      case "COST-ADD-FOR-BUDGET":
+          return [{ ...state[state.length-1], costs: [...state[state.length-1].costs, action.data]}];
+      case "COST-DELETE-FOR-BUDGET":
+          return [{ ...state[state.length-1], costs: [...state[state.length-1].costs.filter(({_id})=> _id !== action.data)]}];
+      default:
       return state;
   }
 }

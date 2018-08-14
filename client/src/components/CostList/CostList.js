@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getCosts, click, period, spent} from '../../selectors/CostListSelector';
 import {deleteCost, deleteFact, loadCosts} from '../../actions/addNewCostsAction';
+import {deleteCostForBudget} from '../../actions/budgetAction';
 import toggleShowWindow from '../../actions/clickAction';
 import moment from 'moment';
 import AddNewCosts from '../addNewCosts/addNewCosts';
@@ -37,25 +38,32 @@ class CostList extends React.Component {
     }
 
     componentDidMount() {
-
-        fetch(`/costs?period[start]=${periods['day'].start}&period[end]=${periods['day'].end}`, {
-            method: 'GET',
-            headers: new Headers({
-                "Authorization": localStorage.getItem('token')
-            }),
-        })
-            .then(response => {
-                if (response.ok || response.status === 401) {
-                    return response.json();
-                }
-            })
-            .then(costs => {
-                this.props.loadUserCosts(costs.costs);
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        this.updateLoadCost()
     }
+
+    // componentDidUpdate() {
+    //     this.updateLoadCost()
+    // }
+
+ updateLoadCost = () => (
+     fetch(`/costs?period[start]=${periods['day'].start}&period[end]=${periods['day'].end}`, {
+         method: 'GET',
+         headers: new Headers({
+             "Authorization": localStorage.getItem('token')
+         }),
+     })
+         .then(response => {
+             if (response.ok || response.status === 401) {
+                 return response.json();
+             }
+         })
+         .then(costs => {
+             this.props.loadUserCosts(costs.costs);
+         })
+         .catch(err => {
+             console.log(err)
+         })
+ )
 
     delCost = (id, cost) => {
         fetch(`/costs/${id}`, {
@@ -66,7 +74,8 @@ class CostList extends React.Component {
         }).then(response => {
             if (response.ok) {
                 this.props.deleteCost(id);
-                this.props.deleteFact(cost)
+                this.props.deleteFact(cost);
+                this.props.deleteCostForBudget(id);
             } else {
                 throw new Error()
             }
@@ -145,6 +154,9 @@ function MDTP(dispatch) {
         },
         loadUserCosts: function (data) {
             dispatch(loadCosts(data))
+        },
+        deleteCostForBudget: function (id) {
+            dispatch(deleteCostForBudget(id))
         }
 
     }
